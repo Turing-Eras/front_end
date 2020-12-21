@@ -1,5 +1,12 @@
 language: node_js
 node_js:
-  - "node"
+- node
 notifications:
   email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: pfIR0nfgdKNvKYVdIGQ3uuHT/WX38paI0JdjicZgMDaru/Bcq2ScdHp2qOgRfG+OE7G8qFlcYzZ73JUKrkHd8Pqr/OKR2WENpUg0IqF0JTGIJ7DN8vGxDiNbR6bK35ClKFPlW8DIONkznUMXl8sAhYrtfwRkMnBV+M36sh6u/UNpdRA5F7yCCj8Xf8aVe1Js/S4djQ5+GzJwkao2e7djX5/E9Q/0QrzZmngPt4dH8h+laQq2gSxmLcm6mGYoKRDnO47NndhyaWB6OOu7Dj4OMdng3LGNzraiGghs6CqxWXjhwojYol7UTFwwg4SHL95fgTvyzxfP/86nAg/FaqrPY7DtG+fAgTtY67qW8nYsf6hMHUU6OnEbGIrbYp+WLA5HcGJzSZm3VJV9dj/qH0CEhMdKmpzaSP6XlqHgXEUp7+3e5p9cX2/tcLEHnlBZy04No+1xKTKLyFxYO2ZjHCi0azTvJFrHoBK4eTx9vtx4Ce2zb2G1HJD/yMXBoboHAldhtKCYeyz3tkRukUCe2Z5ttRNUKRVE2Lq4q8hmPHDdkb+td7SSYHNMxE9ZOXpAm3/rvdgTqV3Lm+k8SuCXo1Hk0Omc+xzwXOO/CuGNHEBrvhsaUlQmvGgjUJcjDFyEfnvyBf0jJZDIjwc4qJ21Iwazp+rDkiN8AXXW3Ds5YBbOW+o=
+  app: eras-frontend
+  skip_cleanup: true
+  on: main
