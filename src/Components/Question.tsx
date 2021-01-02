@@ -9,10 +9,11 @@ type QuestionProps = {
   currentQuestionIndex: number;
   currentQuestion: string;
   setAnswer: SetAnswer;
+  answers: string[];
 };
 
 export const Question = (props: QuestionProps) => {
-  const [answer, setAnswer] = useState('');
+  const [answer, saveAnswer] = useState('');
 
   return (
     <>
@@ -21,7 +22,10 @@ export const Question = (props: QuestionProps) => {
       <button type='button'>Skip</button>
       <button
         type='button'
-        onClick={() => props.changeQuestion(props.currentQuestionIndex + 1)}
+        onClick={() => {
+          props.changeQuestion(props.currentQuestionIndex + 1)
+          props.setAnswer([...props.answers, answer])
+        }}
       >
         Next
       </button>
