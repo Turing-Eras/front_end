@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Question } from './Question';
 
 //Roles of buttons
 
@@ -15,24 +16,25 @@ import React, { useEffect, useState } from 'react';
 export const FormContainer = () => {
   //index of question will be id
 
-  let questions; //pulled in from BE
+  let questions = ['who', 'what', 'where', 'when', 'why']; //pulled in from BE
+  //const [questions, setQuestions] = useState([])
+
   useEffect(() => {
     //set questions & store in questions variable
+    //setQuestions(returnBE)
   }, []);
 
   const [answers, setAnswer] = useState([]);
 
-  let currentQuestion; //current index
+  let currentQuestion: number = 0; //current index
 
   return (
     <>
       <h1>Create My Calendar</h1>
-      <p>Question Goes Here</p>
+      <Question currentQuestion={questions[currentQuestion]}/>
       <form>
         <input type='date'></input>
       </form>
-      <button type='button'>Skip</button>
-      <button type='button'>Next</button>
     </>
   );
 };
