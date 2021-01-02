@@ -2,10 +2,13 @@ import React from 'react';
 
 type ChangeQuestion = (index: number) => void
 
+type SetAnswer = (answer: string[]) => void
+
 type QuestionProps = {
   changeQuestion: ChangeQuestion;
   currentQuestionIndex: number;
   currentQuestion: string;
+  setAnswer: SetAnswer;
 }
 
 
@@ -13,6 +16,7 @@ export const Question = (props: QuestionProps) => {
   return (
     <>
       <h1>{props.currentQuestion}</h1>
+      <input type='date'></input>
       <button type='button'>Skip</button>
       <button type='button' onClick={() => props.changeQuestion(props.currentQuestionIndex + 1)}>Next</button>
     </>
