@@ -15,18 +15,21 @@ type QuestionProps = {
 export const Question = (props: QuestionProps) => {
   const [answer, saveAnswer] = useState('');
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    saveAnswer(event.target.value);
+  };
+
   return (
     <>
       <h1>{props.currentQuestion}</h1>
-      <input type='date'></input>
+      <input type='date' onChange={handleChange}></input>
       <button type='button'>Skip</button>
       <button
         type='button'
         onClick={() => {
-          props.changeQuestion(props.currentQuestionIndex + 1)
-          props.setAnswer([...props.answers, answer])
-        }}
-      >
+          props.changeQuestion(props.currentQuestionIndex + 1);
+          props.setAnswer([...props.answers, answer]);
+        }}>
         Next
       </button>
     </>
