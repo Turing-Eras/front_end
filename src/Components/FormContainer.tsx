@@ -26,12 +26,13 @@ export const FormContainer = () => {
 
   const [answers, setAnswer] = useState([]);
 
-  let currentQuestion: number = 0; //current index
+//   let currentQuestion: number = 0; //current index
+  const [currentQuestionIndex, changeQuestion] = useState(0)
 
   return (
     <>
       <h1>Create My Calendar</h1>
-      <Question currentQuestion={questions[currentQuestion]}/>
+      <Question currentQuestion={questions[currentQuestionIndex]} changeQuestion={changeQuestion} currentQuestionIndex={currentQuestionIndex}/>
       <form>
         <input type='date'></input>
       </form>
