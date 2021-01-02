@@ -24,7 +24,7 @@ export const FormContainer = () => {
     //setQuestions(returnBE)
   }, []);
 
-  const [answers, setAnswer] = useState([]);
+  const [answers, setAnswer] = useState<string[]>([]);
 
 //   let currentQuestion: number = 0; //current index
   const [currentQuestionIndex, changeQuestion] = useState(0)
@@ -32,10 +32,10 @@ export const FormContainer = () => {
   return (
     <>
       <h1>Create My Calendar</h1>
-      <Question currentQuestion={questions[currentQuestionIndex]} changeQuestion={changeQuestion} currentQuestionIndex={currentQuestionIndex}/>
       <form>
-        <input type='date'></input>
+        <Question currentQuestion={questions[currentQuestionIndex]} changeQuestion={changeQuestion} currentQuestionIndex={currentQuestionIndex} setAnswer={setAnswer}/>
       </form>
+      <button type='submit'>Submit</button>
     </>
   );
 };
