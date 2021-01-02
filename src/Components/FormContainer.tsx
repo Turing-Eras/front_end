@@ -33,7 +33,7 @@ export const FormContainer = () => {
     <>
       <h1>Create My Calendar</h1>
       <form>
-        <Question currentQuestion={questions[currentQuestionIndex]} changeQuestion={changeQuestion} currentQuestionIndex={currentQuestionIndex} setAnswer={setAnswer}/>
+        <Question currentQuestion={questions[currentQuestionIndex]} changeQuestion={changeQuestion} currentQuestionIndex={currentQuestionIndex} setAnswer={setAnswer} answers={answers}/>
       </form>
       <button type='submit'>Submit</button>
     </>
