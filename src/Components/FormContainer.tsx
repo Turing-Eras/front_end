@@ -13,6 +13,7 @@ export const FormContainer = () => {
   const [answers, setAnswer] = useState<string[]>([]);
 
   const [currentQuestionIndex, changeQuestion] = useState(0)
+  console.log(answers)
   return (
     <>
       <h1>Create My Calendar</h1>

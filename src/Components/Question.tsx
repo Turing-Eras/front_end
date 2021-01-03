@@ -26,7 +26,11 @@ export const Question = (props: QuestionProps) => {
     <>
       <h1>{props.currentQuestion}</h1>
       <input type='date' onChange={handleChange} value = {date}></input>
-      <button type='button'>Skip</button>
+      <button type='button'  onClick={() => {
+          props.changeQuestion(props.currentQuestionIndex + 1);
+          props.setAnswer([...props.answers, '']);
+          updateDate('')
+        }}>Skip</button>
       <button
         type='button'
         onClick={() => {
