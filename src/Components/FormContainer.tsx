@@ -20,7 +20,8 @@ export const FormContainer = () => {
       <form>
         <Question currentQuestion={questions[currentQuestionIndex]} changeQuestion={changeQuestion} currentQuestionIndex={currentQuestionIndex} setAnswer={setAnswer} answers={answers}/>
       </form>
-      <button type='submit'>Submit</button>
+      
+  {answers.length === questions.length - 1 && <button type='submit'>Submit</button> }
     </>
   );
 };
