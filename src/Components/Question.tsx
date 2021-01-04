@@ -16,9 +16,10 @@ export const Question = (props: QuestionProps) => {
   const [date, updateDate] = useState('')
   const [answer, saveAnswer] = useState('');
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
     updateDate(event.target.value)
-    saveAnswer(date)
+    saveAnswer(event.target.value)
+
     
   };
 
@@ -30,7 +31,8 @@ export const Question = (props: QuestionProps) => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, '']);
           updateDate('')
-        }}>Skip</button>
+        }}>Skip
+      </button>
       <button
         type='button'
         onClick={() => {
