@@ -10,6 +10,9 @@ const HeaderComponent = () =>{
         <button >        
           <Link to="/login">Login</Link>
         </button>
+        <button >        
+          <Link to="/calender">Calender</Link>
+        </button>
       </section>
   )
 }
