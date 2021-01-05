@@ -6,8 +6,8 @@ const CalenderComponent = () =>{
   console.log(calender)
   let display = calender.map(year =>{
     let weeks = new Array (52)
-    weeks.fill(<Week/>)
-    return weeks
+    weeks.fill( <Week/>)
+    return <section >{weeks}</section>
   })
   return (
     <section>
