@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Week from './Week'
+import NavBar from './NavBar'
 const CalenderComponent = () =>{
   let calender = new Array(76)
   calender.fill({})
@@ -14,6 +15,7 @@ const CalenderComponent = () =>{
   })
   return (
     <section>
+      <NavBar/>
       Your calender
       {display}
     </section>
