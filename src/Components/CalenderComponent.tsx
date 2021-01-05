@@ -4,10 +4,13 @@ const CalenderComponent = () =>{
   let calender = new Array(76)
   calender.fill({})
   console.log(calender)
-  let display = calender.map(year =>{
+  let display = calender.map((year,index )=>{
     let weeks = new Array (52)
     weeks.fill( <Week/>)
-    return <section >{weeks}</section>
+    return <section > 
+      Age: {index}
+      {weeks}
+      </section>
   })
   return (
     <section>
