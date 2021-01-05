@@ -9,6 +9,7 @@ let createUserName = (event: React.ChangeEvent<HTMLInputElement>) =>{
 let createPass = (event: React.ChangeEvent<HTMLInputElement>) =>{
   typePass(event?.target.value)
 }
+//are frontend validating this before we send it
   return (
     <section>
     <form>
