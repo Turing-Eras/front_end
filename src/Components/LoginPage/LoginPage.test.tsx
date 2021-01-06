@@ -11,8 +11,8 @@ describe('LoginPage', () => {
     const passwordInput = getByPlaceholderText('Password');
     const submitBtn = getByText('Submit');
 
-    expect(username).toBeInTheDocument();
-    expect(password).toBeInTheDocument();
+    expect(usernameInput).toBeInTheDocument();
+    expect(passwordInput).toBeInTheDocument();
     expect(submitBtn).toBeInTheDocument();
   });
 
@@ -28,4 +28,4 @@ describe('LoginPage', () => {
     expect(usernameInput).toHaveValue('user1');
     expect(passwordInput).toHaveValue('password1');
   });
-});
+});   
