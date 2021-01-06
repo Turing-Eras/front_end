@@ -4,11 +4,14 @@ type ProgressProps = {
   answersLength: number;
 };
 let ProgressBar = (props :ProgressProps) =>{
-  let percentage = Math.ceil(props.answersLength / props.questionsLength)
+  let percentage = Math.ceil(props.answersLength / props.questionsLength *100)
  return (
-   <section style={{width : percentage}}>
-
+   <section>
+   <section style={{width : percentage, backgroundColor:'red'}}>
+    hello
    </section>
+   </section>
+
  )
 }
 export default ProgressBar
