@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import { Week } from './Week';
 
 describe('Week', () => {
-    it('should render a Week componen', () => {
+    it('should render a Week component', () => {
       expect(true).toBe(true);
     });
   });
