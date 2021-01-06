@@ -1,0 +1,8 @@
+.week{
+  border :2px solid black;
+  display: inline-block;
+  background-color: ivory;
+  padding: 8px;
+  margin-left: 4px;
+  margin-top: 4px;
+}
