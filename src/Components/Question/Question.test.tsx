@@ -2,3 +2,10 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
+import { Question } from './Question';
+
+describe('Question', () => {
+  it('should render Question', () => {
+    expect(true).toBe(true);
+  });
+});
