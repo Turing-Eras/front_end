@@ -17,6 +17,20 @@ describe('Question', () => {
     expect(nextBtn).toBeInTheDocument();
   });
 
+  it('should display the current question', () => {
+    const mockQuestions = [
+      'What is your birthday?',
+      'When did you graduate High School?'
+    ];
+    const mockCurrIndex = 0;
+    const { getByText } = render(
+      <Question currentQuestion={mockQuestions[mockCurrIndex]} />
+    );
+
+    const question = getByText('What is your birthday?');
+    expect(question).toBeInTheDocument();
+  });
+
   it('should update input when a user selects a date', () => {
     const { getByTestId } = render(<Question />);
 
@@ -51,6 +65,34 @@ describe('Question', () => {
     expect(dateInput.value).toEqual(testDate);
     userEvent.click(nextBtn);
 
-    expect(dateInput.value).toEqual('');  
+    expect(dateInput.value).toEqual('');
+  });
+
+  it('should fire a function when the next button is clicked', () => {
+    const mockQuestions = [
+      'What is your birthday?',
+      'When did you graduate High School?'
+    ];
+    const mockCurrIndex = 0;
+    const mockChangeQ = jest.fn();
+    const mockAnswers = [];
+    const mockSetAnswer = jest.fn();
+    const { getByText } = render(
+      <Question
+        currentQuestion={mockQuestions[mockCurrIndex]}
+        changeQuestion={mockChangeQ}
+        answers={mockAnswers}
+        setAnswer={mockSetAnswer}
+      />
+    );
+
+    const nextBtn = getByText('Next');
+    const question = getByText('What is your birthday?');
+    expect(question).toBeInTheDocument();
+
+    userEvent.click(nextBtn);
+
+    expect(mockChangeQ).toHaveBeenCalledTimes(1);
+    expect(mockSetAnswer).toHaveBeenCalledTimes(1);
   });
 });
