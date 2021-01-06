@@ -14,12 +14,12 @@ let createPass = (event: React.ChangeEvent<HTMLInputElement>) =>{
     <section>
     <form>
 
-      <input value = {userName} type = 'text' name = 'userName' placeholder="User Name" onChange = {createUserName}
+      <input value = {userName} type = 'text' name = 'userName' placeholder="Username" onChange = {createUserName}
       ></input>
       <input value = {password} type = 'password' name = 'password' placeholder="Password" onChange = {createPass}
       ></input>
     </form>
-    <button> Submit Me</button>
+    <button>Submit</button>
     </section>
   )
 }

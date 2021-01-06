@@ -1,13 +1,14 @@
 import React from 'react';
-import { FormContainer } from './FormContainer';
+import { FormContainer } from '../FormContainer/FormContainer';
 import {Route} from 'react-router-dom'
-import LoginPage from './LoginPage'
-import CalenderComponent from './CalenderComponent'
+import LoginPage from '../LoginPage/LoginPage'
+import CalendarComponent from '../CalendarComponent/CalendarComponent'  
+
 export const App = () => {
   return(
   <>
     <Route exact path='/'>
-        <FormContainer/>
+        <FormContainer/> 
       </Route>
       
       <Route path = '/login' 
@@ -17,7 +18,7 @@ export const App = () => {
       </Route>
       <Route path = '/calender' 
         render = {() =>{
-          return <CalenderComponent />
+          return <CalendarComponent />
         }}>
       </Route>
   </>
