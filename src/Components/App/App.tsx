@@ -2,7 +2,7 @@ import React from 'react';
 import { FormContainer } from '../FormContainer/FormContainer';
 import {Route} from 'react-router-dom'
 import LoginPage from '../LoginPage/LoginPage'
-import CalenderComponent from './CalenderComponent'
+import CalenderComponent from '../CalenderComponent/CalenderComponent'  
 
 export const App = () => {
   return(
