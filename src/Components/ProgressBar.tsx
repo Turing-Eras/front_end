@@ -1,7 +1,10 @@
 import React from 'react';
-
-let ProgressBar = (props) =>{
-  let percentage = Math.ceil(props.anwsers / props.questions)
+type ProgressProps = {
+  questionsLength :number;
+  answersLength: number;
+};
+let ProgressBar = (props :ProgressProps) =>{
+  let percentage = Math.ceil(props.answersLength / props.questionsLength)
  return (
    <section style={{width : percentage}}>
 
