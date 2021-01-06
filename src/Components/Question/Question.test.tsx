@@ -28,4 +28,29 @@ describe('Question', () => {
 
     expect(dateInput.value).toEqual(testDate);
   });
+
+  it('should clear input when next button is clicked', () => {
+    const mockChangeQuestion = jest.fn();
+    const testAnswers = ['', ''];
+    const mockSetAnswer = jest.fn();
+    const { getByTestId, getByText } = render(
+      <Question
+        changeQuestion={mockChangeQuestion}
+        answers={testAnswers}
+        setAnswer={mockSetAnswer}
+      />
+    );
+
+    const testDate = '2021-01-05';
+    const dateInput = getByTestId('date');
+    const nextBtn = getByText('Next');
+
+    expect(dateInput.value).toEqual('');
+
+    fireEvent.change(dateInput, { target: { value: testDate } });
+    expect(dateInput.value).toEqual(testDate);
+    userEvent.click(nextBtn);
+
+    expect(dateInput.value).toEqual('');  
+  });
 });
