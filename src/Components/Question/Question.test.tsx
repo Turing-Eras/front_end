@@ -95,4 +95,24 @@ describe('Question', () => {
     expect(mockChangeQ).toHaveBeenCalledTimes(1);
     expect(mockSetAnswer).toHaveBeenCalledTimes(1);
   });
+
+  it('should fire a function when the skip button is clicked', () => {
+    const mockChangeQ = jest.fn();
+    const mockAnswers = [];
+    const mockSetAnswer = jest.fn();
+    const { getByText } = render(
+      <Question
+        changeQuestion={mockChangeQ}
+        answers={mockAnswers}
+        setAnswer={mockSetAnswer}
+      />
+    );
+
+    const skipBtn = getByText('Skip');
+
+    userEvent.click(skipBtn);
+
+    expect(mockChangeQ).toHaveBeenCalledTimes(1);
+    expect(mockSetAnswer).toHaveBeenCalledWith(['']);
+  });
 });
