@@ -16,4 +16,15 @@ describe('HeaderComponent', () => {
     const title = getByText('Create My Calendar');
     expect(title).toBeInTheDocument();
   });
+
+  it('should have a login button', () => {
+    const { getByText } = render(
+      <BrowserRouter>
+        <HeaderComponent />
+      </BrowserRouter>
+    );
+
+    const loginBtn = getByText('Login');
+    expect(loginBtn).toBeInTheDocument();
+  });
 });
