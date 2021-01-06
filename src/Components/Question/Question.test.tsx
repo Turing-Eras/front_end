@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import { getByPlaceholderText, render, screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import { Question } from './Question';
 
 describe('Question', () => {
@@ -15,5 +15,17 @@ describe('Question', () => {
     expect(dateInput).toBeInTheDocument();
     expect(skipBtn).toBeInTheDocument();
     expect(nextBtn).toBeInTheDocument();
+  });
+
+  it('should update input when a user selects a date', () => {
+    const { getByTestId } = render(<Question />);
+
+    const testDate = '2021-01-05';
+    const dateInput = getByTestId('date');
+
+    expect(dateInput.value).toEqual('');
+    fireEvent.change(dateInput, { target: { value: testDate } });
+
+    expect(dateInput.value).toEqual(testDate);
   });
 });
