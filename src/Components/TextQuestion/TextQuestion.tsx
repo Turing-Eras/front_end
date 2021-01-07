@@ -3,15 +3,12 @@ import React, { useState } from 'react';
 type ChangeQuestion = (index: number) => void;
 
 type AddAnswer = (answer: string[]) => void;
-type ChangeButton = (showButton: boolean) => void
 type QuestionProps = {
   changeQuestion: ChangeQuestion;
   currentQuestionIndex: number;
   currentQuestion: string;
   addAnswer: AddAnswer;
   answers: string[];
-  showButton :boolean;
-  changeButton :ChangeButton
 };
 
 let TextQuestion = (props:QuestionProps) =>{
@@ -24,7 +21,6 @@ let TextQuestion = (props:QuestionProps) =>{
 
     
   };
-  let nextButton = false
   
   return (
     <section>
@@ -35,7 +31,6 @@ let TextQuestion = (props:QuestionProps) =>{
         onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.addAnswer([...props.answers, answer]);
-          props.changeButton(nextButton)
           updateText('')
         }}>
         Next
