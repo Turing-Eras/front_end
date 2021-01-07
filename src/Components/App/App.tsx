@@ -3,12 +3,12 @@ import { FormContainer } from '../FormContainer/FormContainer';
 import {Route} from 'react-router-dom'
 import LoginPage from '../LoginPage/LoginPage'
 import CalendarComponent from '../CalendarComponent/CalendarComponent'  
-
+import RequiredForm from '../RequiredForm/RequiredForm'
 export const App = () => {
   return(
   <>
     <Route exact path='/'>
-        <FormContainer/> 
+        <RequiredForm/> 
       </Route>
       
       <Route path = '/login' 

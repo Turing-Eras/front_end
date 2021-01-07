@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 
 type ChangeQuestion = (index: number) => void;
 
-type SetAnswer = (answer: string[]) => void;
+type AddAnswer = (answer: string[]) => void;
 type ChangeButton = (showButton: boolean) => void
 type QuestionProps = {
   changeQuestion: ChangeQuestion;
   currentQuestionIndex: number;
   currentQuestion: string;
-  setAnswer: SetAnswer;
+  addAnswer: AddAnswer;
   answers: string[];
   showButton :boolean;
   changeButton :ChangeButton
 };
 
 let TextQuestion = (props:QuestionProps) =>{
-  const [date, updateText] = useState('')
+  const [text, updateText] = useState('')
   const [answer, saveAnswer] = useState('');
 
   const handleChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,23 +25,24 @@ let TextQuestion = (props:QuestionProps) =>{
     
   };
   let nextButton = false
-  let displayNext = () =>{
-    ChangeButton(true)
-  }
+  
   return (
-    <h1>{props.currentQuestion}</h1>
-    <input data-testid='date' type='date' onChange={handleChange} value = {date} onSubmit ={displayNext}></input>
-    {nextButton && <button
-      type='button'
-      onClick={() => {
-        props.changeQuestion(props.currentQuestionIndex + 1);
-        props.setAnswer([...props.answers, answer]);
-        
-        updateText('')
-      }}>
-      Next
-    </button>
-    }
+    <section>
+      <h1>{props.currentQuestion}</h1>
+      <input data-testid='text' type='text' onChange={handleChange} value = {text} ></input>
+      {text !== '' && <button
+        type='button'
+        onClick={() => {
+          props.changeQuestion(props.currentQuestionIndex + 1);
+          props.addAnswer([...props.answers, answer]);
+          props.changeButton(nextButton)
+          updateText('')
+        }}>
+        Next
+      </button>
+      }
+    </section>
+    
   )
 }
 export default TextQuestion
