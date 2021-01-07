@@ -1,17 +1,24 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Question } from '../Question/Question';
-import { gql, useQuery } from '@apollo/client';
 import HeaderComponent from '../HeaderComponent/HeaderComponent';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import { gql, useQuery } from '@apollo/client';
 
 interface FormContainer {
   useEffect: void;
 }
 
-export const FormContainer = () => {
-  // let questions = ['who', 'what', 'where', 'when', 'why'];
-  //const [questions, setQuestions] = useState([])
+interface Question {
+  question: string;
+  name: string;
+  id: number;
+  __typename: string;
+}
 
-  const [questions, setState] = React.useState([]);
+export const FormContainer = () => {
+  const [questions, setQuestions] = React.useState<Question[]>([]);
+  const [answers, setAnswer] = useState<string[]>([]);
+  const [currentQuestionIndex, changeQuestion] = useState(0);
 
   let query = gql`
     {
@@ -32,21 +39,13 @@ export const FormContainer = () => {
     }
     if (error) {
       message = error;
-    }
-    // do some checking here to ensure data exist
-    else if (data) {
+    } else if (data) {
       message = '';
-      // mutate data if you need to
-      console.log(data);
-      setState(data);
+      setQuestions(data.getOnboardingQuestions);
     }
   }, [data]);
 
-  const [answers, setAnswer] = useState<string[]>([]);
-
-  const [currentQuestionIndex, changeQuestion] = useState(0);
-
-  if (message) {
+  if (message || questions === undefined) {
     return <h1>{message}</h1>;
   }
 
@@ -56,10 +55,16 @@ export const FormContainer = () => {
 
   return (
     <>
+      {questions.length && (
+        <ProgressBar
+          questionsLength={questions.length}
+          answersLength={answers.length}
+        />
+      )}
       {answers.length === 0 && <HeaderComponent />}
       <form>
         <Question
-          currentQuestion={questions[currentQuestionIndex]}
+          currentQuestion={questions[currentQuestionIndex].question}
           changeQuestion={changeQuestion}
           currentQuestionIndex={currentQuestionIndex}
           setAnswer={setAnswer}
