@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Question } from '../Question/Question';
 import HeaderComponent from '../HeaderComponent/HeaderComponent'
 import ProgressBar from '../ProgressBar/ProgressBar'
+import './FormContainer.css';
 export const FormContainer = () => {
   let questions = ['who', 'what', 'where', 'when', 'why'];
   //const [questions, setQuestions] = useState([])

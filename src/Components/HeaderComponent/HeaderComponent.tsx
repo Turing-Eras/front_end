@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import './HeaderComponent.css';
 
 
 const HeaderComponent = () =>{
   return (
-      <section>
+      <header className='header'>
         {/* <img src = ''> logo*/}
-        <h1>Create My Calendar</h1>
-        <button >        
-          <Link to="/login">Login</Link>
-        </button>
-        <button >        
-          <Link to="/calender">Calender</Link>
-        </button>
-      </section>
+        <div>
+        <h1 className='logo-area'>ERAS</h1>
+        </div>
+        <div className='active-buttons'>
+          <NavLink className='login-button header-link header-text' to="/login">Login</NavLink>
+          <NavLink className='calender-button header-link header-text' to="/calender">Calendar</NavLink>
+        </div>
+      </header>
   )
 }
 export default HeaderComponent
