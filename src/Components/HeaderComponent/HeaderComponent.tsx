@@ -11,7 +11,7 @@ const HeaderComponent = () =>{
           <Link to="/login">Login</Link>
         </button>
         <button >        
-          <Link to="/calender">Calender</Link>
+          <Link to="/calender">Calendar</Link>
         </button>
       </section>
   )
