@@ -16,6 +16,11 @@ export const App = () => {
           return <LoginPage />
         }}>
       </Route>
+      <Route path = '/form' 
+        render = {() =>{
+          return <FormContainer />
+        }}>
+      </Route>
       <Route path = '/calender' 
         render = {() =>{
           return <CalendarComponent />
