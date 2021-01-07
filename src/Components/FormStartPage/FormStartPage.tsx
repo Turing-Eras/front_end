@@ -21,3 +21,4 @@ let FormStartPage = () =>{
     </section>
   )
 }
+export default FormStartPage

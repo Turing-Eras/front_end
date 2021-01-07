@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TextQuestion from '../TextQuestion/TextQuestion'
-
+import FormStartPage from '../FormStartPage/FormStartPage'
 let RequiredForm = () =>{
 let questions = ['What is your name', 'What is your birthday', 'What is your email address']
 let [answers,addAnswer ]= useState<string[]>([])
