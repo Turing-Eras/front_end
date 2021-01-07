@@ -18,7 +18,7 @@ const CalendarComponent = () => {
   return (
     <section>
       <NavBar />
-      Your calender
+      Your calendar
       {display}
     </section>
   );
