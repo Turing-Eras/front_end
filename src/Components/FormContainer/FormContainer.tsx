@@ -14,7 +14,6 @@ export const FormContainer = () => {
   const [answers, setAnswer] = useState<string[]>([]);
 
   const [currentQuestionIndex, changeQuestion] = useState(0)
-  console.log(answers)
   if(answers.length === questions.length ){
     return <button type='submit'>Submit</button>
 
