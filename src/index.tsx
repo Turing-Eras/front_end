@@ -10,9 +10,8 @@ import {
   InMemoryCache
 } from '@apollo/client';
 
-
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  uri: 'https://eras-api.herokuapp.com/graphql',
+  uri: 'http://localhost:3000/graphql',
   cache: new InMemoryCache()
 });
 
