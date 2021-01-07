@@ -3,12 +3,15 @@ import React, { useState } from 'react';
 type ChangeQuestion = (index: number) => void;
 
 type SetAnswer = (answer: string[]) => void;
-
+type ChangeButton = (showButton: boolean) => void
 type QuestionProps = {
   changeQuestion: ChangeQuestion;
   currentQuestionIndex: number;
   currentQuestion: string;
   setAnswer: SetAnswer;
+  answers: string[];
+  showButton :boolean;
+  changeButton :ChangeButton
 };
 
 let TextQuestion = (props:QuestionProps) =>{
@@ -23,7 +26,7 @@ let TextQuestion = (props:QuestionProps) =>{
   };
   let nextButton = false
   let displayNext = () =>{
-    nextButton = true
+    ChangeButton(true)
   }
   return (
     <h1>{props.currentQuestion}</h1>
@@ -33,7 +36,8 @@ let TextQuestion = (props:QuestionProps) =>{
       onClick={() => {
         props.changeQuestion(props.currentQuestionIndex + 1);
         props.setAnswer([...props.answers, answer]);
-        updateDate('')
+        
+        updateText('')
       }}>
       Next
     </button>
