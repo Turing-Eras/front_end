@@ -1,0 +1,30 @@
+.question {
+  font-family: Bebas Neue;
+  font-size: 35px;
+  color: #706cca;
+  font-weight: 500;
+}
+
+.calendar-input {
+  border: 1px solid #706cca;
+  color: #706cca;
+  border-radius: 1.5px;
+}
+
+.skip-button {
+  margin: 40px 5px 25px 5px;
+  background-color: white;
+  border: 1.5px solid #706cca;
+  padding: 10px;
+  color: #706cca;
+  border-radius: 1.5px;
+}
+
+.next-button {
+  margin: 40px 5px 25px 5px;
+  background-color: white;
+  border: 1.5px solid #706cca;
+  padding: 10px;
+  color: #706cca;
+  border-radius: 1.5px;
+}

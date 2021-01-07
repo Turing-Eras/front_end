@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Question.css';
 
 type ChangeQuestion = (index: number) => void;
 
@@ -20,20 +21,20 @@ export const Question = (props: QuestionProps) => {
     updateDate(event.target.value)
     saveAnswer(event.target.value)
 
-    
+
   };
 
   return (
     <>
-      <h1>{props.currentQuestion}</h1>
-      <input data-testid='date' type='date' onChange={handleChange} value = {date}></input>
-      <button type='button'  onClick={() => {
+      <p className='question'>{props.currentQuestion}</p>
+      <input className='calendar-input' data-testid='date' type='date' onChange={handleChange} value = {date}></input>
+      <button className='skip-button' type='button'  onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, '']);
           updateDate('')
         }}>Skip
       </button>
-      <button
+      <button className='next-button'
         type='button'
         onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
