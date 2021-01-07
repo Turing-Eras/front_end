@@ -1,5 +1,14 @@
 .form-container {
-  border: 2px solid black;
+  text-align: center;
+  width: min-content;
+  margin: auto;
+  border-radius: 4px;
+  box-shadow: 0 0 0.5em 0.5em #706cca;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  object-fit: cover;
+  padding: 100px;
 }
 
 .main-title {
