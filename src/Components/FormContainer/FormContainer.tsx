@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Question } from './Question';
-import HeaderComponent from './HeaderComponent'
-import ProgressBar from './ProgressBar'
+import { Question } from '../Question/Question';
+import HeaderComponent from '../HeaderComponent/HeaderComponent'
+import ProgressBar from '../ProgressBar/ProgressBar'
 export const FormContainer = () => {
   let questions = ['who', 'what', 'where', 'when', 'why'];
   //const [questions, setQuestions] = useState([])
