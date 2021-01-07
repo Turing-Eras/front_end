@@ -21,7 +21,6 @@ export const FormContainer = () => {
   }
   return (
     <section>
-        <ProgressBar questionsLength = {questions.length} answersLength ={answers.length}/>
       {answers.length === 0 && <HeaderComponent/>}
       <div>
       <p className='main-title'>Create My Calendar</p>
@@ -30,6 +29,9 @@ export const FormContainer = () => {
       <form>
         <Question currentQuestion={questions[currentQuestionIndex]} changeQuestion={changeQuestion} currentQuestionIndex={currentQuestionIndex} setAnswer={setAnswer} answers={answers}/>
       </form>
+      </div>
+      <div>
+      <ProgressBar questionsLength = {questions.length} answersLength ={answers.length}/>
       </div>
     </section>
   );

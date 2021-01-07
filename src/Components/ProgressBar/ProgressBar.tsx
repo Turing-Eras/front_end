@@ -1,4 +1,6 @@
 import React from 'react';
+import './ProgressBar.css';
+
 type ProgressProps = {
   questionsLength :number;
   answersLength: number;
@@ -6,9 +8,8 @@ type ProgressProps = {
 let ProgressBar = (props :ProgressProps) =>{
   let percentage = Math.ceil(props.answersLength / props.questionsLength *100)
  return (
-   <section>
-   <section style={{width : percentage, backgroundColor:'red'}}>
-    hello
+   <section className='progress-bar-section'>
+   <section className='progress-bar' style={{width : percentage, backgroundColor: '#706cca', marginLeft: 'auto', marginRight: 'auto'}}>
    </section>
    </section>
 

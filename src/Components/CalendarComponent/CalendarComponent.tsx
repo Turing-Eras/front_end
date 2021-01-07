@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Week from '../Week/Week';
 import NavBar from '../NavBar/NavBar';
+import './CalendarComponent.css';
+
 
 const CalendarComponent = () => {
   let calendar = new Array(76);
@@ -18,7 +20,7 @@ const CalendarComponent = () => {
   return (
     <section>
       <NavBar />
-      Your calender
+      <p className='calendar-title'>Your Calendar</p>
       {display}
     </section>
   );
