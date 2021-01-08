@@ -5,3 +5,12 @@
   color: #706cca;
   font-weight: 600;
 }
+
+.week-title {
+  text-align: center;
+  font-family: Bebas Neue;
+  font-size: 25px;
+  color: #706cca;
+  font-weight: 500;
+  margin-bottom: 10px;
+}

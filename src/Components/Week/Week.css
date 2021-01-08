@@ -1,5 +1,6 @@
 .week{
-  border :2px solid black;
+  border :2px solid #706cca;
+  border-radius: 25%;
   display: inline-block;
   background-color: ivory;
   padding: 8px;

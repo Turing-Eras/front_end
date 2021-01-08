@@ -21,7 +21,10 @@ const CalendarComponent = () => {
     <section>
       <NavBar />
       <p className='calendar-title'>Your Calendar</p>
+      <p className='week-title'>Weeks</p>
+      <div className='calendar-area'>
       {display}
+      </div>
     </section>
   );
 };
