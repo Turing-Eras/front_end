@@ -21,11 +21,14 @@ let TextQuestion = (props:QuestionProps) =>{
 
     
   };
-  
+  let type = 'text'
+  if(props.currentQuestionIndex === 1){
+    type = 'date'
+  }
   return (
     <section>
       <h1>{props.currentQuestion}</h1>
-      <input data-testid='text' type='text' onChange={handleChange} value = {text} ></input>
+      <input data-testid='text' type={type} onChange={handleChange} value = {text} ></input>
       {text !== '' && <button
         type='button'
         onClick={() => {
