@@ -8,7 +8,7 @@ type WeekProps = {
 
 const Week = (props: WeekProps) => {
   let handleClick = () => {
-    console.log(props.index);
+
   };
 
   return <section className='week' onClick={handleClick}></section>;
