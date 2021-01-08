@@ -9,9 +9,13 @@ const CalendarComponent = () => {
     let weeks = new Array(52);
     weeks.fill('');
     let weeksDisplay = weeks.map((week, i) => {
-      return <Week key={year + (index + 1)} index={year + (index + 1)} />;
+      let currentWeek = i + 1;
+      if (index > 0) {
+        currentWeek = i + 1 + index * 52;
+      }
+      return <Week key={currentWeek} index={currentWeek} />;
     });
-      //year + (index + 1)?
+
     return (
       <section key={index}>
         Age: {index}
