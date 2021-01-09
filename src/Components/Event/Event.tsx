@@ -1,14 +1,14 @@
 import React, { useState, useEffect} from 'react'
-import EventForm from '../EventForm/EventForm.js'
+import EventForm from '../EventForm/EventForm'
 
 const Event = () => {
   const [lifeEvent, setLifeEvent] = useState('')
 
-  const handleLifeEvent = event => {
+  const handleLifeEvent = (event:React.ChangeEvent<HTMLInputElement>) => {
     setLifeEvent(event.target.value)
   }
 
-  const handleClearEvent = () => {
+  const handleClearEvent = (event:React.ChangeEvent<HTMLInputElement>) => {
     setLifeEvent('')
   }
 
@@ -22,3 +22,5 @@ const Event = () => {
     </section>
   )
 }
+
+export default Event;

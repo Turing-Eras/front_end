@@ -3,6 +3,7 @@ import { FormContainer } from '../FormContainer/FormContainer';
 import {Route} from 'react-router-dom'
 import LoginPage from '../LoginPage/LoginPage'
 import CalendarComponent from '../CalendarComponent/CalendarComponent'
+import Event from '../Event/Event'
 import './App.css';
 
 export const App = () => {
@@ -19,6 +20,7 @@ export const App = () => {
       </Route>
       <Route path = '/calender'
         render = {() =>{
+          <Event />
           return <CalendarComponent />
         }}>
       </Route>
