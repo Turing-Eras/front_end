@@ -1,6 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-let FormStartPage = () =>{
+type FormStartPageProps  = {
+  userId: number;
+  userName: string;
+}
+let FormStartPage = (props:FormStartPageProps) =>{
+  console.log(props.userName)
   return (
     <section>
         <p>
