@@ -1,7 +1,7 @@
-input[type=text] {
+.multiple-inputs {
     visibility:hidden;
 }
 
-input[type=checkbox]:checked + input[type=text] {
+input[type=checkbox]:checked + .multiple-inputs {
     visibility:visible;
 }

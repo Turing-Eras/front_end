@@ -11,9 +11,15 @@ export const AdditionalQuestions = () => {
         <input
           type='checkbox'
         />
+        <div className='multiple-inputs'>
+        <label>Graduate High School</label>
         <input
           type='text'
         />
+        <input
+          type='text'
+        />
+        </div>
         < br/>
         <label>Relationships</label>
         <input
