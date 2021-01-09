@@ -1,0 +1,7 @@
+input[type=text] {
+    visibility:hidden;
+}
+
+input[type=checkbox]:checked + input[type=text] {
+    visibility:visible;
+}

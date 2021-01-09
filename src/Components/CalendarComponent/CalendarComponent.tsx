@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Week from '../Week/Week';
 import NavBar from '../NavBar/NavBar';
 import './CalendarComponent.css';
+import AdditionalQuestions from '../AdditionalQuestions/AdditionalQuestions'
 
 
 const CalendarComponent = () => {
@@ -11,10 +12,12 @@ const CalendarComponent = () => {
     let weeks = new Array(52);
     weeks.fill(<Week />);
     return (
+      <>
       <section>
         Age: {index}
         {weeks}
       </section>
+      </>
     );
   });
   return (
@@ -26,6 +29,9 @@ const CalendarComponent = () => {
       <div className='calendar-area'>
       {display}
       </div>
+      <section>
+      <AdditionalQuestions />
+      </section>
     </section>
   );
 };
