@@ -2,5 +2,8 @@
   background: url('https://images.unsplash.com/photo-1512341149218-ffaab6c79a02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80');
 } */
 
-.App {
-}
+body {
+  background: rgb(203,136,255);
+  background: linear-gradient(90deg, rgba(203,136,255,1) 0%, rgba(2,196,204,1) 92%);
+};
+
