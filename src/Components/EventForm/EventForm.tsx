@@ -13,11 +13,6 @@ type EventProps = {
   handleClearEvent: HandleClearEvent;
 };
 
-// type SetAnswer = (answer: string[]) => void;
-
-
-
-
 export const EventForm = ( props: EventProps ) => (
   <form>
     <label>Name of Event: </label>
