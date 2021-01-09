@@ -23,7 +23,6 @@ let [currentQuestionIndex,updateIndex ]= useState(0)
 if(answers.length ===questions.length  ){
   return <FormStartPage/>
 }
-console.log(answers)
 return(
 <form>
   User message instructions will go here
