@@ -3,6 +3,7 @@ import { Question } from '../Question/Question';
 import HeaderComponent from '../HeaderComponent/HeaderComponent';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import { gql, useQuery } from '@apollo/client';
+import { queryHelpers } from '@testing-library/react';
 
 interface FormContainer {
   useEffect: void;
@@ -15,12 +16,7 @@ interface Question {
   __typename: string;
 }
 
-export const FormContainer = () => {
-  const [questions, setQuestions] = React.useState<Question[]>([]);
-  const [answers, setAnswer] = useState<string[]>([]);
-  const [currentQuestionIndex, changeQuestion] = useState(0);
-
-  let query = gql`
+export const getQuestionsQuery = gql`
     {
       getOnboardingQuestions {
         id
@@ -29,25 +25,21 @@ export const FormContainer = () => {
       }
     }
   `;
-  const { loading, error, data } = useQuery(query);
 
-  let message;
 
-  useEffect(() => {
-    if (loading) {
-      message = 'Loading...';
-    }
-    if (error) {
-      message = error;
-    } else if (data) {
-      message = '';
-      setQuestions(data.getOnboardingQuestions);
-    }
-  }, [data]);
+export const FormContainer = () => {
+  const [answers, setAnswer] = useState<string[]>([]);
+  const [currentQuestionIndex, changeQuestion] = useState(0);
 
-  if (message || questions === undefined) {
-    return <h1>{message}</h1>;
+  const { loading, error, data } = useQuery(getQuestionsQuery);
+  if (error) {
+    return <h1>Error loading questions...</h1>;
   }
+  if (loading || !data) {
+    return <h1>Loading...</h1>;
+  }
+
+  let questions = data.getOnboardingQuestions;
 
   if (answers.length === questions.length) {
     return <button type='submit'>Submit</button>;
