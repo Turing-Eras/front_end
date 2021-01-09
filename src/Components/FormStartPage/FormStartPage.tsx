@@ -28,4 +28,4 @@ let FormStartPage = (props:FormStartPageProps) =>{
     </section>
   )
 }
-export default FormStartPage
+export default React.memo(FormStartPage)
