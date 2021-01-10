@@ -5,9 +5,9 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import { gql, useQuery } from "@apollo/client";
 import { queryHelpers } from "@testing-library/react";
 
-interface FormContainer {
-  useEffect: void;
-}
+type FormContaineProps = {
+  userId: number;
+};
 
 interface Question {
   question: string;
@@ -26,7 +26,7 @@ export const getQuestionsQuery = gql`
   }
 `;
 
-export const FormContainer = () => {
+export const FormContainer = (props: FormContaineProps) => {
   const [answers, setAnswer] = useState<string[]>([]);
   const [currentQuestionIndex, changeQuestion] = useState(0);
 

@@ -5,7 +5,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import CalendarComponent from "../CalendarComponent/CalendarComponent";
 import RequiredForm from "../RequiredForm/RequiredForm";
 export const App = () => {
-  let [userId, updateUserId] = useState();
+  let [userId, updateUserId] = useState(0);
   return (
     <>
       <Route
@@ -25,13 +25,13 @@ export const App = () => {
       <Route
         path="/form"
         render={() => {
-          return <FormContainer />;
+          return <FormContainer userId={userId} />;
         }}
       ></Route>
       <Route
         path="/calender"
         render={() => {
-          return <CalendarComponent />;
+          return <CalendarComponent userId={userId} />;
         }}
       ></Route>
     </>
