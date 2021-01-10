@@ -2,12 +2,21 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { App } from './App';
 import { BrowserRouter } from 'react-router-dom';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
-test('renders learn react link', () => {
+test('renders the application', () => {
+  const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+    uri: 'http://localhost:3000/graphql',
+    cache: new InMemoryCache()
+  });
 
-  render(<BrowserRouter><App /></BrowserRouter>);
+  render(
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ApolloProvider>
+  );
 
-  // const linkElement = screen.getByText(/learn react/i);
-  // expect(linkElement).toBeInTheDocument();
   expect(true).toBe(true);
 });

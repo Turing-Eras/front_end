@@ -7,6 +7,7 @@ const HeaderComponent = () =>{
   return (
       <header className='header'>
         {/* <img src = ''> logo*/}
+
         <div>
         <h1 className='logo-area'>ERAS</h1>
         </div>

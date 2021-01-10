@@ -11,16 +11,23 @@ const CalendarComponent = () => {
   calendar.fill({});
   let display = calendar.map((year, index) => {
     let weeks = new Array(52);
-    weeks.fill(<Week />);
+    weeks.fill('');
+    let weeksDisplay = weeks.map((week, i) => {
+      let currentWeek = i + 1;
+      if (index > 0) {
+        currentWeek = i + 1 + index * 52;
+      }
+      return <Week key={currentWeek} index={currentWeek} />;
+    });
+
     return (
-      <>
-      <section>
+      <section key={index}>
         Age: {index}
-        {weeks}
+        {weeksDisplay}
       </section>
-      </>
     );
   });
+
   return (
     <section>
       <NavBar />
@@ -29,6 +36,7 @@ const CalendarComponent = () => {
         <Event />
       <p className='week-title'>Weeks</p>
       <div className='calendar-area'>
+      Your calendar
       {display}
       </div>
       <section>
@@ -37,4 +45,5 @@ const CalendarComponent = () => {
     </section>
   );
 };
+
 export default CalendarComponent;
