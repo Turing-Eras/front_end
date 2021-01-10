@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Week from '../Week/Week';
-import NavBar from '../NavBar/NavBar';
-
-const CalendarComponent = () => {
+import React, { useEffect, useState } from "react";
+import Week from "../Week/Week";
+import NavBar from "../NavBar/NavBar";
+type CalenderComponentProps = {
+  userId: number;
+};
+const CalendarComponent = (props: CalenderComponentProps) => {
   let calendar = new Array(76);
   calendar.fill({});
   let display = calendar.map((year, index) => {
     let weeks = new Array(52);
-    weeks.fill('');
+    weeks.fill("");
     let weeksDisplay = weeks.map((week, i) => {
       let currentWeek = i + 1;
       if (index > 0) {
