@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import EventForm from '../EventForm/EventForm'
-
+//
 const Event = () => {
   const [lifeEvent, setLifeEvent] = useState('')
 
@@ -22,5 +22,15 @@ const Event = () => {
     </section>
   )
 }
+
+// const Event = () => {
+//
+//
+//   return (
+//     <section>
+//       <EventForm handleLifeEvent={handleLifeEvent}/>
+//     </section>
+//   )
+// }
 
 export default Event;
