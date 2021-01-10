@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import React from "react";
+>>>>>>> main
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Route } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
@@ -25,6 +29,7 @@ export const App = () => {
       <Route
         path="/form"
         render={() => {
+<<<<<<< HEAD
           return <FormContainer userId={userId} />;
         }}
       ></Route>
@@ -32,6 +37,15 @@ export const App = () => {
         path="/calender"
         render={() => {
           return <CalendarComponent userId={userId} />;
+=======
+          return <FormContainer />;
+        }}
+      ></Route>
+      <Route
+        path="/calendar"
+        render={() => {
+          return <CalendarComponent />;
+>>>>>>> main
         }}
       ></Route>
     </>
