@@ -1,9 +1,9 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import { Question } from '../Question/Question';
-import HeaderComponent from '../HeaderComponent/HeaderComponent';
-import ProgressBar from '../ProgressBar/ProgressBar';
-import { gql, useQuery } from '@apollo/client';
-import { queryHelpers } from '@testing-library/react';
+import React, { ReactElement, useEffect, useState } from "react";
+import { Question } from "../Question/Question";
+import HeaderComponent from "../HeaderComponent/HeaderComponent";
+import ProgressBar from "../ProgressBar/ProgressBar";
+import { gql, useQuery } from "@apollo/client";
+import { queryHelpers } from "@testing-library/react";
 
 interface FormContainer {
   useEffect: void;
@@ -17,15 +17,14 @@ interface Question {
 }
 
 export const getQuestionsQuery = gql`
-    {
-      getOnboardingQuestions {
-        id
-        question
-        name
-      }
+  {
+    getOnboardingQuestions {
+      id
+      question
+      name
     }
-  `;
-
+  }
+`;
 
 export const FormContainer = () => {
   const [answers, setAnswer] = useState<string[]>([]);
@@ -42,7 +41,7 @@ export const FormContainer = () => {
   let questions = data.getOnboardingQuestions;
 
   if (answers.length === questions.length) {
-    return <button type='submit'>Submit</button>;
+    return <button type="submit">Submit</button>;
   }
 
   return (

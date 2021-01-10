@@ -11,7 +11,7 @@ import {
 } from '@apollo/client';
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  uri: 'http://localhost:3000/graphql',
+  uri: 'https://eras-api.herokuapp.com/graphql',
   cache: new InMemoryCache()
 });
 
