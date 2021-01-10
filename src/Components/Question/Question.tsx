@@ -75,6 +75,15 @@ export const Question = (props: QuestionProps) => {
             });
           }
           if (props.questionType === "era") {
+            makeMutation({
+              variables: {
+                userId: props.userId,
+                name: props.currentQuestion,
+                startDate: date,
+                endDate: endDate,
+                color: "purple",
+              },
+            });
           }
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, ""]);
