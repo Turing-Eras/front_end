@@ -12,7 +12,7 @@ type QuestionProps = {
   currentQuestion: string;
   setAnswer: SetAnswer;
   answers: string[];
-  userid: number;
+  userId: number;
 };
 
 export const Question = (props: QuestionProps) => {
@@ -66,7 +66,15 @@ export const Question = (props: QuestionProps) => {
         type="button"
         onClick={() => {
           if (props.questionType === "event") {
-            makeMutation({ variables: { userId: props.userid } });
+            makeMutation({
+              variables: {
+                userId: props.userId,
+                name: props.currentQuestion,
+                date: date,
+              },
+            });
+          }
+          if (props.questionType === "era") {
           }
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, ""]);
