@@ -65,6 +65,16 @@ export const Question = (props: QuestionProps) => {
       <button
         type="button"
         onClick={() => {
+          props.changeQuestion(props.currentQuestionIndex + 1);
+          props.setAnswer([...props.answers, ""]);
+          updateDate("");
+        }}
+      >
+        Skip
+      </button>
+      <button
+        type="button"
+        onClick={() => {
           if (props.questionType === "event") {
             makeMutation({
               variables: {
@@ -86,16 +96,6 @@ export const Question = (props: QuestionProps) => {
             });
             updateEndDate("");
           }
-          props.changeQuestion(props.currentQuestionIndex + 1);
-          props.setAnswer([...props.answers, ""]);
-          updateDate("");
-        }}
-      >
-        Skip
-      </button>
-      <button
-        type="button"
-        onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, answer]);
           updateDate("");

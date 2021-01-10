@@ -1,10 +1,35 @@
 import React, { useEffect, useState } from "react";
 import Week from "../Week/Week";
 import NavBar from "../NavBar/NavBar";
+import { gql, useQuery } from "@apollo/client";
+
 type CalenderComponentProps = {
   userId: number;
 };
 const CalendarComponent = (props: CalenderComponentProps) => {
+  let Get_User = gql`
+    {
+      getUser($id:ID!) {
+        id
+        name
+        events {
+          id
+          name
+          date
+          weekNumber
+        }
+        eras {
+          id
+          name
+          startWeek
+          endWeek
+        }
+      }
+    }
+  `;
+  const { data, loading, error } = useQuery(Get_User, {
+    variables: { id: props.userId },
+  });
   let calendar = new Array(76);
   calendar.fill({});
   let display = calendar.map((year, index) => {
