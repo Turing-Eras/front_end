@@ -20,7 +20,6 @@ export const App = () => {
       </Route>
       <Route path = '/calender'
         render = {() =>{
-          <Event />
           return <CalendarComponent />
         }}>
       </Route>
