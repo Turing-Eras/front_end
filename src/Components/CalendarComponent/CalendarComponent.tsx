@@ -8,24 +8,26 @@ type CalenderComponentProps = {
 };
 const CalendarComponent = (props: CalenderComponentProps) => {
   let Get_User = gql`
-    {
-      getUser($id:ID!) {
+  query getUser($id :ID!){
+    getUser(id:$id){
+      id
+      name
+      events {
         id
         name
-        events {
-          id
-          name
-          date
-          weekNumber
-        }
-        eras {
-          id
-          name
-          startWeek
-          endWeek
-        }
+        date
+        weekNumber
+        color
+      }
+      eras{
+        id
+        name
+        startWeek
+        endWeek
+        color
       }
     }
+  }
   `;
   const { data, loading, error } = useQuery(Get_User, {
     variables: { id: props.userId },
@@ -36,6 +38,10 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   if (error) {
     return <p>SOMETHING WENT WRONG</p>;
   }
+  if(data){
+    console.log(data)
+  }
+  // useMemo() for the fills
   let calendar = new Array(76);
   calendar.fill({});
   let display = calendar.map((year, index) => {

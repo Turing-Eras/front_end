@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { gql, useMutation } from "@apollo/client";
+import { DocumentNode, gql, useMutation } from "@apollo/client";
 
 type ChangeQuestion = (index: number) => void;
 
@@ -24,26 +24,32 @@ export const Question = (props: QuestionProps) => {
     updateDate(event.target.value);
     saveAnswer(event.target.value);
   };
-  let mutation;
-  if (props.questionType === "event") {
-    mutation = gql`
-      mutation createEvent($userId: ID!, $name: String!, $date: String!) {
-        createEvent(input: { userId: $userId, name: $name, date: $birthdate })
+  
+  let figureMutation = ():DocumentNode => { 
+    let mutation:DocumentNode;
+      if (props.questionType === "event") {
+        mutation = gql`
+          mutation createEvent($userId: ID!, $name: String!, $date: String!) {
+            createEvent(input: { userId: $userId, name: $name, date: $birthdate })
+          }
+        `;
       }
-    `;
+      if (props.questionType === "era") {
+        mutation = gql`createEra($userId :ID!, $name:String!,startDate:String!,endDate:String!,$color:String!){
+          createEra(input :{
+            userId: $userId,
+            name: $name,
+            startDate:$startDate,
+            endDate:$endDate,
+            color:$color,
+          })
+        }`;
+    }
+    // @ts-ignore 
+    return mutation
   }
-  if (props.questionType === "era") {
-    mutation = gql`createEra($userId :ID!, $name:String!,startDate:String!,endDate:String!,$color:String!){
-      createEra(input :{
-        userId: $userId,
-        name: $name,
-        startDate:$startDate,
-        endDate:$endDate,
-        color:$color,
-      })
-     }`;
-  }
-  const [makeMutation, { data }] = useMutation(mutation);
+
+  const [makeMutation, { data }] = useMutation(figureMutation());
 
   return (
     <>
@@ -80,7 +86,7 @@ export const Question = (props: QuestionProps) => {
               variables: {
                 userId: props.userId,
                 name: props.currentQuestion,
-                date: date,
+                date: date.split("-").reverse().join("-"),
               },
             });
           }
@@ -89,8 +95,8 @@ export const Question = (props: QuestionProps) => {
               variables: {
                 userId: props.userId,
                 name: props.currentQuestion,
-                startDate: date,
-                endDate: endDate,
+                startDate: date.split("-").reverse().join("-"),
+                endDate: endDate.split("-").reverse().join("-"),
                 color: "purple",
               },
             });
