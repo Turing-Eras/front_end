@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextQuestion from "../TextQuestion/TextQuestion";
 import FormStartPage from "../FormStartPage/FormStartPage";
 import { gql, useMutation } from "@apollo/client";
-type updateUserId = () => void;
+type updateUserId = (index: number) => void;
 type RequiredFormProps = {
   updateUserId: updateUserId;
 };
@@ -46,6 +46,7 @@ let RequiredForm = (props: RequiredFormProps) => {
     sendUser();
   }
   if (data) {
+    props.updateUserId(data.createUser.id);
     return (
       <FormStartPage
         userId={data.createUser.id}
