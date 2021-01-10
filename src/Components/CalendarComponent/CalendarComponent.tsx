@@ -30,6 +30,12 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   const { data, loading, error } = useQuery(Get_User, {
     variables: { id: props.userId },
   });
+  if (loading) {
+    return <p>Loading your Calender</p>;
+  }
+  if (error) {
+    return <p>SOMETHING WENT WRONG</p>;
+  }
   let calendar = new Array(76);
   calendar.fill({});
   let display = calendar.map((year, index) => {
