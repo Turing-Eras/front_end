@@ -84,6 +84,7 @@ export const Question = (props: QuestionProps) => {
                 color: "purple",
               },
             });
+            updateEndDate("");
           }
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, ""]);
