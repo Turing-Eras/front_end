@@ -27,16 +27,24 @@ export const Question = (props: QuestionProps) => {
   let mutation;
   if (props.questionType === "event") {
     mutation = gql`
-      mutation createEvent($userId: String!, $name: String!, $date: String!) {
-        createUser(input: { userId: $userId, name: $name, date: $birthdate }) {
-          id
-          name
-        }
+      mutation createEvent($userId: ID!, $name: String!, $date: String!) {
+        createEvent(input: { userId: $userId, name: $name, date: $birthdate })
       }
     `;
   }
   if (props.questionType === "era") {
+    mutation = gql`createEra($userId :ID!, $name:String!,startDate:String!,endDate:String!,$color:String!){
+      createEra(input :{
+        userId: $userId,
+        name: $name,
+        startDate:$startDate,
+        endDate:$endDate,
+        color:$color,
+      })
+     }`;
   }
+  const [makeMutation, { data }] = useMutation(mutation);
+
   return (
     <>
       <h1>{props.currentQuestion}</h1>
@@ -57,6 +65,9 @@ export const Question = (props: QuestionProps) => {
       <button
         type="button"
         onClick={() => {
+          if (props.questionType === "event") {
+            makeMutation({ variables: { userId: props.userid } });
+          }
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, ""]);
           updateDate("");
