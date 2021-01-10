@@ -3,10 +3,7 @@ import TextQuestion from '../TextQuestion/TextQuestion'
 import FormStartPage from '../FormStartPage/FormStartPage'
 import { gql, useMutation } from '@apollo/client';
 
-type response = {
-  id : number;
-  name: string;
-}
+
 let RequiredForm = () =>{
   let create_user = gql `
    mutation createUser($name: String!, $email: String!, $birthdate: String!)
@@ -51,7 +48,6 @@ if(error){
   return <p>There has been an error sending your response</p>
 }
 return(
- 
 <form>
   User message instructions will go here
     <TextQuestion currentQuestion = {questions[currentQuestionIndex]} changeQuestion = {updateIndex} addAnswer = {addAnswer} answers = {answers} currentQuestionIndex = {currentQuestionIndex} />
