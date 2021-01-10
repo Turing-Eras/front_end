@@ -26,7 +26,14 @@ export const Question = (props: QuestionProps) => {
   };
   let mutation;
   if (props.questionType === "event") {
-    mutation = gql``;
+    mutation = gql`
+      mutation createEvent($userId: String!, $name: String!, $date: String!) {
+        createUser(input: { userId: $userId, name: $name, date: $birthdate }) {
+          id
+          name
+        }
+      }
+    `;
   }
   if (props.questionType === "era") {
   }
@@ -44,7 +51,7 @@ export const Question = (props: QuestionProps) => {
           data-testid="date"
           type="date"
           onChange={handleChange}
-          value={date}
+          value={endDate}
         ></input>
       )}
       <button
