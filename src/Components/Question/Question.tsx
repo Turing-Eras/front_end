@@ -5,6 +5,7 @@ type ChangeQuestion = (index: number) => void;
 type SetAnswer = (answer: string[]) => void;
 
 type QuestionProps = {
+  questionType: string;
   changeQuestion: ChangeQuestion;
   currentQuestionIndex: number;
   currentQuestion: string;
@@ -21,36 +22,36 @@ export const Question = (props: QuestionProps) => {
     updateDate(event.target.value);
     saveAnswer(event.target.value);
   };
-
-  return (
-    <>
-      <h1>{props.currentQuestion}</h1>
-      <input
-        data-testid="date"
-        type="date"
-        onChange={handleChange}
-        value={date}
-      ></input>
-      <button
-        type="button"
-        onClick={() => {
-          props.changeQuestion(props.currentQuestionIndex + 1);
-          props.setAnswer([...props.answers, ""]);
-          updateDate("");
-        }}
-      >
-        Skip
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          props.changeQuestion(props.currentQuestionIndex + 1);
-          props.setAnswer([...props.answers, answer]);
-          updateDate("");
-        }}
-      >
-        Next
-      </button>
-    </>
-  );
+  if (props.currentQuestion.event_type === "event")
+    return (
+      <>
+        <h1>{props.currentQuestion}</h1>
+        <input
+          data-testid="date"
+          type="date"
+          onChange={handleChange}
+          value={date}
+        ></input>
+        <button
+          type="button"
+          onClick={() => {
+            props.changeQuestion(props.currentQuestionIndex + 1);
+            props.setAnswer([...props.answers, ""]);
+            updateDate("");
+          }}
+        >
+          Skip
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            props.changeQuestion(props.currentQuestionIndex + 1);
+            props.setAnswer([...props.answers, answer]);
+            updateDate("");
+          }}
+        >
+          Next
+        </button>
+      </>
+    );
 };

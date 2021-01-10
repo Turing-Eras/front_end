@@ -22,6 +22,7 @@ export const getQuestionsQuery = gql`
       id
       question
       name
+      event_type
     }
   }
 `;
@@ -55,6 +56,7 @@ export const FormContainer = (props: FormContaineProps) => {
       {answers.length === 0 && <HeaderComponent />}
       <form>
         <Question
+          questionType={questions[currentQuestionIndex].event_type}
           currentQuestion={questions[currentQuestionIndex].question}
           changeQuestion={changeQuestion}
           currentQuestionIndex={currentQuestionIndex}
