@@ -60,6 +60,7 @@ export const FormContainer = (props: FormContaineProps) => {
           currentQuestionIndex={currentQuestionIndex}
           setAnswer={setAnswer}
           answers={answers}
+          userId={props.userId}
         />
       </form>
     </>
