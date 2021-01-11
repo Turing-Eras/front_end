@@ -21,7 +21,7 @@ const CalendarComponent = () => {
     });
 
     return (
-      <section key={index}>
+      <section className='weeks-display' key={index}>
         Age: {index}
         {weeksDisplay}
       </section>

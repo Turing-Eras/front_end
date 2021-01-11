@@ -26,3 +26,9 @@ button {
   font-weight: 500;
   margin-bottom: 10px;
 }
+
+.weeks-display {
+  background: blue;
+  flex-wrap: nowrap;
+  display: flex;
+}

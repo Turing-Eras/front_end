@@ -11,7 +11,7 @@ import './App.css';
 
 export const App = () => {
   return (
-    <>
+    <section className='bg'>
       <Route exact path="/">
         <HeaderComponent />
         <RequiredForm />
@@ -35,6 +35,6 @@ export const App = () => {
           return <CalendarComponent />;
         }}
       ></Route>
-    </>
+    </section>
   );
 };

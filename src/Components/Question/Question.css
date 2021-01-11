@@ -1,15 +1,16 @@
 .question {
   font-family: Bebas Neue;
-  font-size: 35px;
-  color: #706cca;
+  color: #a94460;
+  text-align: center;
+  font-size: 30px;
   font-weight: 500;
 }
 
-.calendar-input {
+/* .calendar-input {
   border: 1px solid #706cca;
   color: #706cca;
   border-radius: 1.5px;
-}
+} */
 
 .skip-button {
   font-size: 20px;
