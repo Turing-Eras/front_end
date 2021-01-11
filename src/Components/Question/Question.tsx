@@ -24,6 +24,9 @@ export const Question = (props: QuestionProps) => {
     updateDate(event.target.value);
     saveAnswer(event.target.value);
   };
+  const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
+    updateEndDate(event.target.value)
+  }
   
   let figureMutation = ():DocumentNode => { 
     let mutation:DocumentNode;
@@ -70,7 +73,7 @@ export const Question = (props: QuestionProps) => {
         <input
           data-testid="date"
           type="date"
-          onChange={handleChange}
+          onChange={handleEndDateChange}
           value={endDate}
         ></input>
       )}

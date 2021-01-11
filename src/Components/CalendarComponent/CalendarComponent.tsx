@@ -6,6 +6,13 @@ import { gql, useQuery } from "@apollo/client";
 type CalenderComponentProps = {
   userId: number;
 };
+type event = {
+  color: string,
+  date: string,
+  id: string,
+  name: string,
+  weekNumber: number
+}
 const CalendarComponent = (props: CalenderComponentProps) => {
   let Get_User = gql`
   query getUser($id :ID!){
@@ -52,7 +59,14 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       if (index > 0) {
         currentWeek = i + 1 + index * 52;
       }
-      return <Week key={currentWeek} index={currentWeek} />;
+      let currentEvent = data.getUser.events.find(event:event =>{
+        return event.weekNumber === currentWeek
+      })
+      let currentEra = 
+      if(currentEvent){
+        return <Week key={currentWeek} index={currentWeek} color = {currentEvent.color} name = {currentEvent.name} />;
+      }
+      if()
     });
 
     return (
@@ -71,5 +85,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
     </section>
   );
 };
-
-export default CalendarComponent;
+// let shouldRerender = (prevProps,nextProps) =>{
+  // if()}
+export default React.memo(CalendarComponent);
