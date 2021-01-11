@@ -7,8 +7,16 @@ type CalenderComponentProps = {
   userId: number;
 };
 type event = {
-  color: string,
+  color: string | null,
   date: string,
+  id: string,
+  name: string,
+  weekNumber: number
+}
+type era = {
+  color: string | null,
+  startWeek: number,
+  endWeek: number,
   id: string,
   name: string,
   weekNumber: number
@@ -59,17 +67,19 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       if (index > 0) {
         currentWeek = i + 1 + index * 52;
       }
-      let currentEvent = data.getUser.events.find(event:event =>{
+      let currentEvent = data.getUser.events.find((event:event) =>{
         return event.weekNumber === currentWeek
       })
-      let currentEra = data.getUser.eras.find(era =>{
-        return era.startDate >= currentWeek && era.endDate <=currentWeek
+      let currentEra = data.getUser.eras.find((era:era )=>{
+        return era.startWeek >= currentWeek && era.endWeek <=currentWeek
 
       })
       if(currentEvent){
         return <Week key={currentWeek} index={currentWeek} color = {currentEvent.color} name = {currentEvent.name} />;
       }
-      if()
+      if(currentEra){
+        return <Week key={currentWeek} index={currentWeek} color = {currentEra.color} name = {currentEra.name} />;
+      }
     });
 
     return (
