@@ -54,19 +54,31 @@ describe('Question', () => {
     expect(nextBtn).toBeInTheDocument();
   });
 
-  // it('should display the current question', () => {
-  //   const mockQuestions = [
-  //     'What is your birthday?',
-  //     'When did you graduate High School?'
-  //   ];
-  //   const mockCurrIndex = 0;
-  //   const { getByText } = render(
-  //     <Question currentQuestion={mockQuestions[mockCurrIndex]} />
-  //   );
+  it('should display the current question', () => {
+    const questions = [
+      {
+        question: 'When did you graduate high school?',
+        eventType: 'event'   
+      },
+      {
+        question: 'What was the start & end date of your first job?',
+        eventType: 'era'
+      }
+    ];
 
-  //   const question = getByText('What is your birthday?');
-  //   expect(question).toBeInTheDocument();
-  // });
+    const { getByTestId, getByText } = render(
+      <MockedProvider mocks={[]}>          
+        <Question 
+          questionType={questions[0].eventType} 
+          currentQuestion={questions[0].question}    
+        />
+      </MockedProvider>
+    );          
+
+    const question = getByText('When did you graduate high school?');
+
+    expect(question).toBeInTheDocument();
+  });       
 
   // it('should update input when a user selects a date', () => {
   //   const { getByTestId } = render(<Question />);
