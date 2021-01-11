@@ -5,7 +5,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { FormStartPage } from './FormStartPage';
 
 describe('FormStartPage', () => {
-    it('should render a FormStartPage component', () => {
-      expect(true).toBe(true);
-    });
-  });   
+  it('should render a FormStartPage component', () => {
+    expect(true).toBe(true);
+  });
+});
