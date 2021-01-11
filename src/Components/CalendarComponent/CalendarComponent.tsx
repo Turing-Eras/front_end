@@ -45,7 +45,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   }
   `;
   const { data, loading, error } = useQuery(Get_User, {
-    variables: { id: 1 },
+    variables: { id: props.userId },
   });
   if (loading) {
     return <p>Loading your Calender</p>;
