@@ -62,7 +62,10 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       let currentEvent = data.getUser.events.find(event:event =>{
         return event.weekNumber === currentWeek
       })
-      let currentEra = 
+      let currentEra = data.getUser.eras.find(era =>{
+        return era.startDate >= currentWeek && era.endDate <=currentWeek
+
+      })
       if(currentEvent){
         return <Week key={currentWeek} index={currentWeek} color = {currentEvent.color} name = {currentEvent.name} />;
       }
