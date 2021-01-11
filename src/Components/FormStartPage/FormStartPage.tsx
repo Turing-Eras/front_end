@@ -13,10 +13,10 @@ let FormStartPage = (props: FormStartPageProps) => {
         calendar or you can start off editing on a calendar with some events. If
         you choose the prefilled calender
       </p>
-      <Link to="/calender">
-        <button>Start Calender</button>
+      <Link to="/calender" style={{ textDecoration: 'none'}}>
+        <button>Start Calendar</button>
       </Link>
-      <Link to="/form">
+      <Link to="/form" style={{ textDecoration: 'none'}}>
         <button>Start Form</button>
       </Link>
     </section>

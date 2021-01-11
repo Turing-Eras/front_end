@@ -53,9 +53,9 @@ return  (
   <form>
     User message instructions will go here
     <div className='required-form'>
-    <TextQuestion currentQuestion = {questions[currentQuestionIndex]} changeQuestion = {updateIndex} addAnswer = {addAnswer} answers = {answers} currentQuestionIndex = {currentQuestionIndex} />
+      <TextQuestion currentQuestion = {questions[currentQuestionIndex]} changeQuestion = {updateIndex} addAnswer = {addAnswer} answers = {answers} currentQuestionIndex = {currentQuestionIndex} />
     </div>
-    </form>
+  </form>
 )
 }
 export default RequiredForm
