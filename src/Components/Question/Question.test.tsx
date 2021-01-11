@@ -7,9 +7,9 @@ import { figureMutation, createEvent } from './Question';
 import { MockedProvider } from '@apollo/client/testing';
 
 // import TestRenderer from 'react-test-renderer';
-import { DocumentNode, gql, useMutation } from "@apollo/client";
+import { DocumentNode, gql, useMutation } from '@apollo/client';
 
-const mocks = [   
+const mocks = [
   {
     request: {
       query: figureMutation,
@@ -31,7 +31,7 @@ describe('Question', () => {
     const questions = [
       {
         question: 'When did you graduate high school?',
-        eventType: 'event'   
+        eventType: 'event'
       },
       {
         question: 'What was the start & end date of your first job?',
@@ -40,7 +40,7 @@ describe('Question', () => {
     ];
 
     const { getByTestId, getByText } = render(
-      <MockedProvider mocks={[]}>          
+      <MockedProvider mocks={[]}>
         <Question questionType={questions[0].eventType} />
       </MockedProvider>
     );
@@ -58,7 +58,7 @@ describe('Question', () => {
     const questions = [
       {
         question: 'When did you graduate high school?',
-        eventType: 'event'   
+        eventType: 'event'
       },
       {
         question: 'What was the start & end date of your first job?',
@@ -67,24 +67,24 @@ describe('Question', () => {
     ];
 
     const { getByTestId, getByText } = render(
-      <MockedProvider mocks={[]}>          
-        <Question 
-          questionType={questions[0].eventType} 
-          currentQuestion={questions[0].question}    
+      <MockedProvider mocks={[]}>
+        <Question
+          questionType={questions[0].eventType}
+          currentQuestion={questions[0].question}
         />
       </MockedProvider>
-    );          
+    );
 
     const question = getByText('When did you graduate high school?');
 
     expect(question).toBeInTheDocument();
-  });       
+  });
 
   it('should update input when a user selects a date', () => {
     const questions = [
       {
         question: 'When did you graduate high school?',
-        eventType: 'event'   
+        eventType: 'event'
       },
       {
         question: 'What was the start & end date of your first job?',
@@ -93,15 +93,15 @@ describe('Question', () => {
     ];
 
     const { getByTestId, getByText } = render(
-      <MockedProvider mocks={[]}>          
-        <Question 
-          questionType={questions[0].eventType} 
-          currentQuestion={questions[0].question}    
+      <MockedProvider mocks={[]}>
+        <Question
+          questionType={questions[0].eventType}
+          currentQuestion={questions[0].question}
         />
       </MockedProvider>
-    );    
+    );
 
-    const testDate = '2021-01-05';     
+    const testDate = '2021-01-05';
     const dateInput = getByTestId('date');
 
     expect(dateInput.value).toEqual('');
@@ -110,58 +110,43 @@ describe('Question', () => {
     expect(dateInput.value).toEqual(testDate);
   });
 
-  // it('should clear input when next button is clicked', () => {
-  //   const mockChangeQuestion = jest.fn();
-  //   const testAnswers = ['', ''];
-  //   const mockSetAnswer = jest.fn();
-  //   const { getByTestId, getByText } = render(
-  //     <Question
-  //       changeQuestion={mockChangeQuestion}
-  //       answers={testAnswers}
-  //       setAnswer={mockSetAnswer}
-  //     />
-  //   );
+  it('should fire a function when the next button is clicked', () => {
+    const mockQuestions = [
+      {
+        question: 'When did you graduate high school?',
+        eventType: 'event'
+      },
+      {
+        question: 'What was the start & end date of your first job?',
+        eventType: 'era'
+      }
+    ];
 
-  //   const testDate = '2021-01-05';
-  //   const dateInput = getByTestId('date');
-  //   const nextBtn = getByText('Next');
+    const mockChangeQ = jest.fn();
+    const mockSetAnswer = jest.fn();
+    const mockAnswers = [];
 
-  //   expect(dateInput.value).toEqual('');
+    const { getByTestId, getByText } = render(
+      <MockedProvider mocks={[]}>
+        <Question
+          questionType={mockQuestions[0].eventType}
+          currentQuestion={mockQuestions[0].question}
+          changeQuestion={mockChangeQ}
+          setAnswer={mockSetAnswer}
+          answers={mockAnswers}
+        />
+      </MockedProvider>
+    );
 
-  //   fireEvent.change(dateInput, { target: { value: testDate } });
-  //   expect(dateInput.value).toEqual(testDate);
-  //   userEvent.click(nextBtn);
+    const nextBtn = getByText('Next');
+    const question = getByText('When did you graduate high school?');
+    expect(question).toBeInTheDocument();
 
-  //   expect(dateInput.value).toEqual('');
-  // });
+    userEvent.click(nextBtn);
 
-  // it('should fire a function when the next button is clicked', () => {
-  //   const mockQuestions = [
-  //     'What is your birthday?',
-  //     'When did you graduate High School?'
-  //   ];
-  //   const mockCurrIndex = 0;
-  //   const mockChangeQ = jest.fn();
-  //   const mockAnswers = [];
-  //   const mockSetAnswer = jest.fn();
-  //   const { getByText } = render(
-  //     <Question
-  //       currentQuestion={mockQuestions[mockCurrIndex]}
-  //       changeQuestion={mockChangeQ}
-  //       answers={mockAnswers}
-  //       setAnswer={mockSetAnswer}
-  //     />
-  //   );
-
-  //   const nextBtn = getByText('Next');
-  //   const question = getByText('What is your birthday?');
-  //   expect(question).toBeInTheDocument();
-
-  //   userEvent.click(nextBtn);
-
-  //   expect(mockChangeQ).toHaveBeenCalledTimes(1);
-  //   expect(mockSetAnswer).toHaveBeenCalledTimes(1);
-  // });
+    expect(mockChangeQ).toHaveBeenCalledTimes(1);
+    expect(mockSetAnswer).toHaveBeenCalledTimes(1);
+  });
 
   // it('should fire a function when the skip button is clicked', () => {
   //   const mockChangeQ = jest.fn();
