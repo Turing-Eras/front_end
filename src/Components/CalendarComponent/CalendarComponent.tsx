@@ -45,7 +45,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   }
   `;
   const { data, loading, error } = useQuery(Get_User, {
-    variables: { id: props.userId },
+    variables: { id: 1 },
   });
   if (loading) {
     return <p>Loading your Calender</p>;
@@ -71,8 +71,17 @@ const CalendarComponent = (props: CalenderComponentProps) => {
         return event.weekNumber === currentWeek
       })
       let currentEra = data.getUser.eras.find((era:era )=>{
-        return era.startWeek >= currentWeek && era.endWeek <=currentWeek
+        console.log(era.startWeek === currentWeek)
+        if(era.startWeek >= currentWeek && era.endWeek <=currentWeek){
+          console.log(era.startWeek)
+          console.log(era.endWeek)
+        }
 
+        if(era.startWeek >= currentWeek){
+          return true
+        }
+        if(currentWeek <= era.endWeek )
+        return false
       })
       if(currentEvent){
         return <Week key={currentWeek} index={currentWeek} color = {currentEvent.color} name = {currentEvent.name} />;
@@ -80,6 +89,8 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       if(currentEra){
         return <Week key={currentWeek} index={currentWeek} color = {currentEra.color} name = {currentEra.name} />;
       }
+      return <Week key={currentWeek} index={currentWeek} color = {'none'} name = {null} />;
+
     });
 
     return (

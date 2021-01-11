@@ -5,21 +5,25 @@ type WeekProps = {
   key: number;
   index: number;
   color: string | null;
-  name: string;
+  name: string | null;
 };
 
 const Week = (props: WeekProps) => {
-  let color;
+  let color:string | null;
   if(props.color === null){
     color = 'purple'
+  }
+  if(props.color === 'none'){
+    color = 'red'
   }
   else{
     color = props.color
   }
   let handleClick = () => {
     console.log('you clicked', props.name)
+    console.log(color)
   };
-
+    // @ts-ignore 
   return <section style = {{backgroundColor:color}} className='week' onClick={handleClick}></section>;
 };
 
