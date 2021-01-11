@@ -49,9 +49,6 @@ export const FormContainer = () => {
   return (
     <section>
       {answers.length === 0 && <HeaderComponent/>}
-      <div>
-      <p className='main-title'>Create My Calendar</p>
-      </div>
       <div className='form-container'>
       <form>
         <Question

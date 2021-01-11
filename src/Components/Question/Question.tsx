@@ -28,13 +28,15 @@ export const Question = (props: QuestionProps) => {
     <>
       <p className='question'>{props.currentQuestion}</p>
       <input className='calendar-input' data-testid='date' type='date' onChange={handleChange} value = {date}></input>
+      <div className='question-buttons'>
       <button className='skip-button' type='button'  onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, '']);
           updateDate('')
         }}>Skip
       </button>
-      <button className='next-button'
+      <button
+        className='next-button'
         type='button'
         onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
@@ -43,6 +45,7 @@ export const Question = (props: QuestionProps) => {
         }}>
         Next
       </button>
+      </div>
     </>
   );
 };

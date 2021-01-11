@@ -12,19 +12,31 @@
 }
 
 .skip-button {
-  margin: 40px 5px 25px 5px;
-  background-color: white;
-  border: 1.5px solid #706cca;
-  padding: 10px;
-  color: #706cca;
-  border-radius: 1.5px;
+  font-size: 20px;
+  color: white;
+  padding: 0.3em 1.2em;
+  border-style: none;
+  border-radius: 10px;
+  display: grid;
+  margin: auto;
+  background-color: #a94460;
+  margin-top: 40px;
+  margin-right:10px;
 }
 
 .next-button {
-  margin: 40px 5px 25px 5px;
-  background-color: white;
-  border: 1.5px solid #706cca;
-  padding: 10px;
-  color: #706cca;
-  border-radius: 1.5px;
+  font-size: 20px;
+  color: white;
+  padding: 0.3em 1.2em;
+  border-style: none;
+  border-radius: 10px;
+  display: grid;
+  margin: auto;
+  background-color: #a94460;
+  margin-top: 40px;
+  margin-left: 10px;
+}
+
+.question-buttons {
+  display: inline-flex;
 }
