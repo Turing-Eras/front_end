@@ -47,6 +47,9 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   const { data, loading, error } = useQuery(Get_User, {
     variables: { id: props.userId },
   });
+  if(props.userId === 0){
+    return <p>Please enter your name email and birthdate before you try to make a calendar</p>
+  }
   if (loading) {
     return <p>Loading your Calender</p>;
   }
