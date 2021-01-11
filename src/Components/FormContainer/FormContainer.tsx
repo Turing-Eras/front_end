@@ -22,7 +22,7 @@ export const getQuestionsQuery = gql`
       id
       question
       name
-      event_type
+      eventType
     }
   }
 `;
@@ -36,6 +36,7 @@ export const FormContainer = (props: FormContaineProps) => {
     return <h1>Error loading questions...</h1>;
   }
   if (loading || !data) {
+    console.log('loading')
     return <h1>Loading...</h1>;
   }
 
@@ -56,7 +57,7 @@ export const FormContainer = (props: FormContaineProps) => {
       {answers.length === 0 && <HeaderComponent />}
       <form>
         <Question
-          questionType={questions[currentQuestionIndex].event_type}
+          questionType={questions[currentQuestionIndex].eventType}
           currentQuestion={questions[currentQuestionIndex].question}
           changeQuestion={changeQuestion}
           currentQuestionIndex={currentQuestionIndex}

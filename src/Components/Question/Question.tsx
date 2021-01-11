@@ -30,20 +30,26 @@ export const Question = (props: QuestionProps) => {
       if (props.questionType === "event") {
         mutation = gql`
           mutation createEvent($userId: ID!, $name: String!, $date: String!) {
-            createEvent(input: { userId: $userId, name: $name, date: $birthdate })
+            createEvent(input: { userId: $userId, name: $name, date: $date }){
+              userId
+            }
           }
         `;
       }
       if (props.questionType === "era") {
-        mutation = gql`createEra($userId :ID!, $name:String!,startDate:String!,endDate:String!,$color:String!){
+        mutation = gql`
+          mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!, $color:String!){
           createEra(input :{
             userId: $userId,
             name: $name,
             startDate:$startDate,
             endDate:$endDate,
             color:$color,
-          })
-        }`;
+          }){
+            userId
+            }
+        }`
+;
     }
     // @ts-ignore 
     return mutation
@@ -60,7 +66,7 @@ export const Question = (props: QuestionProps) => {
         onChange={handleChange}
         value={date}
       ></input>
-      {props.questionType === "event" && (
+      {props.questionType === "era" && (
         <input
           data-testid="date"
           type="date"

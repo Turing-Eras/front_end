@@ -46,9 +46,9 @@ let RequiredForm = (props: RequiredFormProps) => {
     sendUser();
   }
   if (data) {
-    props.updateUserId(data.createUser.id);
-    return (
+     return (
       <FormStartPage
+      updateUserId = {props.updateUserId}
         userId={data.createUser.id}
         userName={data.createUser.name}
       />
