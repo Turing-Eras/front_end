@@ -1,10 +1,10 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { Question } from "../Question/Question";
-import HeaderComponent from "../HeaderComponent/HeaderComponent";
-import ProgressBar from "../ProgressBar/ProgressBar";
-import { gql, useQuery } from "@apollo/client";
-import { queryHelpers } from "@testing-library/react";
-import CalendarComponent from "../CalendarComponent/CalendarComponent";
+import React, { ReactElement, useEffect, useState } from 'react';
+import { Question } from '../Question/Question';
+import HeaderComponent from '../HeaderComponent/HeaderComponent';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import { gql, useQuery } from '@apollo/client';
+import { queryHelpers } from '@testing-library/react';
+import CalendarComponent from '../CalendarComponent/CalendarComponent';
 
 type FormContaineProps = {
   userId: number;
@@ -37,15 +37,14 @@ export const FormContainer = (props: FormContaineProps) => {
     return <h1>Error loading questions...</h1>;
   }
   if (loading || !data) {
-    console.log('loading')
     return <h1>Loading...</h1>;
   }
 
   let questions = data.getOnboardingQuestions;
 
-  if(answers.length === questions.length) {
-    return <CalendarComponent userId = {props.userId}/>
-    }
+  if (answers.length === questions.length) {
+    return <CalendarComponent userId={props.userId} />;
+  }
 
   return (
     <>
@@ -67,7 +66,6 @@ export const FormContainer = (props: FormContaineProps) => {
           userId={props.userId}
         />
       </form>
-    
     </>
   );
 };
