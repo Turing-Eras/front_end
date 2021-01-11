@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './FormStartPage.css';
+
 type FormStartPageProps = {
   userId: number;
   userName: string;
@@ -7,7 +9,7 @@ type FormStartPageProps = {
 let FormStartPage = (props: FormStartPageProps) => {
   return (
     <section>
-      <p>
+      <p className='life-choice-statement'>
         As you know life is filled with choices. We've decided to give you
         another. You can either start off editend your calendar from a blank
         calendar or you can start off editing on a calendar with some events. If
