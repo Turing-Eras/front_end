@@ -80,17 +80,35 @@ describe('Question', () => {
     expect(question).toBeInTheDocument();
   });       
 
-  // it('should update input when a user selects a date', () => {
-  //   const { getByTestId } = render(<Question />);
+  it('should update input when a user selects a date', () => {
+    const questions = [
+      {
+        question: 'When did you graduate high school?',
+        eventType: 'event'   
+      },
+      {
+        question: 'What was the start & end date of your first job?',
+        eventType: 'era'
+      }
+    ];
 
-  //   const testDate = '2021-01-05';
-  //   const dateInput = getByTestId('date');
+    const { getByTestId, getByText } = render(
+      <MockedProvider mocks={[]}>          
+        <Question 
+          questionType={questions[0].eventType} 
+          currentQuestion={questions[0].question}    
+        />
+      </MockedProvider>
+    );    
 
-  //   expect(dateInput.value).toEqual('');
-  //   fireEvent.change(dateInput, { target: { value: testDate } });
+    const testDate = '2021-01-05';     
+    const dateInput = getByTestId('date');
 
-  //   expect(dateInput.value).toEqual(testDate);
-  // });
+    expect(dateInput.value).toEqual('');
+    fireEvent.change(dateInput, { target: { value: testDate } });
+
+    expect(dateInput.value).toEqual(testDate);
+  });
 
   // it('should clear input when next button is clicked', () => {
   //   const mockChangeQuestion = jest.fn();
