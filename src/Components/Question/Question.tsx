@@ -15,6 +15,36 @@ type QuestionProps = {
   userId: number;
 };
 
+export const figureMutation = (questionType: string):DocumentNode => { 
+  let mutation:DocumentNode;
+    if (questionType === "event") {
+      mutation = gql`
+        mutation createEvent($userId: ID!, $name: String!, $date: String!) {
+          createEvent(input: { userId: $userId, name: $name, date: $date }){
+            userId
+          }
+        }
+      `;
+    }
+    if (questionType === "era") {
+      mutation = gql`
+        mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!, $color:String!){
+        createEra(input :{
+          userId: $userId,
+          name: $name,
+          startDate:$startDate,
+          endDate:$endDate,
+          color:$color,
+        }){
+          userId
+          }
+      }`
+;
+  }
+  // @ts-ignore 
+  return mutation
+}
+
 export const Question = (props: QuestionProps) => {
   const [date, updateDate] = useState("");
   const [endDate, updateEndDate] = useState("");
@@ -27,38 +57,8 @@ export const Question = (props: QuestionProps) => {
   const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
     updateEndDate(event.target.value)
   }
-  
-  let figureMutation = ():DocumentNode => { 
-    let mutation:DocumentNode;
-      if (props.questionType === "event") {
-        mutation = gql`
-          mutation createEvent($userId: ID!, $name: String!, $date: String!) {
-            createEvent(input: { userId: $userId, name: $name, date: $date }){
-              userId
-            }
-          }
-        `;
-      }
-      if (props.questionType === "era") {
-        mutation = gql`
-          mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!, $color:String!){
-          createEra(input :{
-            userId: $userId,
-            name: $name,
-            startDate:$startDate,
-            endDate:$endDate,
-            color:$color,
-          }){
-            userId
-            }
-        }`
-;
-    }
-    // @ts-ignore 
-    return mutation
-  }
 
-  const [makeMutation, { data }] = useMutation(figureMutation());
+  const [makeMutation, { data }] = useMutation(figureMutation(props.questionType));
 
   return (
     <>
