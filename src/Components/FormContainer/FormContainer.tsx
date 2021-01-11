@@ -4,6 +4,7 @@ import HeaderComponent from "../HeaderComponent/HeaderComponent";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { gql, useQuery } from "@apollo/client";
 import { queryHelpers } from "@testing-library/react";
+import CalendarComponent from "../CalendarComponent/CalendarComponent";
 
 type FormContaineProps = {
   userId: number;
@@ -42,9 +43,9 @@ export const FormContainer = (props: FormContaineProps) => {
 
   let questions = data.getOnboardingQuestions;
 
-  if (answers.length === questions.length) {
-    return <button type="submit">Submit</button>;
-  }
+  if(answers.length === questions.length) {
+    return <CalendarComponent userId = {props.userId}/>
+    }
 
   return (
     <>
@@ -66,6 +67,7 @@ export const FormContainer = (props: FormContaineProps) => {
           userId={props.userId}
         />
       </form>
+    
     </>
   );
 };
