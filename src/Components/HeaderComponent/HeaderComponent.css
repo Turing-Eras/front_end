@@ -1,5 +1,4 @@
 .header {
-  background-color: #706cca;
   width: 100%;
   margin-bottom: 3%;
   display: grid;
@@ -10,22 +9,16 @@
 }
 
 .login-button {
-  background-color: #706cca;
   padding-bottom: .5em;
 }
 
-.calender-button {
-  background-color: #706cca;
-}
-
 .header-text {
-  background-color: #706cca;
-  color: white;
   font-size: 30px;
   padding: 1%;
   font-weight: bold;
   margin-top: auto;
   margin-bottom: auto;
+  color: #a94460;
 }
 
 .header-link {
