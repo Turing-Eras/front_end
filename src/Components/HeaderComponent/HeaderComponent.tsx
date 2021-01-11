@@ -13,7 +13,7 @@ const HeaderComponent = () =>{
         </div>
         <div className='active-buttons'>
           <NavLink className='login-button header-link header-text' to="/login">Login</NavLink>
-          <NavLink className='calender-button header-link header-text' to="/calender">Calendar</NavLink>
+          {/* <NavLink className='calender-button header-link header-text' to="/calender">Calendar</NavLink> */}
         </div>
       </header>
   )
