@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import TextQuestion from '../TextQuestion/TextQuestion'
 import FormStartPage from '../FormStartPage/FormStartPage'
 import { gql, useMutation } from '@apollo/client';
+import './RequiredForm.css';
+
 
 
 let RequiredForm = () =>{
   let create_user = gql `
    mutation createUser($name: String!, $email: String!, $birthdate: String!)
   {
-    createUser(input: 
+    createUser(input:
     {
       name: $name
       email: $email
@@ -23,9 +25,9 @@ let RequiredForm = () =>{
 let [createUser, { data,loading,error,called }] = useMutation(create_user);
 
 let sendUser = async () =>{
-  
+
   let Bday = answers[1]
-  
+
   let finalBday = Bday.split('-').reverse().join('-')
   if(!loading  && !called ){
     createUser({ variables: { name: answers[0], birthdate: finalBday, email: answers[2]} })
@@ -47,10 +49,12 @@ if(data){
 if(error){
   return <p>There has been an error sending your response</p>
 }
-return(
-<form>
-  User message instructions will go here
+return  (
+  <form>
+    User message instructions will go here
+    <div className='required-form'>
     <TextQuestion currentQuestion = {questions[currentQuestionIndex]} changeQuestion = {updateIndex} addAnswer = {addAnswer} answers = {answers} currentQuestionIndex = {currentQuestionIndex} />
+    </div>
     </form>
 )
 }
