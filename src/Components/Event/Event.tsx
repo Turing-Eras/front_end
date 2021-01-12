@@ -1,7 +1,24 @@
 import React, { useState, useEffect} from 'react'
 import EventForm from '../EventForm/EventForm'
-//
-const Event = () => {
+import { DocumentNode, gql, useMutation } from "@apollo/client";
+type eventProps = {
+  userId: number
+}
+const Event = (props: eventProps) => {
+    let CREATE_ERA = gql`
+    mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!, $color:String!){
+    createEra(input :{
+      userId: $userId,
+      name: $name,
+      startDate:$startDate,
+      endDate:$endDate,
+      color:$color,
+    }){
+      userId
+      }
+  }`
+  const [makeMutation, { data }] = useMutation(CREATE_ERA);
+
   const [lifeEvent, setLifeEvent] = useState('')
   const [startEvent, setStartEvent] = useState('')
   const [endEvent, setEndEvent] = useState('')
@@ -27,7 +44,14 @@ const Event = () => {
     changeDisplay(true)
   }
   const handleSubmit=() =>{
-    
+    makeMutation({
+      variables: {
+        userId: props.userId,
+        name: lifeEvent,
+        startDate: startEvent.split("-").reverse().join("-"),
+        endDate: endEvent.split("-").reverse().join("-"),
+      },
+    });
     changeDisplay(false)
   }
   return (

@@ -25,18 +25,7 @@ type EventProps = {
 
 export const EventForm = ( props: EventProps ) => {
 
-  mutation = gql`
-  mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!, $color:String!){
-  createEra(input :{
-    userId: $userId,
-    name: $name,
-    startDate:$startDate,
-    endDate:$endDate,
-    color:$color,
-  }){
-    userId
-    }
-}`
+
 
   return (
     <form className='event-form'>

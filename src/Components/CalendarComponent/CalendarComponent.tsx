@@ -136,7 +136,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
     <section>
       <HeaderComponent />
       <h1 className='calendar-title'>Your Calendar</h1>
-        <Event />
+        <Event userId = {props.userId} />
       <p className='week-title'>Weeks</p>
       <div className='calendar-area'>
       Your calendar
