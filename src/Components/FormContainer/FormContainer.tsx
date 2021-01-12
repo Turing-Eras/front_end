@@ -1,15 +1,16 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { Question } from "../Question/Question";
-import HeaderComponent from "../HeaderComponent/HeaderComponent";
-import ProgressBar from "../ProgressBar/ProgressBar";
-import { gql, useQuery } from "@apollo/client";
-import { queryHelpers } from "@testing-library/react";
+import React, { ReactElement, useEffect, useState } from 'react';
+import { Question } from '../Question/Question';
+import HeaderComponent from '../HeaderComponent/HeaderComponent';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import { gql, useQuery } from '@apollo/client';
+import { queryHelpers } from '@testing-library/react';
+import CalendarComponent from '../CalendarComponent/CalendarComponent';
 import './FormContainer.css';
 
 
-interface FormContainer {
-  useEffect: void;
-}
+type FormContaineProps = {
+  userId: number;
+};
 
 interface Question {
   question: string;
@@ -24,11 +25,17 @@ export const getQuestionsQuery = gql`
       id
       question
       name
+      eventType
     }
   }
 `;
 
-export const FormContainer = () => {
+export const FormContainer = (props: FormContaineProps) => {
+  let id = props.userId
+  if(props.userId ===0 && sessionStorage.length !==0){
+  //@ts-ignore
+  id =JSON.parse(sessionStorage.getItem('userId'))
+}
   const [answers, setAnswer] = useState<string[]>([]);
   const [currentQuestionIndex, changeQuestion] = useState(0);
 
@@ -42,9 +49,9 @@ export const FormContainer = () => {
 
   let questions = data.getOnboardingQuestions;
 
-  if (answers.length === questions.length) {
-    return <button type="submit">Submit</button>;
-  }
+  if(answers.length === questions.length) {
+    return <CalendarComponent userId = {id}/>
+    }
 
   return (
     <section>
@@ -55,11 +62,13 @@ export const FormContainer = () => {
       <div className='form-container'>
       <form>
         <Question
+          questionType={questions[currentQuestionIndex].eventType}
           currentQuestion={questions[currentQuestionIndex].question}
           changeQuestion={changeQuestion}
           currentQuestionIndex={currentQuestionIndex}
           setAnswer={setAnswer}
           answers={answers}
+          userId={id}
         />
       </form>
       </div>
