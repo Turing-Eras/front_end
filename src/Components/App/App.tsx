@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Route } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
@@ -10,11 +9,12 @@ import './App.css';
 
 
 export const App = () => {
+  let [userId, updateUserId] = useState(0);
   return (
     <section className='bg'>
       <Route exact path="/">
         <HeaderComponent />
-        <RequiredForm />
+        <RequiredForm updateUserId={updateUserId}/>
       </Route>
       <Route
         path="/login"
@@ -25,14 +25,14 @@ export const App = () => {
       <Route
         path="/form"
         render={() => {
-          return <FormContainer />;
+          return <FormContainer userId={userId}/>;
         }}
       ></Route>
       <Route
         path="/calendar"
         render={() => {
           <HeaderComponent />
-          return <CalendarComponent />;
+          return <CalendarComponent userId={userId}/>;
         }}
       ></Route>
     </section>

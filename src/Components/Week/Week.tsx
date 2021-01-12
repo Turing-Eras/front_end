@@ -4,14 +4,26 @@ import './Week.css';
 type WeekProps = {
   key: number;
   index: number;
+  color: string | null;
+  name: string | null;
 };
 
 const Week = (props: WeekProps) => {
+  let color:string | null;
+  if(props.color === null){
+    color = 'purple'
+  }
+  if(props.color === 'none'){
+    color = 'red'
+  }
+  else{
+    color = props.color
+  }
   let handleClick = () => {
 
   };
-
-  return <section className='week' onClick={handleClick}></section>;
+    // @ts-ignore
+  return <section style = {{backgroundColor:color}} className='week' onClick={handleClick}></section>;
 };
 
 export default Week;
