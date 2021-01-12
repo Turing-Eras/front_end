@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Week from '../Week/Week';
 import NavBar from '../NavBar/NavBar';
 import Event from '../Event/Event'
+import HeaderComponent from '../HeaderComponent/HeaderComponent'
 import './CalendarComponent.css';
 import AdditionalQuestions from '../AdditionalQuestions/AdditionalQuestions'
 
@@ -30,7 +31,7 @@ const CalendarComponent = () => {
 
   return (
     <section>
-      <NavBar />
+      <HeaderComponent />
       <h1 className='calendar-title'>Your Calendar</h1>
       <button>Add an event</button>
         <Event />

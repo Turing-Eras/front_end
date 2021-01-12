@@ -31,6 +31,7 @@ export const App = () => {
       <Route
         path="/calendar"
         render={() => {
+          <HeaderComponent />
           return <CalendarComponent />;
         }}
       ></Route>
