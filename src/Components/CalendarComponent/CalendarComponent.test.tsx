@@ -5,6 +5,7 @@ import {
   getByText,
   render,
   screen,
+  wait,
   waitFor
 } from '@testing-library/react';
 import CalendarComponent from './CalendarComponent';
@@ -91,4 +92,16 @@ describe('CalendarComponent', () => {
     const errorMsg = await waitFor(() => getByText('SOMETHING WENT WRONG'));
     expect(errorMsg).toBeInTheDocument();
   });
+
+  it('should render a Week component', async () => {
+    const { getAllByTestId } = render(
+      <MockedProvider mocks={mocks}>
+        <CalendarComponent userId={1} />
+      </MockedProvider>
+    );
+
+    const week = await waitFor(() => getAllByTestId('week'));
+    expect(week).toHaveLength(3952)      
+  });    
 });
+     
