@@ -16,9 +16,7 @@ let RequiredForm = (props: RequiredFormProps) => {
       }
     }
   `;
-  let onError = (error: ApolloError) =>{
-
-  }
+ 
   let [createUser, { data, loading, error, called }] = useMutation(create_user);
 
   let sendUser = async () => {
