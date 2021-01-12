@@ -22,12 +22,12 @@ type era = {
   weekNumber: number
 }
 const CalendarComponent = (props: CalenderComponentProps) => {
-  let id:number |null
-  id =props.userId
-  useEffect(()=>{
-        // @ts-ignore 
-  id = JSON.parse(localStorage.getItem("userId"))
-  },[props.userId])
+let id = props.userId
+if(props.userId ===0 && localStorage.length !==0){
+  //@ts-ignore
+  id =JSON.parse(localStorage.getItem('userId'))
+}  
+  console.log(id)
   let Get_User = gql`
   query getUser($id :ID!){
     getUser(id:$id){
@@ -53,7 +53,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   const { data, loading, error } = useQuery(Get_User, {
     variables: { id: id },
   });
-  if(props.userId === 0){
+  if(id=== 0){
     return <p>Please enter your name email and birthdate before you try to make a calendar</p>
   }
   if (loading) {
