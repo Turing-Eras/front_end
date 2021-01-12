@@ -4,12 +4,12 @@ import './Week.css';
 type WeekProps = {
   key: number;
   index: number;
-  color: string | null;
+  color: string | null;  
   name: string | null;
 };
 
 const Week = (props: WeekProps) => {
-  let color:string | null;
+  let color: string | null;
   if(props.color === null){
     color = 'purple'
   }
@@ -20,9 +20,9 @@ const Week = (props: WeekProps) => {
     color = props.color
   }
   let handleClick = () => {
-    console.log('you clicked', props.name)
-    console.log(color)
+    
   };
+  //@ts-ignore
   return <section data-testid='week' style = {{backgroundColor:color}} className='week' onClick={handleClick}></section>;
 };
 
