@@ -2,6 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import {
   getByPlaceholderText,
+  getByText,
   render,
   screen,
   waitFor
@@ -73,5 +74,21 @@ describe('CalendarComponent', () => {
 
     const loadingMsg = getByText('Loading your Calender');
     expect(loadingMsg).toBeInTheDocument();
+  });
+
+  it('should render an error', async () => {
+    const mock = {
+      request: { query: Get_User },
+      error: new Error('Something went wrong!')
+    };
+
+    const { getByText } = render(
+      <MockedProvider>
+        <CalendarComponent />
+      </MockedProvider>
+    );
+
+    const errorMsg = await waitFor(() => getByText('SOMETHING WENT WRONG'));
+    expect(errorMsg).toBeInTheDocument();
   });
 });
