@@ -51,7 +51,7 @@ if(error){
 }
 return  (
   <form>
-    User message instructions will go here
+    <p className='landing-page-instructions'>Welcome to Eras, the life calendar.  Eras allows you to holistically visualize your life in order to live more intentionally. We're going to ask you a few questions in order to get to know you, and generate your life calendar!  Let's start!</p>
     <div className='required-form'>
       <TextQuestion currentQuestion = {questions[currentQuestionIndex]} changeQuestion = {updateIndex} addAnswer = {addAnswer} answers = {answers} currentQuestionIndex = {currentQuestionIndex} />
     </div>

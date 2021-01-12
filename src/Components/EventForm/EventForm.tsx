@@ -1,4 +1,5 @@
 import React from 'react'
+import './EventForm.css';
 
 type HandleLifeEvent = (event: React.ChangeEvent<HTMLInputElement>) => void;
 
@@ -27,25 +28,26 @@ export const EventForm = ( props: EventProps ) => {
   }
 
   return (
-    <form>
-    <label>Name of Event: </label>
-    <input
-    type='text'
-    onChange={props.handleLifeEvent}
-    />
-    <label>Start Date: </label>
-    <input
-    type='date'
-    onChange={props.handleStartEvent}
-    />
-    <label>End Date: </label>
-    <input
-    type='date'
-    onChange={props.handleEndEvent}
-    />
-    <button type='submit'
-    onClick={handleSubmit}
-    >SUBMIT</button>
+    <form className='event-form'>
+      <label>Name of Era: </label>
+      <input
+        type='text'
+        onChange={props.handleLifeEvent}
+      />
+      <label>Start Date: </label>
+      <input
+        type='date'
+        onChange={props.handleStartEvent}
+      />
+      <label>End Date: </label>
+      <input
+        type='date'
+        onChange={props.handleEndEvent}
+      />
+      <button
+        type='submit'
+        onClick={handleSubmit}
+      >SUBMIT</button>
     </form>
   )
 }

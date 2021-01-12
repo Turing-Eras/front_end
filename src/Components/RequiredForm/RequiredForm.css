@@ -39,3 +39,10 @@ button {
   font-size: 30px;
   font-weight: 500;
 }
+
+.landing-page-instructions {
+  color: #A94460;
+  font-style: italic;
+  text-align: center;
+  padding-bottom: 25px;
+}

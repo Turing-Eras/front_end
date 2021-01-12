@@ -1,0 +1,10 @@
+.event-form {
+  text-align: center;
+  width: min-content;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  object-fit: cover;
+  background: transparent;
+}

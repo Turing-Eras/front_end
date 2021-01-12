@@ -29,8 +29,7 @@ const Event = () => {
 
   return (
     <section>
-    <button onClick={handleButtonClick}>Add an event</button>
-      <h4>Add a new life event!</h4>
+    <button onClick={handleButtonClick}>Add an Era</button>
       {display && <EventForm
         handleLifeEvent={handleLifeEvent}
         handleStartEvent={handleStartEvent}
