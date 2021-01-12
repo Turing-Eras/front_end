@@ -29,7 +29,7 @@ export const App = () => {
         }}
       ></Route>
       <Route
-        path="/calender"
+        path="/calendar"
         render={() => {
           return <CalendarComponent userId={userId} />;
         }}
