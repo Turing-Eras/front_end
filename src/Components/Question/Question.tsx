@@ -37,6 +37,7 @@ export const Question = (props: QuestionProps) => {
       </button>
       <button
         className='next-button'
+        disabled={!answer}
         type='button'
         onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
