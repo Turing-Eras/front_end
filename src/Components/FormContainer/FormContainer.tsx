@@ -5,6 +5,8 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 import { gql, useQuery } from '@apollo/client';
 import { queryHelpers } from '@testing-library/react';
 import CalendarComponent from '../CalendarComponent/CalendarComponent';
+import './FormContainer.css';
+
 
 type FormContaineProps = {
   userId: number;
@@ -29,6 +31,11 @@ export const getQuestionsQuery = gql`
 `;
 
 export const FormContainer = (props: FormContaineProps) => {
+  let id = props.userId
+  if(props.userId ===0 && sessionStorage.length !==0){
+  //@ts-ignore
+  id =JSON.parse(sessionStorage.getItem('userId'))
+}
   const [answers, setAnswer] = useState<string[]>([]);
   const [currentQuestionIndex, changeQuestion] = useState(0);
 
@@ -42,19 +49,14 @@ export const FormContainer = (props: FormContaineProps) => {
 
   let questions = data.getOnboardingQuestions;
 
-  if (answers.length === questions.length) {
-    return <CalendarComponent userId={props.userId} />;
-  }
+  if(answers.length === questions.length) {
+    return <CalendarComponent userId = {id}/>
+    }
 
   return (
-    <>
-      {questions.length && (
-        <ProgressBar
-          questionsLength={questions.length}
-          answersLength={answers.length}
-        />
-      )}
-      {answers.length === 0 && <HeaderComponent />}
+    <section>
+      <HeaderComponent />
+      <div className='form-container'>
       <form>
         <Question
           questionType={questions[currentQuestionIndex].eventType}
@@ -63,9 +65,17 @@ export const FormContainer = (props: FormContaineProps) => {
           currentQuestionIndex={currentQuestionIndex}
           setAnswer={setAnswer}
           answers={answers}
-          userId={props.userId}
+          userId={id}
         />
       </form>
-    </>
+      </div>
+      <div>
+      {questions.length && (
+        <ProgressBar
+          questionsLength={questions.length}
+          answersLength={answers.length}
+        />)}
+      </div>
+    </section>
   );
 };

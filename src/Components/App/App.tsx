@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Route } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
 import CalendarComponent from "../CalendarComponent/CalendarComponent";
 import RequiredForm from "../RequiredForm/RequiredForm";
+import HeaderComponent from '../HeaderComponent/HeaderComponent'
+import './App.css';
+
+
 export const App = () => {
   let [userId, updateUserId] = useState(0);
   return (
-    <>
-      <Route
-        exact
-        path="/"
-        render={() => {
-          return <RequiredForm updateUserId={updateUserId} />;
-        }}
-      ></Route>
-
+    <section className='bg'>
+      <Route exact path="/">
+        <HeaderComponent />
+        <RequiredForm updateUserId={updateUserId}/>
+      </Route>
       <Route
         path="/login"
         render={() => {
@@ -25,15 +25,16 @@ export const App = () => {
       <Route
         path="/form"
         render={() => {
-          return <FormContainer userId={userId} />;
+          return <FormContainer userId={userId}/>;
         }}
       ></Route>
       <Route
-        path="/calender"
+        path="/calendar"
         render={() => {
-          return <CalendarComponent userId={userId} />;
+          <HeaderComponent />
+          return <CalendarComponent userId={userId}/>;
         }}
       ></Route>
-    </>
+    </section>
   );
 };

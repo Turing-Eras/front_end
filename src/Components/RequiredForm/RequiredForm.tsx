@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import TextQuestion from '../TextQuestion/TextQuestion';
-import FormStartPage from '../FormStartPage/FormStartPage';
-import { gql, useMutation } from '@apollo/client';
+import React, { useState } from "react";
+import TextQuestion from "../TextQuestion/TextQuestion";
+import FormStartPage from "../FormStartPage/FormStartPage";
+import { gql, useMutation,ApolloError } from "@apollo/client";
+import './RequiredForm.css';
+
 type updateUserId = (index: number) => void;
 type RequiredFormProps = {
   updateUserId: updateUserId;
@@ -16,6 +18,7 @@ let RequiredForm = (props: RequiredFormProps) => {
       }
     }
   `;
+
   let [createUser, { data, loading, error, called }] = useMutation(create_user);
 
   let sendUser = async () => {
@@ -27,8 +30,10 @@ let RequiredForm = (props: RequiredFormProps) => {
         variables: {
           name: answers[0],
           birthdate: finalBday,
-          email: answers[2]
+          email: answers[2],
         }
+      }).catch(e => {
+        return e
       });
     } else if (loading) {
       return <p>Loading</p>;
@@ -43,30 +48,39 @@ let RequiredForm = (props: RequiredFormProps) => {
   let [answers, addAnswer] = useState<string[]>([]);
   let [currentQuestionIndex, updateIndex] = useState(0);
   if (answers.length === questions.length) {
-    sendUser();
+    sendUser()
+    if(loading){
+      return <p>Loading questions</p>
+    }
+    if(error){
+      return <section>
+      {error.graphQLErrors.map(({ message }, i) => (
+      <span key={i}>{message}</span>
+    ))}
+    </section>
+    }
   }
   if (data) {
     return (
       <FormStartPage
-        updateUserId={props.updateUserId}
+        updateUserId = {props.updateUserId}
         userId={data.createUser.id}
         userName={data.createUser.name}
       />
     );
   }
-  if (error) {
-    return <p>There has been an error sending your response</p>;
-  }
   return (
     <form>
-      User message instructions will go here
-      <TextQuestion
-        currentQuestion={questions[currentQuestionIndex]}
-        changeQuestion={updateIndex}
-        addAnswer={addAnswer}
-        answers={answers}
-        currentQuestionIndex={currentQuestionIndex}
-      />
+    <p className='landing-page-instructions'>Welcome to Eras, the life calendar.  Eras allows you to holistically visualize your life in order to live more intentionally. We're going to ask you a few questions in order to get to know you, and generate your life calendar!  Let's start!</p>
+      <div className='required-form'>
+        <TextQuestion
+          currentQuestion={questions[currentQuestionIndex]}
+          changeQuestion={updateIndex}
+          addAnswer={addAnswer}
+          answers={answers}
+          currentQuestionIndex={currentQuestionIndex}
+        />
+      </div>
     </form>
   );
 };

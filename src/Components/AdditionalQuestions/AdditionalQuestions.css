@@ -1,0 +1,7 @@
+.multiple-inputs {
+    visibility:hidden;
+}
+
+input[type=checkbox]:checked + .multiple-inputs {
+    visibility:visible;
+}

@@ -26,25 +26,20 @@ let TextQuestion = (props: QuestionProps) => {
   return (
     <section>
       <h1>{props.currentQuestion}</h1>
-      <input
-        data-testid='text'
-        type={type}
-        onChange={handleChange}
-        value={text}
-      ></input>
-      {text !== '' && (
-        <button
-          type='button'
-          onClick={() => {
-            props.changeQuestion(props.currentQuestionIndex + 1);
-            props.addAnswer([...props.answers, answer]);
-            updateText('');
-          }}
-        >
-          Next
-        </button>
-      )}
+      <input data-testid='text' type={type} onChange={handleChange} value = {text} ></input>
+       <button
+        type='button'
+        disabled={!text ? true: false}
+        onClick={() => {
+          props.changeQuestion(props.currentQuestionIndex + 1);
+          props.addAnswer([...props.answers, answer]);
+          updateText('')
+          saveAnswer('')
+        }}>
+        Next
+      </button>
     </section>
-  );
-};
-export default TextQuestion;
+
+  )
+}
+export default TextQuestion
