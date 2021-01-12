@@ -14,12 +14,13 @@ let FormStartPage = (props: FormStartPageProps) => {
     <section>
       <p>
         As you know life is filled with choices. We've decided to give you
-        another. You can either start off editend your calendar from a blank
-        calendar or you can start off editing on a calendar with some events. If
-        you choose the prefilled calender
+        another. You can start off editing a blank calendar by selecting 
+        'Start Calendar' or you can select 'Start Form' to answer a few 
+        questions that will create events for you. You can add more events
+        later if you choose!
       </p>
       <Link to="/calender">
-        <button>Start Calender</button>
+        <button>Start Calendar</button>
       </Link>
       <Link to="/form">
         <button>Start Form</button>
