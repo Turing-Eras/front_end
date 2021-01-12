@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import TextQuestion from "../TextQuestion/TextQuestion";
-import FormStartPage from "../FormStartPage/FormStartPage";
-import { gql, useMutation } from "@apollo/client";
+import React, { useState } from 'react';
+import TextQuestion from '../TextQuestion/TextQuestion';
+import FormStartPage from '../FormStartPage/FormStartPage';
+import { gql, useMutation } from '@apollo/client';
 type updateUserId = (index: number) => void;
 type RequiredFormProps = {
   updateUserId: updateUserId;
@@ -21,14 +21,14 @@ let RequiredForm = (props: RequiredFormProps) => {
   let sendUser = async () => {
     let Bday = answers[1];
 
-    let finalBday = Bday.split("-").reverse().join("-");
+    let finalBday = Bday.split('-').reverse().join('-');
     if (!loading && !called) {
       createUser({
         variables: {
           name: answers[0],
           birthdate: finalBday,
-          email: answers[2],
-        },
+          email: answers[2]
+        }
       });
     } else if (loading) {
       return <p>Loading</p>;
@@ -36,9 +36,9 @@ let RequiredForm = (props: RequiredFormProps) => {
   };
 
   let questions = [
-    "What is your name",
-    "What is your birthday",
-    "What is your email address",
+    'What is your name?',
+    'What is your birthday?',
+    'What is your email address?'
   ];
   let [answers, addAnswer] = useState<string[]>([]);
   let [currentQuestionIndex, updateIndex] = useState(0);
@@ -46,9 +46,9 @@ let RequiredForm = (props: RequiredFormProps) => {
     sendUser();
   }
   if (data) {
-     return (
+    return (
       <FormStartPage
-      updateUserId = {props.updateUserId}
+        updateUserId={props.updateUserId}
         userId={data.createUser.id}
         userName={data.createUser.name}
       />
