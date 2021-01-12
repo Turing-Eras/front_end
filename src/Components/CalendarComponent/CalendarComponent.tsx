@@ -14,14 +14,13 @@ type event = {
   weekNumber: number;
 };
 type era = {
-  color: string | null;
-  startWeek: number;
-  endWeek: number;
-  id: string;
-  name: string;
-  weekNumber: number;
-};
-
+  color: string | null,
+  startWeek: number,
+  endWeek: number,
+  id: string,
+  name: string,
+  weekNumber: number
+}
 export const Get_User = gql`
   query getUser($id: ID!) {
     getUser(id: $id) {
@@ -46,19 +45,27 @@ export const Get_User = gql`
 `;    
 
 const CalendarComponent = (props: CalenderComponentProps) => {
+  
+  let id = props.userId
+  if(props.userId ===0 || props.userId ===null && sessionStorage.getItem('userId') !== undefined ){
+    //@ts-ignore
+    id =JSON.parse(sessionStorage.getItem('userId'))
+  }  
+
   const { data, loading, error } = useQuery(Get_User, {
-    variables: { id: props.userId }
+    variables: { id: id }
   });
+  if(error && !id ){
+    return <p>Please make a user before trying to make a calendar</p>
+  }
   if (loading) {
     return <p>Loading your Calender</p>;
   }
   if (error) {
-    return <p>SOMETHING WENT WRONG</p>;
+    return <p>Something went wrong</p>;
   }
-  if (data) {
-             
-  }
-  // useMemo() for the fills
+
+  
   let calendar = new Array(76);
   calendar.fill({});
   let display = calendar.map((year, index) => {
@@ -128,6 +135,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
     </section>
   );
 };
-// let shouldRerender = (prevProps,nextProps) =>{
-// if()}
+
+
 export default React.memo(CalendarComponent);

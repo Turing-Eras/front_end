@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextQuestion from "../TextQuestion/TextQuestion";
 import FormStartPage from "../FormStartPage/FormStartPage";
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation,ApolloError } from "@apollo/client";
 type updateUserId = (index: number) => void;
 type RequiredFormProps = {
   updateUserId: updateUserId;
@@ -16,6 +16,7 @@ let RequiredForm = (props: RequiredFormProps) => {
       }
     }
   `;
+ 
   let [createUser, { data, loading, error, called }] = useMutation(create_user);
 
   let sendUser = async () => {
@@ -28,11 +29,14 @@ let RequiredForm = (props: RequiredFormProps) => {
           name: answers[0],
           birthdate: finalBday,
           email: answers[2],
-        },
+        }
+      }).catch(e => {
+        return e
       });
     } else if (loading) {
       return <p>Loading</p>;
     }
+
   };
 
   let questions = [
@@ -43,7 +47,17 @@ let RequiredForm = (props: RequiredFormProps) => {
   let [answers, addAnswer] = useState<string[]>([]);
   let [currentQuestionIndex, updateIndex] = useState(0);
   if (answers.length === questions.length) {
-    sendUser();
+    sendUser()
+    if(loading){
+      return <p>Loading questions</p>
+    }
+    if(error){
+      return <section>
+      {error.graphQLErrors.map(({ message }, i) => (
+      <span key={i}>{message}</span>
+    ))}
+    </section>
+    }
   }
   if (data) {
      return (
@@ -53,9 +67,6 @@ let RequiredForm = (props: RequiredFormProps) => {
         userName={data.createUser.name}
       />
     );
-  }
-  if (error) {
-    return <p>There has been an error sending your response</p>;
   }
   return (
     <form>

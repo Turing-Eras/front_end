@@ -8,6 +8,7 @@ type FormStartPageProps = {
 };
 let FormStartPage = (props: FormStartPageProps) => {
   useEffect(() => {
+    sessionStorage.setItem("userId",JSON.stringify(props.userId))
     props.updateUserId(props.userId)
   }, [props.userId])
   return (

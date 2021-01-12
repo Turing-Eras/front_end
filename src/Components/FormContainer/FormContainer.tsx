@@ -29,6 +29,11 @@ export const getQuestionsQuery = gql`
 `;
 
 export const FormContainer = (props: FormContaineProps) => {
+  let id = props.userId
+  if(props.userId ===0 && sessionStorage.length !==0){
+  //@ts-ignore
+  id =JSON.parse(sessionStorage.getItem('userId'))
+}  
   const [answers, setAnswer] = useState<string[]>([]);
   const [currentQuestionIndex, changeQuestion] = useState(0);
 
@@ -42,9 +47,9 @@ export const FormContainer = (props: FormContaineProps) => {
 
   let questions = data.getOnboardingQuestions;
 
-  if (answers.length === questions.length) {
-    return <CalendarComponent userId={props.userId} />;
-  }
+  if(answers.length === questions.length) {
+    return <CalendarComponent userId = {id}/>
+    }
 
   return (
     <>
@@ -63,7 +68,7 @@ export const FormContainer = (props: FormContaineProps) => {
           currentQuestionIndex={currentQuestionIndex}
           setAnswer={setAnswer}
           answers={answers}
-          userId={props.userId}
+          userId={id}
         />
       </form>
     </>
