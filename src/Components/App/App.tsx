@@ -16,7 +16,6 @@ export const App = () => {
         <HeaderComponent />
         <RequiredForm />
       </Route>
-
       <Route
         path="/login"
         render={() => {

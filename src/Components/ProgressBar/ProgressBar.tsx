@@ -12,7 +12,7 @@ let ProgressBar = (props: ProgressProps) => {
 
   return (
     <section className='progress-bar-section'>
-    <section className='progress-bar' style={{width : percentage, backgroundColor: '#706cca', marginLeft: 'auto', marginRight: 'auto'}}>
+    <section className='progress-bar' style={{width : percentage, backgroundColor: '#a94460', marginLeft: 'auto', marginRight: 'auto'}}>
         %Complete
       </section>
     </section>

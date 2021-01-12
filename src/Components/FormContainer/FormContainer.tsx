@@ -48,7 +48,7 @@ export const FormContainer = () => {
 
   return (
     <section>
-      {answers.length === 0 && <HeaderComponent/>}
+      <HeaderComponent />
       <div className='form-container'>
       <form>
         <Question
