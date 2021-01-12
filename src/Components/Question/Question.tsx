@@ -28,7 +28,7 @@ export const Question = (props: QuestionProps) => {
     updateEndDate(event.target.value)
   }
   
-  let figureMutation = ():DocumentNode => { 
+  let figureMutation = ():DocumentNode => {
     let mutation:DocumentNode;
       if (props.questionType === "event") {
         mutation = gql`
@@ -87,7 +87,7 @@ export const Question = (props: QuestionProps) => {
       >
         Skip
       </button>
-      <button
+     {date.length === 10 && (props.questionType === 'event' || endDate.length ===10) &&  <button
         type="button"
         onClick={() => {
           if (props.questionType === "event") {
@@ -118,6 +118,7 @@ export const Question = (props: QuestionProps) => {
       >
         Next
       </button>
+}
     </>
   );
 };
