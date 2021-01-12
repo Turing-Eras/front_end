@@ -42,7 +42,6 @@ export const FormContainer = (props: FormContaineProps) => {
     return <h1>Error loading questions...</h1>;
   }
   if (loading || !data) {
-    console.log('loading')
     return <h1>Loading...</h1>;
   }
 

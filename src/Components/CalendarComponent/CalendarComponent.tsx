@@ -27,7 +27,6 @@ if(props.userId ===0 && localStorage.length !==0){
   //@ts-ignore
   id =JSON.parse(localStorage.getItem('userId'))
 }  
-  console.log(id)
   let Get_User = gql`
   query getUser($id :ID!){
     getUser(id:$id){
@@ -63,7 +62,6 @@ if(props.userId ===0 && localStorage.length !==0){
     return <p>SOMETHING WENT WRONG</p>;
   }
   if(data){
-    console.log(data)
   }
   // useMemo() for the fills
   let calendar = new Array(76);
@@ -80,12 +78,7 @@ if(props.userId ===0 && localStorage.length !==0){
         return event.weekNumber === currentWeek
       })
       let currentEra = data.getUser.eras.find((era:era )=>{
-        console.log(era.startWeek === currentWeek)
-        if(era.startWeek >= currentWeek && era.endWeek <=currentWeek){
-          console.log(era.startWeek)
-          console.log(era.endWeek)
-        }
-
+     
         if(era.startWeek >= currentWeek){
           return true
         }
