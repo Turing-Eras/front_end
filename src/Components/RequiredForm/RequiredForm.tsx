@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import TextQuestion from "../TextQuestion/TextQuestion";
 import FormStartPage from "../FormStartPage/FormStartPage";
 import { gql, useMutation,ApolloError } from "@apollo/client";
+import './RequiredForm.css';
+
 type updateUserId = (index: number) => void;
 type RequiredFormProps = {
   updateUserId: updateUserId;
@@ -16,7 +18,7 @@ let RequiredForm = (props: RequiredFormProps) => {
       }
     }
   `;
- 
+
   let [createUser, { data, loading, error, called }] = useMutation(create_user);
 
   let sendUser = async () => {
@@ -36,7 +38,6 @@ let RequiredForm = (props: RequiredFormProps) => {
     } else if (loading) {
       return <p>Loading</p>;
     }
-
   };
 
   let questions = [
@@ -62,7 +63,7 @@ let RequiredForm = (props: RequiredFormProps) => {
   if (data) {
      return (
       <FormStartPage
-      updateUserId = {props.updateUserId}
+        updateUserId = {props.updateUserId}
         userId={data.createUser.id}
         userName={data.createUser.name}
       />
@@ -70,14 +71,16 @@ let RequiredForm = (props: RequiredFormProps) => {
   }
   return (
     <form>
-      User message instructions will go here
-      <TextQuestion
-        currentQuestion={questions[currentQuestionIndex]}
-        changeQuestion={updateIndex}
-        addAnswer={addAnswer}
-        answers={answers}
-        currentQuestionIndex={currentQuestionIndex}
-      />
+    <p className='landing-page-instructions'>Welcome to Eras, the life calendar.  Eras allows you to holistically visualize your life in order to live more intentionally. We're going to ask you a few questions in order to get to know you, and generate your life calendar!  Let's start!</p>
+      <div className='required-form'>
+        <TextQuestion
+          currentQuestion={questions[currentQuestionIndex]}
+          changeQuestion={updateIndex}
+          addAnswer={addAnswer}
+          answers={answers}
+          currentQuestionIndex={currentQuestionIndex}
+        />
+      </div>
     </form>
   );
 };

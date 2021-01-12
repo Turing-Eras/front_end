@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { DocumentNode, gql, useMutation } from "@apollo/client";
 
+import React, { useState } from 'react';
+import './Question.css';
+import { DocumentNode, gql, useMutation } from "@apollo/client";
 type ChangeQuestion = (index: number) => void;
 
 type SetAnswer = (answer: string[]) => void;
@@ -15,7 +16,7 @@ type QuestionProps = {
   userId: number;
 };
 
-export const figureMutation = (questionType: string):DocumentNode => { 
+export const figureMutation = (questionType: string):DocumentNode => {
   let mutation:DocumentNode;
     if (questionType === "event") {
       mutation = gql`
@@ -41,7 +42,7 @@ export const figureMutation = (questionType: string):DocumentNode => {
       }`
 ;
   }
-  // @ts-ignore 
+  // @ts-ignore
   return mutation
 }
 
@@ -54,6 +55,7 @@ export const Question = (props: QuestionProps) => {
     updateDate(event.target.value);
     saveAnswer(event.target.value);
   };
+
   const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
     updateEndDate(event.target.value)
   }
@@ -62,8 +64,9 @@ export const Question = (props: QuestionProps) => {
 
   return (
     <>
-      <h1>{props.currentQuestion}</h1>
+      <p className='question'>{props.currentQuestion}</p>
       <input
+        className='calendar-input'
         data-testid="date"
         type="date"
         onChange={handleChange}
@@ -71,13 +74,16 @@ export const Question = (props: QuestionProps) => {
       ></input>
       {props.questionType === "era" && (
         <input
+          className='calendar-input'
           data-testid="date"
           type="date"
           onChange={handleEndDateChange}
           value={endDate}
         ></input>
       )}
+      <div className='question-buttons'>
       <button
+        className='skip-button'
         type="button"
         onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
@@ -87,8 +93,10 @@ export const Question = (props: QuestionProps) => {
       >
         Skip
       </button>
-     {date.length === 10 && (props.questionType === 'event' || endDate.length ===10) &&  <button
-        type="button"
+      <button
+        className='next-button'
+        disabled={!answer ? true: false}
+        type='button'
         onClick={() => {
           if (props.questionType === "event") {
             makeMutation({
@@ -113,12 +121,12 @@ export const Question = (props: QuestionProps) => {
           }
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, answer]);
-          updateDate("");
-        }}
-      >
+          saveAnswer('')
+          updateDate('')
+        }}>
         Next
       </button>
-}
+      </div>
     </>
   );
 };

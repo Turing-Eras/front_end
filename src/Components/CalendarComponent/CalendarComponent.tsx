@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Week from '../Week/Week';
 import NavBar from '../NavBar/NavBar';
+import Event from '../Event/Event'
+import HeaderComponent from '../HeaderComponent/HeaderComponent'
+import './CalendarComponent.css';
+import AdditionalQuestions from '../AdditionalQuestions/AdditionalQuestions'
 import { gql, useQuery } from '@apollo/client';
+
 
 type CalenderComponentProps = {
   userId: number;
@@ -42,15 +47,15 @@ export const Get_User = gql`
       }
     }
   }
-`;    
+`;
 
 const CalendarComponent = (props: CalenderComponentProps) => {
-  
+
   let id = props.userId
   if(props.userId ===0 || props.userId ===null && sessionStorage.getItem('userId') !== undefined ){
     //@ts-ignore
     id =JSON.parse(sessionStorage.getItem('userId'))
-  }  
+  }
 
   const { data, loading, error } = useQuery(Get_User, {
     variables: { id: id }
@@ -65,7 +70,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
     return <p>Something went wrong</p>;
   }
 
-  
+
   let calendar = new Array(76);
   calendar.fill({});
   let display = calendar.map((year, index) => {
@@ -81,7 +86,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       });
       let currentEra = data.getUser.eras.find((era: era) => {
         if (era.startWeek >= currentWeek && era.endWeek <= currentWeek) {
-          
+
         }
 
         if (era.startWeek >= currentWeek) {
@@ -120,7 +125,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
     });
 
     return (
-      <section key={index}>
+      <section className='weeks-display' key={index}>
         Age: {index}
         {weeksDisplay}
       </section>
@@ -129,9 +134,14 @@ const CalendarComponent = (props: CalenderComponentProps) => {
 
   return (
     <section>
-      <NavBar />
+      <HeaderComponent />
+      <h1 className='calendar-title'>Your Calendar</h1>
+        <Event />
+      <p className='week-title'>Weeks</p>
+      <div className='calendar-area'>
       Your calendar
       {display}
+      </div>
     </section>
   );
 };

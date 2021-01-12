@@ -1,0 +1,18 @@
+.form-container {
+  text-align: center;
+  width: min-content;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  object-fit: cover;
+  background: transparent;
+}
+
+.main-title {
+  text-align: center;
+  font-family: Bebas Neue;
+  font-size: 50px;
+  color: #706cca;
+  font-weight: 600;
+}

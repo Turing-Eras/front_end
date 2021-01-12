@@ -1,0 +1,38 @@
+.question {
+  font-family: Bebas Neue;
+  color: #a94460;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0px 0px 40px 0px;
+}
+
+.skip-button {
+  font-size: 20px;
+  color: white;
+  padding: 0.3em 1.2em;
+  border-style: none;
+  border-radius: 10px;
+  display: grid;
+  margin: auto;
+  background-color: #a94460;
+  margin-top: 40px;
+  margin-right:10px;
+}
+
+.next-button {
+  font-size: 20px;
+  color: white;
+  padding: 0.3em 1.2em;
+  border-style: none;
+  border-radius: 10px;
+  display: grid;
+  margin: auto;
+  background-color: #a94460;
+  margin-top: 40px;
+  margin-left: 10px;
+}
+
+.question-buttons {
+  display: inline-flex;
+}
