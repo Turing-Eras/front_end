@@ -8,36 +8,47 @@ type HandleEndEvent = (event: React.ChangeEvent<HTMLInputElement>) => void;
 
 type HandleClearEvent = (event: React.ChangeEvent<HTMLInputElement>) => void;
 
+type ChangeDisplay = (boolean: boolean) => void;
+
+
 type EventProps = {
   handleLifeEvent: HandleLifeEvent;
   handleStartEvent: HandleStartEvent;
   handleEndEvent: HandleEndEvent;
   handleClearEvent: HandleClearEvent;
+  changeDisplay: ChangeDisplay;
 };
 
 
-export const EventForm = ( props: EventProps ) => (
+export const EventForm = ( props: EventProps ) => {
 
+  const handleSubmit = () => {
+    props.changeDisplay(false)
+  }
 
-  <form>
+  return (
+    <form>
     <label>Name of Event: </label>
     <input
-      type='text'
-      onChange={props.handleLifeEvent}
+    type='text'
+    onChange={props.handleLifeEvent}
     />
     <label>Start Date: </label>
     <input
-      type='date'
-      onChange={props.handleStartEvent}
+    type='date'
+    onChange={props.handleStartEvent}
     />
     <label>End Date: </label>
     <input
-      type='date'
-      onChange={props.handleEndEvent}
+    type='date'
+    onChange={props.handleEndEvent}
     />
-    <button type='submit'>SUBMIT</button>
-  </form>
-)
+    <button type='submit'
+    onClick={handleSubmit}
+    >SUBMIT</button>
+    </form>
+  )
+}
 
 
 

@@ -5,6 +5,7 @@ const Event = () => {
   const [lifeEvent, setLifeEvent] = useState('')
   const [startEvent, setStartEvent] = useState('')
   const [endEvent, setEndEvent] = useState('')
+  const [display, changeDisplay] = useState(false)
 
   const handleLifeEvent = (event:React.ChangeEvent<HTMLInputElement>) => {
     setLifeEvent(event.target.value)
@@ -22,15 +23,22 @@ const Event = () => {
     setLifeEvent('')
   }
 
+  const handleButtonClick = () => {
+    changeDisplay(true)
+  }
+
   return (
     <section>
+    <button onClick={handleButtonClick}>Add an event</button>
       <h4>Add a new life event!</h4>
-      <EventForm
+      {display && <EventForm
         handleLifeEvent={handleLifeEvent}
         handleStartEvent={handleStartEvent}
         handleEndEvent={handleEndEvent}
         handleClearEvent={handleClearEvent}
-      />
+        changeDisplay={changeDisplay}
+        />
+      }
     </section>
   )
 }

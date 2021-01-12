@@ -33,7 +33,6 @@ const CalendarComponent = () => {
     <section>
       <HeaderComponent />
       <h1 className='calendar-title'>Your Calendar</h1>
-      <button>Add an event</button>
         <Event />
       <p className='week-title'>Weeks</p>
       <div className='calendar-area'>
