@@ -39,9 +39,6 @@ const CalendarComponent = () => {
       Your calendar
       {display}
       </div>
-      <section>
-      <AdditionalQuestions />
-      </section>
     </section>
   );
 };
