@@ -23,6 +23,7 @@ export const Question = (props: QuestionProps) => {
 
 
   };
+  console.log(answer)
 
   return (
     <>
@@ -37,11 +38,12 @@ export const Question = (props: QuestionProps) => {
       </button>
       <button
         className='next-button'
-        disabled={!answer}
+        disabled={!answer ? true: false}
         type='button'
         onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, answer]);
+          saveAnswer('')
           updateDate('')
         }}>
         Next

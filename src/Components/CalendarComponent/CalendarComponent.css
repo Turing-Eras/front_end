@@ -14,7 +14,7 @@ button {
   text-align: center;
   font-family: Bebas Neue;
   font-size: 50px;
-  color: white;
+  color: #a94460;
   font-weight: 600;
 }
 
@@ -28,7 +28,7 @@ button {
 }
 
 .weeks-display {
-  background: blue;
+  background: transparent;
   flex-wrap: nowrap;
   display: flex;
 }
