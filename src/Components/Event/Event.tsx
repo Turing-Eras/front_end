@@ -26,7 +26,10 @@ const Event = () => {
   const handleButtonClick = () => {
     changeDisplay(true)
   }
-
+  const handleSubmit=() =>{
+    
+    changeDisplay(false)
+  }
   return (
     <section>
     <button onClick={handleButtonClick}>Add an Era</button>
@@ -36,6 +39,7 @@ const Event = () => {
         handleEndEvent={handleEndEvent}
         handleClearEvent={handleClearEvent}
         changeDisplay={changeDisplay}
+        handleSubmit = {handleSubmit}
         />
       }
     </section>

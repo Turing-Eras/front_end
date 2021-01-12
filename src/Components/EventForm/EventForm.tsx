@@ -11,6 +11,7 @@ type HandleClearEvent = (event: React.ChangeEvent<HTMLInputElement>) => void;
 
 type ChangeDisplay = (boolean: boolean) => void;
 
+type handleSubmit = () => void
 
 type EventProps = {
   handleLifeEvent: HandleLifeEvent;
@@ -18,14 +19,24 @@ type EventProps = {
   handleEndEvent: HandleEndEvent;
   handleClearEvent: HandleClearEvent;
   changeDisplay: ChangeDisplay;
+  handleSubmit : handleSubmit
 };
 
 
 export const EventForm = ( props: EventProps ) => {
 
-  const handleSubmit = () => {
-    props.changeDisplay(false)
-  }
+  mutation = gql`
+  mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!, $color:String!){
+  createEra(input :{
+    userId: $userId,
+    name: $name,
+    startDate:$startDate,
+    endDate:$endDate,
+    color:$color,
+  }){
+    userId
+    }
+}`
 
   return (
     <form className='event-form'>
@@ -46,7 +57,7 @@ export const EventForm = ( props: EventProps ) => {
       />
       <button
         type='submit'
-        onClick={handleSubmit}
+        onClick={props.handleSubmit}
       >SUBMIT</button>
     </form>
   )

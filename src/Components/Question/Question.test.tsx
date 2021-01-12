@@ -47,11 +47,11 @@ describe('Question', () => {
 
     const dateInput = getByTestId('date');
     const skipBtn = getByText('Skip');
-    // const nextBtn = getByText('Next');
+    const nextBtn = getByText('Next');
 
     expect(dateInput).toBeInTheDocument();
     expect(skipBtn).toBeInTheDocument();
-    // expect(nextBtn).toBeInTheDocument();
+    expect(nextBtn).toBeInTheDocument();
   });
 
   it('should display the current question', () => {
@@ -110,7 +110,7 @@ describe('Question', () => {
     expect(dateInput.value).toEqual(testDate);
   });
 
-  it.skip('should fire a function when the next button is clicked', () => {
+  it('should fire a function when the next button is clicked', () => {
     const mockQuestions = [
       {
         question: 'When did you graduate high school?',

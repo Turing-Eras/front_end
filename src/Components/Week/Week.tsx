@@ -11,7 +11,7 @@ type WeekProps = {
 const Week = (props: WeekProps) => {
   let color:string | null;
   if(props.color === null){
-    color = 'purple'
+    color = ''
   }
   if(props.color === 'none'){
     color = 'red'
