@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+type updateUserId = (id:number) => void
 type FormStartPageProps = {
   userId: number;
   userName: string;
+  updateUserId :updateUserId
 };
 let FormStartPage = (props: FormStartPageProps) => {
+  useEffect(() => {
+    props.updateUserId(props.userId)
+  }, [props.userId])
   return (
     <section>
       <p>

@@ -1,13 +1,14 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { Question } from "../Question/Question";
-import HeaderComponent from "../HeaderComponent/HeaderComponent";
-import ProgressBar from "../ProgressBar/ProgressBar";
-import { gql, useQuery } from "@apollo/client";
-import { queryHelpers } from "@testing-library/react";
+import React, { ReactElement, useEffect, useState } from 'react';
+import { Question } from '../Question/Question';
+import HeaderComponent from '../HeaderComponent/HeaderComponent';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import { gql, useQuery } from '@apollo/client';
+import { queryHelpers } from '@testing-library/react';
+import CalendarComponent from '../CalendarComponent/CalendarComponent';
 
-interface FormContainer {
-  useEffect: void;
-}
+type FormContaineProps = {
+  userId: number;
+};
 
 interface Question {
   question: string;
@@ -22,11 +23,12 @@ export const getQuestionsQuery = gql`
       id
       question
       name
+      eventType
     }
   }
 `;
 
-export const FormContainer = () => {
+export const FormContainer = (props: FormContaineProps) => {
   const [answers, setAnswer] = useState<string[]>([]);
   const [currentQuestionIndex, changeQuestion] = useState(0);
 
@@ -41,7 +43,7 @@ export const FormContainer = () => {
   let questions = data.getOnboardingQuestions;
 
   if (answers.length === questions.length) {
-    return <button type="submit">Submit</button>;
+    return <CalendarComponent userId={props.userId} />;
   }
 
   return (
@@ -55,11 +57,13 @@ export const FormContainer = () => {
       {answers.length === 0 && <HeaderComponent />}
       <form>
         <Question
+          questionType={questions[currentQuestionIndex].eventType}
           currentQuestion={questions[currentQuestionIndex].question}
           changeQuestion={changeQuestion}
           currentQuestionIndex={currentQuestionIndex}
           setAnswer={setAnswer}
           answers={answers}
+          userId={props.userId}
         />
       </form>
     </>

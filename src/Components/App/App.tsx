@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormContainer } from "../FormContainer/FormContainer";
 import { Route } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
 import CalendarComponent from "../CalendarComponent/CalendarComponent";
 import RequiredForm from "../RequiredForm/RequiredForm";
 export const App = () => {
+  let [userId, updateUserId] = useState(0);
   return (
     <>
-      <Route exact path="/">
-        <RequiredForm />
-      </Route>
+      <Route
+        exact
+        path="/"
+        render={() => {
+          return <RequiredForm updateUserId={updateUserId} />;
+        }}
+      ></Route>
 
       <Route
         path="/login"
@@ -20,13 +25,13 @@ export const App = () => {
       <Route
         path="/form"
         render={() => {
-          return <FormContainer />;
+          return <FormContainer userId={userId} />;
         }}
       ></Route>
       <Route
-        path="/calendar"
+        path="/calender"
         render={() => {
-          return <CalendarComponent />;
+          return <CalendarComponent userId={userId} />;
         }}
       ></Route>
     </>
