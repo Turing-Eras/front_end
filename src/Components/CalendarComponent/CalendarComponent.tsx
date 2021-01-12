@@ -47,23 +47,24 @@ export const Get_User = gql`
 const CalendarComponent = (props: CalenderComponentProps) => {
   
   let id = props.userId
-  if(props.userId ===0 && sessionStorage.getItem('userId') !== undefined ){
+  if(props.userId ===0 || props.userId ===null && sessionStorage.getItem('userId') !== undefined ){
     //@ts-ignore
     id =JSON.parse(sessionStorage.getItem('userId'))
   }  
+
   const { data, loading, error } = useQuery(Get_User, {
     variables: { id: id }
   });
-  
+  if(error && !id ){
+    return <p>Please make a user before trying to make a calendar</p>
+  }
   if (loading) {
     return <p>Loading your Calender</p>;
   }
   if (error) {
-    return <p>error</p>;
+    return <p>Something went wrong</p>;
   }
-  if(data){
-    console.log(data)
-  }
+
   
   let calendar = new Array(76);
   calendar.fill({});
