@@ -1,10 +1,10 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { Question } from "../Question/Question";
-import HeaderComponent from "../HeaderComponent/HeaderComponent";
-import ProgressBar from "../ProgressBar/ProgressBar";
-import { gql, useQuery } from "@apollo/client";
-import { queryHelpers } from "@testing-library/react";
-import CalendarComponent from "../CalendarComponent/CalendarComponent";
+import React, { ReactElement, useEffect, useState } from 'react';
+import { Question } from '../Question/Question';
+import HeaderComponent from '../HeaderComponent/HeaderComponent';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import { gql, useQuery } from '@apollo/client';
+import { queryHelpers } from '@testing-library/react';
+import CalendarComponent from '../CalendarComponent/CalendarComponent';
 
 type FormContaineProps = {
   userId: number;
@@ -71,7 +71,6 @@ export const FormContainer = (props: FormContaineProps) => {
           userId={id}
         />
       </form>
-    
     </>
   );
 };
