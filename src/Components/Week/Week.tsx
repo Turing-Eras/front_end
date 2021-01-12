@@ -23,8 +23,7 @@ const Week = (props: WeekProps) => {
     console.log('you clicked', props.name)
     console.log(color)
   };
-    // @ts-ignore 
-  return <section style = {{backgroundColor:color}} className='week' onClick={handleClick}></section>;
+  return <section data-testid='week' style = {{backgroundColor:color}} className='week' onClick={handleClick}></section>;
 };
 
 export default Week;
