@@ -21,15 +21,9 @@ type era = {
   name: string,
   weekNumber: number
 }
-const CalendarComponent = (props: CalenderComponentProps) => {
-let id = props.userId
-if(props.userId ===0 && localStorage.length !==0){
-  //@ts-ignore
-  id =JSON.parse(localStorage.getItem('userId'))
-}  
-  let Get_User = gql`
-  query getUser($id :ID!){
-    getUser(id:$id){
+export const Get_User = gql`
+  query getUser($id: ID!) {
+    getUser(id: $id) {
       id
       name
       events {
@@ -51,20 +45,26 @@ if(props.userId ===0 && localStorage.length !==0){
 `;    
 
 const CalendarComponent = (props: CalenderComponentProps) => {
+  
+  let id = props.userId
+  if(props.userId ===0 && sessionStorage.getItem('userId') !== undefined ){
+    //@ts-ignore
+    id =JSON.parse(sessionStorage.getItem('userId'))
+  }  
   const { data, loading, error } = useQuery(Get_User, {
-    variables: { id: props.userId }
+    variables: { id: id }
   });
-  if(id=== 0){
-    return <p>Please enter your name email and birthdate before you try to make a calendar</p>
-  }
+  
   if (loading) {
     return <p>Loading your Calender</p>;
   }
   if (error) {
-    return <p>SOMETHING WENT WRONG</p>;
+    return <p>error</p>;
   }
-  if (data) {
-             
+  if(data){
+    console.log(data)
+  }
+  
   let calendar = new Array(76);
   calendar.fill({});
   let display = calendar.map((year, index) => {
@@ -79,6 +79,10 @@ const CalendarComponent = (props: CalenderComponentProps) => {
         return event.weekNumber === currentWeek;
       });
       let currentEra = data.getUser.eras.find((era: era) => {
+        if (era.startWeek >= currentWeek && era.endWeek <= currentWeek) {
+          
+        }
+
         if (era.startWeek >= currentWeek) {
           return true;
         }
@@ -130,6 +134,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
     </section>
   );
 };
-}}
 
-export default CalendarComponent;
+
+export default React.memo(CalendarComponent);

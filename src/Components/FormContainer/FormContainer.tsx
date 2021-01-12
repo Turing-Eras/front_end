@@ -30,9 +30,9 @@ export const getQuestionsQuery = gql`
 
 export const FormContainer = (props: FormContaineProps) => {
   let id = props.userId
-  if(props.userId ===0 && localStorage.length !==0){
+  if(props.userId ===0 && sessionStorage.length !==0){
   //@ts-ignore
-  id =JSON.parse(localStorage.getItem('userId'))
+  id =JSON.parse(sessionStorage.getItem('userId'))
 }  
   const [answers, setAnswer] = useState<string[]>([]);
   const [currentQuestionIndex, changeQuestion] = useState(0);
