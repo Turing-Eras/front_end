@@ -100,7 +100,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
         }
       });
       if (currentEvent) {
-        console.log(currentEvent)
         return (
           <Week
             key={currentWeek}
@@ -110,7 +109,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
           />
         );
       }
-      console.log(currentEra)
       if(currentNewEra){
         return (
           <Week
