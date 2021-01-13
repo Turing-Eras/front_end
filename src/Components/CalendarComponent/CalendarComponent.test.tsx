@@ -55,15 +55,15 @@ describe('CalendarComponent', () => {
       </MockedProvider>
     );
 
-    const title = await waitFor(() => getByText('Your calendar'));
-    const age0 = await waitFor(() => getByText('Age: 0'));
+    const title = await waitFor(() => getByText('Your Calendar'));
+    const age00 = await waitFor(() => getByText('Age: 00'));
     const age30 = await waitFor(() => getByText('Age: 30'));
     const age60 = await waitFor(() => getByText('Age: 60'));
 
     expect(title).toBeInTheDocument();
-    expect(age0).toBeInTheDocument();
+    expect(age00).toBeInTheDocument();
     expect(age30).toBeInTheDocument();
-    expect(age60).toBeInTheDocument();
+    expect(age60).toBeInTheDocument();    
   });
 
   it('should render a loading message', () => {
@@ -89,9 +89,11 @@ describe('CalendarComponent', () => {
       </MockedProvider>
     );
 
-    const errorMsg = await waitFor(() => getByText('Please make a user before trying to make a calendar'));
+    const errorMsg = await waitFor(() =>
+      getByText('Please make a user before trying to make a calendar')
+    );
     expect(errorMsg).toBeInTheDocument();
-  });  
+  });
 
   it('should render a Week component', async () => {
     const { getAllByTestId } = render(
