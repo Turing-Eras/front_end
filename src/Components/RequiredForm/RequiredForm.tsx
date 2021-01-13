@@ -10,6 +10,9 @@ type RequiredFormProps = {
 };
 
 let RequiredForm = (props: RequiredFormProps) => {
+  if(sessionStorage.getItem('userId') !== undefined ){
+    sessionStorage.removeItem('userId')
+  }
   let create_user = gql`
     mutation createUser($name: String!, $email: String!, $birthdate: String!) {
       createUser(input: { name: $name, email: $email, birthdate: $birthdate }) {
