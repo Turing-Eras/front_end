@@ -82,6 +82,7 @@ export const Question = (props: QuestionProps) => {
       <div className='question-buttons'>
       <button
         type="button"
+        className = 'skip-button'
         onClick={() => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, ""]);
