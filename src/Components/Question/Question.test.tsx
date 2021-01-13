@@ -24,7 +24,7 @@ const mocks = [
 ];
 
 describe('Question', () => {
-  it.skip('should render with an input, a skip and a next button', () => {
+  it('should render with an input, a skip and a next button', () => {
     const questions = [
       {
         question: 'When did you graduate high school?',
@@ -47,7 +47,7 @@ describe('Question', () => {
     const nextBtn = getByText('Next');
 
     expect(dateInput).toBeInTheDocument();
-    expect(skipBtn).toBeInTheDocument();
+    expect(skipBtn).toBeInTheDocument();      
     expect(nextBtn).toBeInTheDocument();
   });
 
@@ -137,20 +137,20 @@ describe('Question', () => {
 
     const testDate = '2021-01-05';
     const nextBtn = getByText('Next');
-    const dateInput = getByTestId('date');   
+    const dateInput = getByTestId('date');
     const question = getByText('When did you graduate high school?');
 
     expect(question).toBeInTheDocument();
     expect(dateInput).toBeInTheDocument();
-    expect(nextBtn).toBeInTheDocument();  
-    
+    expect(nextBtn).toBeInTheDocument();
+
     expect(dateInput.value).toEqual('');
     fireEvent.change(dateInput, { target: { value: testDate } });
     expect(dateInput.value).toEqual(testDate);
-    userEvent.click(nextBtn);     
-    
+    userEvent.click(nextBtn);
+
     expect(mockChangeQ).toHaveBeenCalledTimes(1);
-    expect(mockSetAnswer).toHaveBeenCalledTimes(1); 
+    expect(mockSetAnswer).toHaveBeenCalledTimes(1);
   });
 
   it('should fire a function when the skip button is clicked', () => {
