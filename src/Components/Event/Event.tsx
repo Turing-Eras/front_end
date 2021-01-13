@@ -80,8 +80,6 @@ const Event = (props: eventProps) => {
       return error
     });
     if(response){
-      console.log(response)
-      console.log("happens")
       props.addEra([...props.newEras,response.data.createEra])
       changeDisplay(false)
     }

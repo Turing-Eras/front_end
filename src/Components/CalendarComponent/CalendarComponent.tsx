@@ -51,7 +51,6 @@ export const Get_User = gql`
 
 const CalendarComponent = (props: CalenderComponentProps) => {
   let [newEras, addEra] = useState <era[]>([]) 
-  console.log(newEras)
 
   let id = props.userId
   if(props.userId ===0 || props.userId ===null && sessionStorage.getItem('userId') !== undefined ){
@@ -65,15 +64,12 @@ const CalendarComponent = (props: CalenderComponentProps) => {
     return <p>Please make a user before trying to make a calendar</p>
   }
   if (loading) {
-    console.log('loading')
     return <p>Loading your Calender</p>;
   }
   if (error) {
     return <p>Something went wrong</p>;
   }
-  if(data){
-    console.log(data)
-  }
+  
 
   let calendar = new Array(76);
   calendar.fill({});
@@ -95,7 +91,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
           return true;
         }
       })
-      console.log(currentNewEra)
       let currentEra = data.getUser.eras.find((era: era) => {
         if (currentWeek > era.endWeek) return false;
 
