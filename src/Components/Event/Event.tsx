@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import EventForm from '../EventForm/EventForm'
-//
+
 const Event = () => {
   const [lifeEvent, setLifeEvent] = useState('')
   const [startEvent, setStartEvent] = useState('')
