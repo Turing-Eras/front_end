@@ -65,22 +65,26 @@ export const Question = (props: QuestionProps) => {
   return (
     <>
       <p className='question'>{props.currentQuestion}</p>
-      <input
-        className='calendar-input'
-        data-testid="date"
-        type="date"
-        onChange={handleChange}
-        value={date}
-      ></input>
-      {props.questionType === "era" && (
+      <label>
+        <input
+          className='calendar-input'
+          data-testid="date"
+          type="date"
+          onChange={handleChange}
+          value={date}
+        />
+      </label>
+      <label>
+        {props.questionType === "era" && (
         <input
           className='calendar-input'
           data-testid="date"
           type="date"
           onChange={handleEndDateChange}
           value={endDate}
-        ></input>
+        />
       )}
+      </label>
       <div className='question-buttons'>
       <button
         className='skip-button'

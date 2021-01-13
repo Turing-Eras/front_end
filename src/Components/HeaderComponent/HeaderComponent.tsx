@@ -7,7 +7,7 @@ import Logo from '../../../public/eras-logo-horizontal.png'
 const HeaderComponent = () =>{
   return (
       <header className='header'>
-        <img src='eras-logo-horizontal.png' className='logo'/>
+        <img src='eras-logo-horizontal.png' className='logo' alt='eras logo'/>
         <div>
         {/*<h1 className='logo-area'>ERAS</h1> */}
         </div>

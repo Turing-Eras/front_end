@@ -29,21 +29,27 @@ export const EventForm = ( props: EventProps ) => {
 
   return (
     <form className='event-form'>
-      <label>Name of Era: </label>
-      <input
-        type='text'
-        onChange={props.handleLifeEvent}
-      />
-      <label>Start Date: </label>
-      <input
-        type='date'
-        onChange={props.handleStartEvent}
-      />
-      <label>End Date: </label>
-      <input
-        type='date'
-        onChange={props.handleEndEvent}
-      />
+      <label>
+        Name of Era:
+        <input
+          type='text'
+          onChange={props.handleLifeEvent}
+        />
+      </label>
+      <label>
+      Start Date:
+        <input
+          type='date'
+          onChange={props.handleStartEvent}
+        />
+      </label>
+      <label>
+      End Date:
+        <input
+          type='date'
+          onChange={props.handleEndEvent}
+        />
+      </label>
       <button
         type='submit'
         onClick={handleSubmit}
