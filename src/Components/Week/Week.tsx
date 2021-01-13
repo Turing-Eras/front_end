@@ -14,7 +14,7 @@ const Week = (props: WeekProps) => {
     color = 'purple'
   }
   if(props.color === 'none'){
-    color = 'red'
+    color = '#a94460'
   }
   else{
     color = props.color

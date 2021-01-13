@@ -139,7 +139,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
         <Event />
       <p className='week-title'>Weeks</p>
       <div className='calendar-area'>
-      Your calendar
       {display}
       </div>
     </section>
