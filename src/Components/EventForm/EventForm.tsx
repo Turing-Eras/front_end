@@ -45,7 +45,7 @@ export const EventForm = ( props: EventProps ) => {
         onChange={props.handleEndEvent}
       />
       <button
-        type='submit'
+        type='button'
         onClick={props.handleSubmit}
       >SUBMIT</button>
     </form>
