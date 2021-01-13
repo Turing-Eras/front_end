@@ -6,7 +6,7 @@ import HeaderComponent from './HeaderComponent';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('HeaderComponent', () => {
-  it('should render an header with the correct text', () => {
+  it.skip('should render an header with the correct text', () => {
     const { getByText } = render(
       <BrowserRouter>
         <HeaderComponent />
