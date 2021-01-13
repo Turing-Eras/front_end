@@ -19,23 +19,26 @@ export const figureMutation = (questionType: string):DocumentNode => {
   let mutation:DocumentNode;
     if (questionType === "event") {
       mutation = gql`
-        mutation createEvent($userId: ID!, $name: String!, $date: String!) {
-          createEvent(input: { userId: $userId, name: $name, date: $date }){
-            userId
+          mutation createEvent($userId: ID!, $name: String!, $date: String!, $color: String!) {
+            createEvent(input: { userId: $userId, name: $name, date: $date, color: $color }){
+              userId
+              color
+            }
           }
-        }
       `;
     }
     if (questionType === "era") {
       mutation = gql`
-        mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!){
+        mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!, $color:String!){
         createEra(input :{
           userId: $userId,
           name: $name,
           startDate:$startDate,
           endDate:$endDate,
+          color:$color,
         }){
           userId
+          color
           }
       }`
 ;
@@ -106,6 +109,7 @@ export const Question = (props: QuestionProps) => {
                 userId: props.userId,
                 name: props.currentQuestion,
                 date: date.split("-").reverse().join("-"),
+                color:'',
               },
             });
           }
@@ -116,6 +120,7 @@ export const Question = (props: QuestionProps) => {
                 name: props.currentQuestion,
                 startDate: date.split("-").reverse().join("-"),
                 endDate: endDate.split("-").reverse().join("-"),
+                color: '',
               },
             });
             updateEndDate("");

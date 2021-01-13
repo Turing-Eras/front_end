@@ -82,6 +82,7 @@ const Event = (props: eventProps) => {
       return error
     });
     if(response){
+      console.log(response.data.createEra)
       props.addEra([...props.newEras,response.data.createEra])
       setLifeEvent('')
       setEndEvent('')
