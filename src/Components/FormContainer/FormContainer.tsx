@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useState } from 'react';
+import { Redirect} from "react-router-dom";
 import { Question } from '../Question/Question';
 import HeaderComponent from '../HeaderComponent/HeaderComponent';
 import ProgressBar from '../ProgressBar/ProgressBar';
@@ -50,7 +51,12 @@ export const FormContainer = (props: FormContaineProps) => {
   let questions = data.getOnboardingQuestions;
 
   if(answers.length === questions.length) {
-    return <CalendarComponent userId = {id}/>
+   return <Redirect
+            to={{
+            pathname: "/calendar",
+            state: { userId: id}
+          }}
+        />
     }
 
   return (
