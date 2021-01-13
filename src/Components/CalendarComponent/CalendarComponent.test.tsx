@@ -89,9 +89,9 @@ describe('CalendarComponent', () => {
       </MockedProvider>
     );
 
-    const errorMsg = await waitFor(() => getByText('SOMETHING WENT WRONG'));
+    const errorMsg = await waitFor(() => getByText('Something went wrong'));
     expect(errorMsg).toBeInTheDocument();
-  });
+  });  
 
   it('should render a Week component', async () => {
     const { getAllByTestId } = render(
@@ -101,7 +101,6 @@ describe('CalendarComponent', () => {
     );
 
     const week = await waitFor(() => getAllByTestId('week'));
-    expect(week).toHaveLength(3952)      
-  });    
+    expect(week).toHaveLength(3952);
+  });
 });
-     
