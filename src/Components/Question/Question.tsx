@@ -28,13 +28,12 @@ export const figureMutation = (questionType: string):DocumentNode => {
     }
     if (questionType === "era") {
       mutation = gql`
-        mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!, $color:String!){
+        mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!){
         createEra(input :{
           userId: $userId,
           name: $name,
           startDate:$startDate,
           endDate:$endDate,
-          color:$color,
         }){
           userId
           }
@@ -91,6 +90,7 @@ export const Question = (props: QuestionProps) => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, ""]);
           updateDate("");
+          saveAnswer('')
         }}
       >
         Skip
@@ -123,6 +123,8 @@ export const Question = (props: QuestionProps) => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, answer]);
           updateDate("");
+          saveAnswer('')
+
         }}
       >
         Next

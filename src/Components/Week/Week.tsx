@@ -17,8 +17,10 @@ const Week = (props: WeekProps) => {
       color = '#a94460'
     }
     else{
+      console.log(props.color)
       color = props.color
     }
+
     
       // @ts-ignore
     return <section style = {{backgroundColor:color}} className='week' ></section>;
