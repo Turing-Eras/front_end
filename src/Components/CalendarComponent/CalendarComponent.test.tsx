@@ -48,13 +48,13 @@ describe('CalendarComponent', () => {
       </MockedProvider>
     );              
 
-    const title = await waitFor(() => getByText('Your calendar'))
-    const age0 = await waitFor(() => getByText('Age: 0'))
+    const title = await waitFor(() => getByText('Your Calendar'))
+    const age00 = await waitFor(() => getByText('Age: 00'))
     const age30 = await waitFor(() => getByText('Age: 30'))
     const age60 = await waitFor(() => getByText('Age: 60'))
    
     expect(title).toBeInTheDocument();
-    expect(age0).toBeInTheDocument();
+    expect(age00).toBeInTheDocument();
     expect(age30).toBeInTheDocument();
     expect(age60).toBeInTheDocument();      
   });      

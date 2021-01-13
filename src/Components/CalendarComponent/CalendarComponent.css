@@ -22,13 +22,19 @@ button {
   text-align: center;
   font-family: Bebas Neue;
   font-size: 25px;
-  color:white;
+  color: #F7A83E;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  background: #f2f7f8;
 }
 
 .weeks-display {
   background: transparent;
   flex-wrap: nowrap;
   display: flex;
+  color: #F7A83E;
+}
+
+.calendar-area {
+  background: #f2f7f8;
 }

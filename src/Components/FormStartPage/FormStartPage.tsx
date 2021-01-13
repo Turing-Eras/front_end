@@ -17,9 +17,9 @@ let FormStartPage = (props: FormStartPageProps) => {
     <section>
       <p className='life-choice-statement'>
         As you know life is filled with choices. We've decided to give you
-        another. You can either start off editend your calendar from a blank
-        calendar or you can start off editing on a calendar with some events. If
-        you choose the prefilled calender
+        another. You can either start off able to edit a blank
+        calendar or you can complete a form with generic life questions and will be given a prefilled calendar to edit.
+        Every question on the form is skippable if you feel the question does not apply to you.
       </p>
       <Link to="/calendar" style={{ textDecoration: 'none'}}>
         <button>Start Calendar</button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
  const LoginPage = () =>{
   let [userName,typeName] = useState('')
 
@@ -13,11 +13,12 @@ let createPass = (event: React.ChangeEvent<HTMLInputElement>) =>{
   return (
     <section>
     <form>
-
-      <input value = {userName} type = 'text' name = 'userName' placeholder="Username" onChange = {createUserName}
-      ></input>
-      <input value = {password} type = 'password' name = 'password' placeholder="Password" onChange = {createPass}
-      ></input>
+      <label>
+        <input value = {userName} type = 'text' name = 'userName' placeholder="Username" onChange = {createUserName} />
+      </label>
+      <label>
+        <input value = {password} type = 'password' name = 'password' placeholder="Password" onChange = {createPass} />
+      </label>
     </form>
     <button>Submit</button>
     </section>
