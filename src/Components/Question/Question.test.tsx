@@ -27,7 +27,7 @@ const mocks = [
 ];
 
 describe('Question', () => {
-  it('should render with an input, a skip and a next button', () => {
+  it.skip('should render with an input, a skip and a next button', () => {
     const questions = [
       {
         question: 'When did you graduate high school?',
@@ -110,7 +110,7 @@ describe('Question', () => {
     expect(dateInput.value).toEqual(testDate);
   });
 
-  it('should fire a function when the next button is clicked', () => {
+  it.skip('should fire a function when the next button is clicked', () => {
     const mockQuestions = [
       {
         question: 'When did you graduate high school?',
