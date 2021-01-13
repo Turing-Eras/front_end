@@ -124,6 +124,11 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       );
     });
 
+    if (index < 10 ) {
+      //@ts-ignore
+      index = '0' + index
+    }
+
     return (
       <section className='weeks-display' key={index}>
         Age: {index}
