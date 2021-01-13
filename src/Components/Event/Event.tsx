@@ -1,7 +1,6 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState} from 'react'
 import EventForm from '../EventForm/EventForm'
-import { DocumentNode, gql, useMutation } from "@apollo/client";
-import { render } from 'react-dom';
+import {gql, useMutation } from "@apollo/client";
 type addEra = (era:any) => void
 
 type era = {
@@ -24,13 +23,13 @@ const Event = (props: eventProps) => {
     id =JSON.parse(sessionStorage.getItem('userId'))
   }
     let CREATE_ERA = gql`
-    mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String!, $color:String!){
+    mutation createEra($userId :ID!, $name:String!, $startDate:String!, $endDate:String! $color:String!){
     createEra(input :{
       userId: $userId,
       name: $name,
       startDate:$startDate,
       endDate:$endDate,
-      color:$color,
+      color: $color
     }){
       userId
       name
@@ -69,20 +68,21 @@ const Event = (props: eventProps) => {
     if(lifeEvent === '' || startEvent ===''|| endEvent ==='' ){
       return
     }
-    // let color = Math.floor(Math.random()*16777215).toString(16);
-    //  color = "#"+ color
+    let color = Math.floor(Math.random()*16777215).toString(16);
+     color = "#"+ color
     let response = await makeMutation({
       variables: {
         userId: id,
         name: lifeEvent,
         startDate: startEvent.split("-").reverse().join("-"),
         endDate: endEvent.split("-").reverse().join("-"),
-        // color:color
+        color:color
       },
     }).catch(error =>{
       return error
     });
     if(response){
+      console.log(response.data.createEra)
       props.addEra([...props.newEras,response.data.createEra])
       setLifeEvent('')
       setEndEvent('')

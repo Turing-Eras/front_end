@@ -109,16 +109,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
           />
         );
       }
-      if (currentEra) {
-        return (
-          <Week
-            key={currentWeek}
-            index={currentWeek}
-            color={currentEra.color}
-            name={currentEra.name}
-          />
-        );
-      }
       if(currentNewEra){
         return (
           <Week
@@ -129,6 +119,17 @@ const CalendarComponent = (props: CalenderComponentProps) => {
           />
         );
       }
+      if (currentEra) {
+        return (
+          <Week
+            key={currentWeek}
+            index={currentWeek}
+            color={currentEra.color}
+            name={currentEra.name}
+          />
+        );
+      }
+     
       return (
         <Week
           key={currentWeek}

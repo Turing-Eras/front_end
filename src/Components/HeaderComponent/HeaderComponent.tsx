@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React from 'react';
 import './HeaderComponent.css';
-import Logo from '../../../public/eras-logo-horizontal.png'
+// import Logo from '../../../public/eras-logo-horizontal.png'
 
 
 const HeaderComponent = () =>{

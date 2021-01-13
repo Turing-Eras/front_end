@@ -58,7 +58,7 @@ export const Question = (props: QuestionProps) => {
     updateEndDate(event.target.value)
   }
 
-  const [makeMutation, { data }] = useMutation(figureMutation(props.questionType));
+  const [makeMutation] = useMutation(figureMutation(props.questionType));
 
   return (
     <>

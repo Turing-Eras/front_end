@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextQuestion from "../TextQuestion/TextQuestion";
 import FormStartPage from "../FormStartPage/FormStartPage";
-import { gql, useMutation,ApolloError } from "@apollo/client";
+import { gql, useMutation, } from "@apollo/client";
 import './RequiredForm.css';
 
 type updateUserId = (index: number) => void;
@@ -22,7 +22,7 @@ let RequiredForm = (props: RequiredFormProps) => {
   `;
 
   let [createUser, { data, loading, error, called }] = useMutation(create_user);
-  
+
   if(data === undefined && sessionStorage.getItem('userId') !== undefined ){
     sessionStorage.removeItem('userId')
   }
