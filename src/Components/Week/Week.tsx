@@ -11,7 +11,7 @@ type WeekProps = {
 const Week = (props: WeekProps) => {
   let color:string | null;
   if(props.color === null){
-    color = 'purple'
+    color = ''
   }
   if(props.color === 'none'){
     color = '#a94460'
@@ -20,10 +20,11 @@ const Week = (props: WeekProps) => {
     color = props.color
   }
   let handleClick = () => {
-
   };
     // @ts-ignore
   return <section style = {{backgroundColor:color}} className='week' onClick={handleClick}></section>;
 };
-
-export default Week;
+function areEqual(prevProps:WeekProps, nextProps: WeekProps) {
+  return prevProps.name === nextProps.name
+}
+export default React.memo(Week,areEqual);

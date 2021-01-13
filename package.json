@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.6.0",
     "@apollo/client": "^3.3.6",
     "@testing-library/jest-dom": "^5.11.8",
     "@types/jest": "^26.0.19",
@@ -42,10 +44,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/user-event": "^12.6.0",
-    "@types/react-router-dom": "^5.1.7"
   }
 }

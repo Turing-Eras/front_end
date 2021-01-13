@@ -11,6 +11,7 @@ type HandleClearEvent = (event: React.ChangeEvent<HTMLInputElement>) => void;
 
 type ChangeDisplay = (boolean: boolean) => void;
 
+type handleSubmit = () => void
 
 type EventProps = {
   handleLifeEvent: HandleLifeEvent;
@@ -18,14 +19,13 @@ type EventProps = {
   handleEndEvent: HandleEndEvent;
   handleClearEvent: HandleClearEvent;
   changeDisplay: ChangeDisplay;
+  handleSubmit : handleSubmit
 };
 
 
 export const EventForm = ( props: EventProps ) => {
 
-  const handleSubmit = () => {
-    props.changeDisplay(false)
-  }
+
 
   return (
     <form className='event-form'>
@@ -51,8 +51,8 @@ export const EventForm = ( props: EventProps ) => {
         />
       </label>
       <button
-        type='submit'
-        onClick={handleSubmit}
+        type='button'
+        onClick={props.handleSubmit}
       >SUBMIT</button>
     </form>
   )

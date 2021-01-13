@@ -50,13 +50,13 @@ export const Get_User = gql`
 `;
 
 const CalendarComponent = (props: CalenderComponentProps) => {
+  let [newEras, addEra] = useState <era[]>([]) 
 
   let id = props.userId
   if(props.userId ===0 || props.userId ===null && sessionStorage.getItem('userId') !== undefined ){
     //@ts-ignore
     id =JSON.parse(sessionStorage.getItem('userId'))
   }
-
   const { data, loading, error } = useQuery(Get_User, {
     variables: { id: id }
   });
@@ -69,7 +69,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   if (error) {
     return <p>Something went wrong</p>;
   }
-
+  
 
   let calendar = new Array(76);
   calendar.fill({});
@@ -84,15 +84,19 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       let currentEvent = data.getUser.events.find((event: event) => {
         return event.weekNumber === currentWeek;
       });
-      let currentEra = data.getUser.eras.find((era: era) => {
-        if (era.startWeek >= currentWeek && era.endWeek <= currentWeek) {
+      let currentNewEra = newEras.find((era: era) =>{
+        if (currentWeek > era.endWeek) return false;
 
-        }
-
-        if (era.startWeek >= currentWeek) {
+        if (era.startWeek <= currentWeek) {
           return true;
         }
-        if (currentWeek <= era.endWeek) return false;
+      })
+      let currentEra = data.getUser.eras.find((era: era) => {
+        if (currentWeek > era.endWeek) return false;
+
+        if (era.startWeek <= currentWeek) {
+          return true;
+        }
       });
       if (currentEvent) {
         return (
@@ -111,6 +115,16 @@ const CalendarComponent = (props: CalenderComponentProps) => {
             index={currentWeek}
             color={currentEra.color}
             name={currentEra.name}
+          />
+        );
+      }
+      if(currentNewEra){
+        return (
+          <Week
+            key={currentWeek}
+            index={currentWeek}
+            color={currentNewEra.color}
+            name={currentNewEra.name}
           />
         );
       }
@@ -141,7 +155,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
     <section>
       <HeaderComponent />
       <h1 className='calendar-title'>Your Calendar</h1>
-        <Event />
+        <Event userId = {props.userId} newEras = {newEras} addEra = {addEra} />
       <p className='week-title'>Weeks</p>
       <div className='calendar-area'>
       {display}
@@ -151,4 +165,4 @@ const CalendarComponent = (props: CalenderComponentProps) => {
 };
 
 
-export default React.memo(CalendarComponent);
+export default CalendarComponent;
