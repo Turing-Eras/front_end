@@ -1,8 +1,5 @@
 <br />
 <p align="center">
-  <a href="https://github.com/Turing-Eras/front_end">
-    <img src="" alt="image of application" width="600">
-  </a>
   <h3 align="center">Eras</h3>
   <p align="center">
     A Turing School Mod 4 Paired Project
@@ -54,7 +51,24 @@ In your terminal:
 
 #### Screenshots
 
-<img src="" alt="" width="600">
+**Homepage**
+
+<img src="public/readme-eras-2.png" alt="hompage" width="600">
+
+**  **
+
+**Fill Out Optional Form**
+
+<img src="public/readme-eras-1.png" alt="start form page image" width="600">
+
+** **
+
+**Calendar in Action**
+
+![calendar giphy](https://media.giphy.com/media/QjsHGl9Y1iMcT3Vfqr/giphy.gif)
+
+
+
 
 See the [open issues](https://github.com/orgs/Turing-Eras/projects/1) for a list of proposed features and known issues.
 
