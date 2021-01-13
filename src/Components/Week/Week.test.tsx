@@ -1,10 +1,13 @@
 import React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import { Week } from './Week';
+import { render } from '@testing-library/react';
+import Week from './Week';
 
 describe('Week', () => {
-    it('should render a Week component', () => {
-      expect(true).toBe(true);
-    });
-  });
+  it('should render a Week component', () => {
+    const { getByTestId } = render(<Week />);
+
+    const week = getByTestId('week');
+    expect(week).toBeInTheDocument();
+  });           
+});  

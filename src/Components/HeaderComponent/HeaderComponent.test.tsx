@@ -16,26 +16,4 @@ describe('HeaderComponent', () => {
     const title = getByText('ERAS');
     expect(title).toBeInTheDocument();
   });
-
-  it.skip('should have a login button', () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <HeaderComponent />
-      </BrowserRouter>
-    );
-
-    const loginBtn = getByText('Login');
-    expect(loginBtn).toBeInTheDocument();
-  });
-
-  it.skip('should have a calendar link', () => {
-    const { getByText } = render(
-      <BrowserRouter>
-        <HeaderComponent />
-      </BrowserRouter>
-    );
-
-    const calendarLink = getByText('Calendar');
-    expect(calendarLink).toBeInTheDocument();
-  });
 });

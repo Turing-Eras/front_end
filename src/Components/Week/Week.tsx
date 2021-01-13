@@ -4,7 +4,7 @@ import './Week.css';
 type WeekProps = {
   key: number;
   index: number;
-  color: string | null;
+  color: string | null;  
   name: string | null;
 };
 
@@ -21,9 +21,10 @@ const Week = (props: WeekProps) => {
     }
     
       // @ts-ignore
-    return <section style = {{backgroundColor:color}} className='week' ></section>;
+    return <section data-testid='week' style = {{backgroundColor:color}} className='week' ></section>;
 };
 function areEqual(prevProps:WeekProps, nextProps: WeekProps) {
   return prevProps.name === nextProps.name
 }
-export default React.memo(Week,areEqual);
+export default React.memo(Week,areEqual);   
+   

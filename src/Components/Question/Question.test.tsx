@@ -6,9 +6,6 @@ import { Question } from './Question';
 import { figureMutation, createEvent } from './Question';
 import { MockedProvider } from '@apollo/client/testing';
 
-// import TestRenderer from 'react-test-renderer';
-import { DocumentNode, gql, useMutation } from '@apollo/client';
-
 const mocks = [
   {
     request: {
@@ -27,7 +24,7 @@ const mocks = [
 ];
 
 describe('Question', () => {
-  it.skip('should render with an input, a skip and a next button', () => {
+  it('should render with an input, a skip and a next button', () => {
     const questions = [
       {
         question: 'When did you graduate high school?',
@@ -50,7 +47,7 @@ describe('Question', () => {
     const nextBtn = getByText('Next');
 
     expect(dateInput).toBeInTheDocument();
-    expect(skipBtn).toBeInTheDocument();
+    expect(skipBtn).toBeInTheDocument();      
     expect(nextBtn).toBeInTheDocument();
   });
 
@@ -110,7 +107,7 @@ describe('Question', () => {
     expect(dateInput.value).toEqual(testDate);
   });
 
-  it.skip('should fire a function when the next button is clicked', () => {
+  it('should fire a function when the next button is clicked', () => {
     const mockQuestions = [
       {
         question: 'When did you graduate high school?',
@@ -138,10 +135,18 @@ describe('Question', () => {
       </MockedProvider>
     );
 
+    const testDate = '2021-01-05';
     const nextBtn = getByText('Next');
+    const dateInput = getByTestId('date');
     const question = getByText('When did you graduate high school?');
-    expect(question).toBeInTheDocument();
 
+    expect(question).toBeInTheDocument();
+    expect(dateInput).toBeInTheDocument();
+    expect(nextBtn).toBeInTheDocument();
+
+    expect(dateInput.value).toEqual('');
+    fireEvent.change(dateInput, { target: { value: testDate } });
+    expect(dateInput.value).toEqual(testDate);
     userEvent.click(nextBtn);
 
     expect(mockChangeQ).toHaveBeenCalledTimes(1);
@@ -162,7 +167,7 @@ describe('Question', () => {
 
     const mockChangeQ = jest.fn();
     const mockSetAnswer = jest.fn();
-    const mockAnswers = [];    
+    const mockAnswers = [];
 
     const { getByTestId, getByText } = render(
       <MockedProvider mocks={[]}>
@@ -174,13 +179,13 @@ describe('Question', () => {
           answers={mockAnswers}
         />
       </MockedProvider>
-    );   
+    );
 
     const skipBtn = getByText('Skip');
 
     userEvent.click(skipBtn);
 
     expect(mockChangeQ).toHaveBeenCalledTimes(1);
-    expect(mockSetAnswer).toHaveBeenCalledWith(['']);   
-  });     
+    expect(mockSetAnswer).toHaveBeenCalledWith(['']);
+  });
 });

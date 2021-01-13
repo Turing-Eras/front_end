@@ -29,7 +29,7 @@ let RequiredForm = (props: RequiredFormProps) => {
   let sendUser = async () => {
     let Bday = answers[1];
 
-    let finalBday = Bday.split("-").reverse().join("-");
+    let finalBday = Bday.split('-').reverse().join('-');
     if (!loading && !called) {
       createUser({
         variables: {
@@ -46,9 +46,9 @@ let RequiredForm = (props: RequiredFormProps) => {
   };
 
   let questions = [
-    "What is your name",
-    "What is your birthday",
-    "What is your email address",
+    'What is your name?',
+    'What is your birthday?',
+    'What is your email address?'
   ];
   let [answers, addAnswer] = useState<string[]>([]);
   let [currentQuestionIndex, updateIndex] = useState(0);
@@ -66,7 +66,7 @@ let RequiredForm = (props: RequiredFormProps) => {
     }
   }
   if (data) {
-     return (
+    return (
       <FormStartPage
         updateUserId = {props.updateUserId}
         userId={data.createUser.id}

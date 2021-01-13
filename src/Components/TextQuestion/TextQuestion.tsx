@@ -11,19 +11,17 @@ type QuestionProps = {
   answers: string[];
 };
 
-let TextQuestion = (props:QuestionProps) =>{
-  const [text, updateText] = useState('')
+let TextQuestion = (props: QuestionProps) => {
+  const [text, updateText] = useState('');
   const [answer, saveAnswer] = useState('');
 
-  const handleChange =  (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateText(event.target.value)
-    saveAnswer(event.target.value)
-
-
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateText(event.target.value);
+    saveAnswer(event.target.value);
   };
-  let type = 'text'
-  if(props.currentQuestionIndex === 1){
-    type = 'date'
+  let type = 'text';
+  if (props.currentQuestionIndex === 1) {
+    type = 'date';
   }
   return (
     <section>
