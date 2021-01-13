@@ -20,7 +20,6 @@ const Week = (props: WeekProps) => {
     color = props.color
   }
   let handleClick = () => {
-    console.log(props.name)
   };
     // @ts-ignore
   return <section style = {{backgroundColor:color}} className='week' onClick={handleClick}></section>;

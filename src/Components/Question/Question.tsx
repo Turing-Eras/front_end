@@ -62,8 +62,9 @@ export const Question = (props: QuestionProps) => {
 
   return (
     <>
-      <h1>{props.currentQuestion}</h1>
+      <p className='question'>{props.currentQuestion}</p>
       <input
+        className='calendar-input'
         data-testid="date"
         type="date"
         onChange={handleChange}
@@ -71,12 +72,14 @@ export const Question = (props: QuestionProps) => {
       ></input>
       {props.questionType === "era" && (
         <input
+          className='calendar-input'
           data-testid="date"
           type="date"
           onChange={handleEndDateChange}
           value={endDate}
         ></input>
       )}
+      <div className='question-buttons'>
       <button
         type="button"
         onClick={() => {
@@ -89,6 +92,8 @@ export const Question = (props: QuestionProps) => {
       </button>
       <button
         type="button"
+        className='next-button'
+        disabled={!answer ? true: false}
         onClick={() => {
           if (props.questionType === "event") {
             makeMutation({
@@ -117,6 +122,7 @@ export const Question = (props: QuestionProps) => {
       >
         Next
       </button>
+      </div>
     </>
   );
 };
