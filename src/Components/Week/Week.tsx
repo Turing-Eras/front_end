@@ -19,6 +19,7 @@ const Week = (props: WeekProps) => {
     else{
       color = props.color
     }
+
     
       // @ts-ignore
     return <section data-testid='week' style = {{backgroundColor:color}} className='week' ></section>;

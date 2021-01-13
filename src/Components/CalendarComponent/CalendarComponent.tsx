@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Week from '../Week/Week';
-import NavBar from '../NavBar/NavBar';
 import Event from '../Event/Event'
 import HeaderComponent from '../HeaderComponent/HeaderComponent'
 import './CalendarComponent.css';
@@ -50,6 +49,7 @@ export const Get_User = gql`
 `;
 
 const CalendarComponent = (props: CalenderComponentProps) => {
+
   let [newEras, addEra] = useState <era[]>([]) 
 
   let id = props.userId
@@ -99,16 +99,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
           return true;
         }
       });
-      if (currentEvent) {
-        return (
-          <Week
-            key={currentWeek}
-            index={currentWeek}
-            color={currentEvent.color}
-            name={currentEvent.name}
-          />
-        );
-      }
       if(currentNewEra){
         return (
           <Week
@@ -119,6 +109,17 @@ const CalendarComponent = (props: CalenderComponentProps) => {
           />
         );
       }
+      if (currentEvent) {
+        return (
+          <Week
+            key={currentWeek}
+            index={currentWeek}
+            color={currentEvent.color}
+            name={currentEvent.name}
+          />
+        );
+      }
+      
       if (currentEra) {
         return (
           <Week

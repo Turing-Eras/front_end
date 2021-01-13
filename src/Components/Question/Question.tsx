@@ -19,11 +19,12 @@ export const figureMutation = (questionType: string):DocumentNode => {
   let mutation:DocumentNode;
     if (questionType === "event") {
       mutation = gql`
-        mutation createEvent($userId: ID!, $name: String!, $date: String!) {
-          createEvent(input: { userId: $userId, name: $name, date: $date }){
-            userId
+          mutation createEvent($userId: ID!, $name: String!, $date: String!, $color: String!) {
+            createEvent(input: { userId: $userId, name: $name, date: $date, color: $color }){
+              userId
+              color
+            }
           }
-        }
       `;
     }
     if (questionType === "era") {
@@ -37,6 +38,7 @@ export const figureMutation = (questionType: string):DocumentNode => {
           color:$color,
         }){
           userId
+          color
           }
       }`
 ;
@@ -91,6 +93,7 @@ export const Question = (props: QuestionProps) => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, ""]);
           updateDate("");
+          saveAnswer('')
         }}
       >
         Skip
@@ -106,6 +109,7 @@ export const Question = (props: QuestionProps) => {
                 userId: props.userId,
                 name: props.currentQuestion,
                 date: date.split("-").reverse().join("-"),
+                color:'',
               },
             });
           }
@@ -116,6 +120,7 @@ export const Question = (props: QuestionProps) => {
                 name: props.currentQuestion,
                 startDate: date.split("-").reverse().join("-"),
                 endDate: endDate.split("-").reverse().join("-"),
+                color: '',
               },
             });
             updateEndDate("");
@@ -123,6 +128,8 @@ export const Question = (props: QuestionProps) => {
           props.changeQuestion(props.currentQuestionIndex + 1);
           props.setAnswer([...props.answers, answer]);
           updateDate("");
+          saveAnswer('')
+
         }}
       >
         Next
