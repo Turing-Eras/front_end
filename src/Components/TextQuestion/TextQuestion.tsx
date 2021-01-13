@@ -26,7 +26,9 @@ let TextQuestion = (props: QuestionProps) => {
   return (
     <section>
       <h1>{props.currentQuestion}</h1>
-      <input data-testid='text' type={type} onChange={handleChange} value = {text} ></input>
+      <label>
+        <input data-testid='text' type={type} onChange={handleChange} value = {text} />
+      </label>
        <button
         type='button'
         disabled={!text ? true: false}
@@ -39,7 +41,6 @@ let TextQuestion = (props: QuestionProps) => {
         Next
       </button>
     </section>
-
   )
 }
 export default TextQuestion

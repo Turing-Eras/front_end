@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextQuestion from "../TextQuestion/TextQuestion";
 import FormStartPage from "../FormStartPage/FormStartPage";
-import { gql, useMutation,ApolloError } from "@apollo/client";
+import { gql, useMutation, } from "@apollo/client";
 import './RequiredForm.css';
 
 type updateUserId = (index: number) => void;
@@ -10,6 +10,8 @@ type RequiredFormProps = {
 };
 
 let RequiredForm = (props: RequiredFormProps) => {
+
+  
   let create_user = gql`
     mutation createUser($name: String!, $email: String!, $birthdate: String!) {
       createUser(input: { name: $name, email: $email, birthdate: $birthdate }) {
@@ -21,6 +23,9 @@ let RequiredForm = (props: RequiredFormProps) => {
 
   let [createUser, { data, loading, error, called }] = useMutation(create_user);
 
+  if(data === undefined && sessionStorage.getItem('userId') !== undefined ){
+    sessionStorage.removeItem('userId')
+  }
   let sendUser = async () => {
     let Bday = answers[1];
 
