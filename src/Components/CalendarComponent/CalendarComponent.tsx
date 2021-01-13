@@ -56,7 +56,8 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   if(props.userId ===0 || props.userId ===null && sessionStorage.getItem('userId') !== undefined ){
     //@ts-ignore
     id =JSON.parse(sessionStorage.getItem('userId'))
-  }
+  }  
+
   const { data, loading, error } = useQuery(Get_User, {
     variables: { id: id }
   });
@@ -138,6 +139,11 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       );
     });
 
+    if (index < 10 ) {
+      //@ts-ignore
+      index = '0' + index
+    }
+
     return (
       <section className='weeks-display' key={index}>
         Age: {index}
@@ -153,7 +159,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
         <Event userId = {props.userId} newEras = {newEras} addEra = {addEra} />
       <p className='week-title'>Weeks</p>
       <div className='calendar-area'>
-      Your calendar
       {display}
       </div>
     </section>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { DocumentNode, gql, useMutation } from "@apollo/client";
-
+import './Question.css'
 type ChangeQuestion = (index: number) => void;
 
 type SetAnswer = (answer: string[]) => void;
