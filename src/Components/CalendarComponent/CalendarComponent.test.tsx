@@ -89,7 +89,7 @@ describe('CalendarComponent', () => {
       </MockedProvider>
     );
 
-    const errorMsg = await waitFor(() => getByText('Something went wrong'));
+    const errorMsg = await waitFor(() => getByText('Please make a user before trying to make a calendar'));
     expect(errorMsg).toBeInTheDocument();
   });  
 
