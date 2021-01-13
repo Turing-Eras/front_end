@@ -69,15 +69,15 @@ const Event = (props: eventProps) => {
     if(lifeEvent === '' || startEvent ===''|| endEvent ==='' ){
       return
     }
-    let color = Math.floor(Math.random()*16777215).toString(16);
-     color = "#"+ color
+    // let color = Math.floor(Math.random()*16777215).toString(16);
+    //  color = "#"+ color
     let response = await makeMutation({
       variables: {
         userId: id,
         name: lifeEvent,
         startDate: startEvent.split("-").reverse().join("-"),
         endDate: endEvent.split("-").reverse().join("-"),
-        color:color
+        // color:color
       },
     }).catch(error =>{
       return error
