@@ -84,6 +84,9 @@ const Event = (props: eventProps) => {
     });
     if(response){
       props.addEra([...props.newEras,response.data.createEra])
+      setLifeEvent('')
+      setEndEvent('')
+      setStartEvent('')
       changeDisplay(false)
     }
 
