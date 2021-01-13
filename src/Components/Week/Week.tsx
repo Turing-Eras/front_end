@@ -17,7 +17,6 @@ const Week = (props: WeekProps) => {
       color = '#a94460'
     }
     else{
-      console.log(props.color)
       color = props.color
     }
 
