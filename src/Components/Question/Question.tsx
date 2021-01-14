@@ -80,6 +80,9 @@ export const Question = (props: QuestionProps) => {
           setError('Era can not happen after today')
            return
         }
+        if(new Date(endDate).getTime() < new Date(date).getTime()){
+          setError('End date can can not happen before start date')
+        }
         makeMutation({
           variables: {
             userId: props.userId,
