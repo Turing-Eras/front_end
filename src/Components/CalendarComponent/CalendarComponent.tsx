@@ -50,13 +50,13 @@ export const Get_User = gql`
 
 const CalendarComponent = (props: CalenderComponentProps) => {
 
-  let [newEras, addEra] = useState <era[]>([]) 
+  let [newEras, addEra] = useState <era[]>([])
 
   let id = props.userId
   if(props.userId ===0 || props.userId ===null && sessionStorage.getItem('userId') !== undefined ){
     //@ts-ignore
     id =JSON.parse(sessionStorage.getItem('userId'))
-  }  
+  }
 
   const { data, loading, error } = useQuery(Get_User, {
     variables: { id: id }
@@ -70,7 +70,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   if (error) {
     return <p>Something went wrong</p>;
   }
-  
+
 
   let calendar = new Array(76);
   calendar.fill({});
@@ -130,7 +130,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
           />
         );
       }
-     
+
       return (
         <Week
           key={currentWeek}
