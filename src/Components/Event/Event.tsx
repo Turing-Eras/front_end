@@ -35,6 +35,8 @@ const Event = (props: eventProps) => {
       name
       startWeek
       endWeek
+      startDate
+      endDate
       color
       }
   }`
@@ -64,13 +66,14 @@ const Event = (props: eventProps) => {
   const handleButtonClick = () => {
     changeDisplay(true)
   }
-  let inputError = '' 
+  let [inputError,setError] = useState('')
   const handleSubmit=async () =>{
     if(Date.now() < new Date(startEvent).getTime() || Date.now() < new Date(endEvent).getTime() ){
-       inputError = 'Invalid Dates'
+      setError('Invalid Dates')
        return
     }
     if(lifeEvent === '' || startEvent ===''|| endEvent ==='' ){
+      setError('Please fill all fields')
       return
     }
     let color = Math.floor(Math.random()*16777215).toString(16);
@@ -117,7 +120,7 @@ const Event = (props: eventProps) => {
         handleSubmit = {handleSubmit}
         />
       }
-      {inputError && <p>Input error</p>}
+      {inputError && <p>{inputError}</p>}
     </section>
   )
 }

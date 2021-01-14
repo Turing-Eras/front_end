@@ -1,12 +1,16 @@
 import React from 'react';
 import './Week.css';
-
+type upDateWeekClicked = (object: any) => void
+type clickWeek = (bool: boolean) => void
 type WeekProps = {
   key: number;
   index: number;
   color: string | null;  
   name: string | null;
-};
+  upDateWeekClicked :upDateWeekClicked;
+  clickWeek: clickWeek
+  startDate?: string,
+  endDate?: string};
 
 const Week = (props: WeekProps) => {
     let color:string | null;
@@ -19,10 +23,18 @@ const Week = (props: WeekProps) => {
     else{
       color = props.color
     }
-
+    let handleClick = () =>{
+      console.log("clicked")
+      props.clickWeek(true)
+      props.upDateWeekClicked({
+        name:props.name,
+        startDate:props.startDate,
+        endDate: props.endDate
+      })
+    }
     
       // @ts-ignore
-    return <section data-testid='week' style = {{backgroundColor:color}} className='week' ></section>;
+    return <section data-testid='week' onClick = {handleClick}style = {{backgroundColor:color}} className='week' ></section>;
 };
 function areEqual(prevProps:WeekProps, nextProps: WeekProps) {
   return prevProps.name === nextProps.name
