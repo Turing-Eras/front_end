@@ -67,6 +67,7 @@ export const FormContainer = (props: FormContaineProps) => {
         <Question
           questionType={questions[currentQuestionIndex].eventType}
           currentQuestion={questions[currentQuestionIndex].question}
+          questionName = {questions[currentQuestionIndex].name}
           changeQuestion={changeQuestion}
           currentQuestionIndex={currentQuestionIndex}
           setAnswer={setAnswer}

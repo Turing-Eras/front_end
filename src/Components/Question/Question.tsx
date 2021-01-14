@@ -10,6 +10,7 @@ type QuestionProps = {
   changeQuestion: ChangeQuestion;
   currentQuestionIndex: number;
   currentQuestion: string;
+  questionName: string,
   setAnswer: SetAnswer;
   answers: string[];
   userId: number;
@@ -69,7 +70,7 @@ export const Question = (props: QuestionProps) => {
         makeMutation({
           variables: {
             userId: props.userId,
-            name: props.currentQuestion,
+            name: props.questionName,
             date: date.split("-").reverse().join("-"),
             color:'',
           },
