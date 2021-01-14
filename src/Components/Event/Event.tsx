@@ -64,7 +64,12 @@ const Event = (props: eventProps) => {
   const handleButtonClick = () => {
     changeDisplay(true)
   }
+  let inputError = '' 
   const handleSubmit=async () =>{
+    if(Date.now() < new Date(startEvent).getTime() || Date.now() < new Date(endEvent).getTime() ){
+       inputError = 'Invalid Dates'
+       return
+    }
     if(lifeEvent === '' || startEvent ===''|| endEvent ==='' ){
       return
     }
@@ -112,6 +117,7 @@ const Event = (props: eventProps) => {
         handleSubmit = {handleSubmit}
         />
       }
+      {inputError && <p>Input error</p>}
     </section>
   )
 }
