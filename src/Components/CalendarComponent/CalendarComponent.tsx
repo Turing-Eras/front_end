@@ -30,6 +30,7 @@ export const Get_User = gql`
     getUser(id: $id) {
       id
       name
+      currentWeek
       events {
         id
         name
@@ -72,7 +73,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   }
 
 
-  let calendar = new Array(76);
+  let calendar = new Array(90);
   calendar.fill({});
   let display = calendar.map((year, index) => {
     let weeks = new Array(52);
@@ -130,6 +131,15 @@ const CalendarComponent = (props: CalenderComponentProps) => {
           />
         );
       }
+      if(data.getUser.currentWeek <= currentWeek){
+       return( <Week
+          key={currentWeek}
+          index={currentWeek}
+          color={'white'}
+          name={null}
+        />
+      )
+     }
 
       return (
         <Week

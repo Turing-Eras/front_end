@@ -81,6 +81,13 @@ const Event = (props: eventProps) => {
     }).catch(error =>{
       return error
     });
+    if(loading){
+      return <p>We are trying your event</p>
+    }
+    if(error){
+      return <p>Something went wrong</p>
+    }
+     
     if(response){
       console.log(response.data.createEra)
       props.addEra([...props.newEras,response.data.createEra])
@@ -91,13 +98,7 @@ const Event = (props: eventProps) => {
     }
 
   }
-  if(loading){
-    return <p>We are trying your event</p>
-  }
-  if(error){
-    return <p>Something went wrong</p>
-  }
-   
+  
 
   return (
     <section>
