@@ -24,7 +24,6 @@ const Week = (props: WeekProps) => {
       color = props.color
     }
     let handleClick = () =>{
-      console.log("clicked")
       props.clickWeek(true)
       props.upDateWeekClicked({
         name:props.name,
