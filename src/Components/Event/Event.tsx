@@ -35,6 +35,8 @@ const Event = (props: eventProps) => {
       name
       startWeek
       endWeek
+      startDate
+      endDate
       color
       }
   }`
@@ -64,8 +66,18 @@ const Event = (props: eventProps) => {
   const handleButtonClick = () => {
     changeDisplay(true)
   }
+  let [inputError,setError] = useState('')
   const handleSubmit=async () =>{
+    if(Date.now() < new Date(startEvent).getTime() || Date.now() < new Date(endEvent).getTime() ){
+      setError('Invalid Dates')
+       return
+    }
+    if(new Date(startEvent).getTime() > new Date(endEvent).getTime()){
+      setError('End date can can not happen before start date')
+      return
+    }
     if(lifeEvent === '' || startEvent ===''|| endEvent ==='' ){
+      setError('Please fill all fields')
       return
     }
     let color = Math.floor(Math.random()*16777215).toString(16);
@@ -81,8 +93,14 @@ const Event = (props: eventProps) => {
     }).catch(error =>{
       return error
     });
+    if(loading){
+      return <p>We are trying your event</p>
+    }
+    if(error){
+      return <p>Something went wrong</p>
+    }
+     
     if(response){
-      console.log(response.data.createEra)
       props.addEra([...props.newEras,response.data.createEra])
       setLifeEvent('')
       setEndEvent('')
@@ -91,13 +109,7 @@ const Event = (props: eventProps) => {
     }
 
   }
-  if(loading){
-    return <p>We are trying your event</p>
-  }
-  if(error){
-    return <p>Something went wrong</p>
-  }
-   
+  
 
   return (
     <section>
@@ -111,6 +123,7 @@ const Event = (props: eventProps) => {
         handleSubmit = {handleSubmit}
         />
       }
+      {inputError && <p>{inputError}</p>}
     </section>
   )
 }

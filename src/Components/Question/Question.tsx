@@ -10,6 +10,7 @@ type QuestionProps = {
   changeQuestion: ChangeQuestion;
   currentQuestionIndex: number;
   currentQuestion: string;
+  questionName: string,
   setAnswer: SetAnswer;
   answers: string[];
   userId: number;
@@ -51,6 +52,7 @@ export const Question = (props: QuestionProps) => {
   const [date, updateDate] = useState("");
   const [endDate, updateEndDate] = useState("");
   const [answer, saveAnswer] = useState("");
+  const [inputError, setError] = useState('')
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateDate(event.target.value);
@@ -59,7 +61,46 @@ export const Question = (props: QuestionProps) => {
   const handleEndDateChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
     updateEndDate(event.target.value)
   }
-
+  const handleClick = () =>{
+      if (props.questionType === "event") {
+        if(Date.now() < new Date(date).getTime() ){
+          setError('Event can not happen afte today')
+           return
+        }
+        makeMutation({
+          variables: {
+            userId: props.userId,
+            name: props.questionName,
+            date: date.split("-").reverse().join("-"),
+            color:'',
+          },
+        });
+      }
+      if (props.questionType === "era") {
+        if(Date.now() < new Date(date).getTime() || Date.now() < new Date(endDate).getTime() ){
+          setError('Era can not happen after today')
+           return
+        }
+        if(new Date(endDate).getTime() < new Date(date).getTime()){
+          setError('End date can can not happen before start date')
+        }
+        makeMutation({
+          variables: {
+            userId: props.userId,
+            name: props.currentQuestion,
+            startDate: date.split("-").reverse().join("-"),
+            endDate: endDate.split("-").reverse().join("-"),
+            color: '',
+          },
+        });
+        updateEndDate("");
+      }
+      props.changeQuestion(props.currentQuestionIndex + 1);
+      props.setAnswer([...props.answers, answer]);
+      updateDate("");
+      saveAnswer('')
+      setError('')
+  }
   const [makeMutation] = useMutation(figureMutation(props.questionType));
 
   return (
@@ -102,39 +143,12 @@ export const Question = (props: QuestionProps) => {
         type="button"
         className='next-button'
         disabled={!answer ? true: false}
-        onClick={() => {
-          if (props.questionType === "event") {
-            makeMutation({
-              variables: {
-                userId: props.userId,
-                name: props.currentQuestion,
-                date: date.split("-").reverse().join("-"),
-                color:'',
-              },
-            });
-          }
-          if (props.questionType === "era") {
-            makeMutation({
-              variables: {
-                userId: props.userId,
-                name: props.currentQuestion,
-                startDate: date.split("-").reverse().join("-"),
-                endDate: endDate.split("-").reverse().join("-"),
-                color: '',
-              },
-            });
-            updateEndDate("");
-          }
-          props.changeQuestion(props.currentQuestionIndex + 1);
-          props.setAnswer([...props.answers, answer]);
-          updateDate("");
-          saveAnswer('')
-
-        }}
+        onClick={handleClick}
       >
         Next
       </button>
       </div>
+      {inputError && <p>{inputError}</p>}
     </>
   );
 };

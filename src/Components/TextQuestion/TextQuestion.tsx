@@ -19,6 +19,7 @@ let TextQuestion = (props: QuestionProps) => {
     updateText(event.target.value);
     saveAnswer(event.target.value);
   };
+  
   let type = 'text';
   if (props.currentQuestionIndex === 1) {
     type = 'date';
@@ -27,9 +28,10 @@ let TextQuestion = (props: QuestionProps) => {
     <section>
       <h1>{props.currentQuestion}</h1>
       <label>
-        <input data-testid='text' type={type} onChange={handleChange} value = {text} />
+        <input tabIndex ={1} data-testid='text' type={type} onChange={handleChange} value = {text} />
       </label>
-       <button
+      <div tabIndex ={2} >
+       <button 
         type='button'
         disabled={!text ? true: false}
         onClick={() => {
@@ -40,6 +42,7 @@ let TextQuestion = (props: QuestionProps) => {
         }}>
         Next
       </button>
+      </div>
     </section>
   )
 }

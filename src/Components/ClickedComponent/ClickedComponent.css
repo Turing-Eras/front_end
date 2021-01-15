@@ -1,0 +1,15 @@
+.clickedComponent{
+  width: fit-content;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  border-style: none;
+  border-radius: 10px;
+  border: 2px solid #F7A83E ;
+  text-align: center;
+  background-color:#F2F7F8;
+}
+.clickedComponentText{
+  padding: 15px;
+}

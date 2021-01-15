@@ -4,6 +4,7 @@ import Event from '../Event/Event'
 import HeaderComponent from '../HeaderComponent/HeaderComponent'
 import './CalendarComponent.css';
 import AdditionalQuestions from '../AdditionalQuestions/AdditionalQuestions'
+import ClickedComponent from '../ClickedComponent/ClickedComponent'
 import { gql, useQuery } from '@apollo/client';
 
 
@@ -24,12 +25,15 @@ type era = {
   id: string,
   name: string,
   weekNumber: number
+  startDate:string
+  endDate:string
 }
 export const Get_User = gql`
   query getUser($id: ID!) {
     getUser(id: $id) {
       id
       name
+      currentWeek
       events {
         id
         name
@@ -42,6 +46,8 @@ export const Get_User = gql`
         name
         startWeek
         endWeek
+        startDate
+        endDate
         color
       }
     }
@@ -51,7 +57,8 @@ export const Get_User = gql`
 const CalendarComponent = (props: CalenderComponentProps) => {
 
   let [newEras, addEra] = useState <era[]>([])
-
+  let [weekClicked ,clickWeek] = useState(false)
+  let [currentWeekClicked,upDateWeekClicked] = useState<any>({})
   let id = props.userId
   if(props.userId ===0 || props.userId ===null && sessionStorage.getItem('userId') !== undefined ){
     //@ts-ignore
@@ -72,7 +79,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   }
 
 
-  let calendar = new Array(76);
+  let calendar = new Array(90);
   calendar.fill({});
   let display = calendar.map((year, index) => {
     let weeks = new Array(52);
@@ -102,6 +109,10 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       if(currentNewEra){
         return (
           <Week
+            startDate = {currentNewEra.startDate}
+            endDate = {currentNewEra.endDate}
+            upDateWeekClicked = {upDateWeekClicked}
+            clickWeek = {clickWeek}
             key={currentWeek}
             index={currentWeek}
             color={currentNewEra.color}
@@ -112,6 +123,8 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       if (currentEvent) {
         return (
           <Week
+            upDateWeekClicked = {upDateWeekClicked}
+            clickWeek = {clickWeek}
             key={currentWeek}
             index={currentWeek}
             color={currentEvent.color}
@@ -123,6 +136,10 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       if (currentEra) {
         return (
           <Week
+            startDate = {currentEra.startDate}
+            endDate = {currentEra.endDate}
+            upDateWeekClicked = {upDateWeekClicked}
+            clickWeek = {clickWeek}
             key={currentWeek}
             index={currentWeek}
             color={currentEra.color}
@@ -130,9 +147,22 @@ const CalendarComponent = (props: CalenderComponentProps) => {
           />
         );
       }
+      if(data.getUser.currentWeek <= currentWeek){
+       return( <Week
+          upDateWeekClicked = {upDateWeekClicked}
+          clickWeek = {clickWeek}
+          key={currentWeek}
+          index={currentWeek}
+          color={'white'}
+          name={null}
+        />
+      )
+     }
 
       return (
         <Week
+          upDateWeekClicked = {upDateWeekClicked}
+          clickWeek = {clickWeek}
           key={currentWeek}
           index={currentWeek}
           color={'none'}
@@ -159,6 +189,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       <HeaderComponent />
       <h1 className='calendar-title'>Your Calendar</h1>
         <Event userId = {props.userId} newEras = {newEras} addEra = {addEra} />
+          {weekClicked && <ClickedComponent name ={currentWeekClicked.name} startDate = {currentWeekClicked.startDate} endDate = {currentWeekClicked.endDate}/>}
       <p className='week-title'>Weeks</p>
       <div className='calendar-area'>
       {display}
