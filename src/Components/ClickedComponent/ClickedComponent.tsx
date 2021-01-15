@@ -22,7 +22,7 @@ let ClickedComponent = (props: ClickedComponentProps) =>{
     let endDate = updateDate(props.endDate)
   return (
     <section className = 'clickedComponent'>
-      <p className = 'clickedComponentText'>From {startDate} to {endDate} {props.name}</p>
+      <p className = 'clickedComponentText'>{startDate} to {endDate} {props.name}</p>
       </section>
   )
 }
