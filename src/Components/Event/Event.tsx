@@ -72,8 +72,9 @@ const Event = (props: eventProps) => {
       setError('Invalid Dates')
        return
     }
-    if(new Date(startEvent).getTime() < new Date(endEvent).getTime()){
+    if(new Date(startEvent).getTime() > new Date(endEvent).getTime()){
       setError('End date can can not happen before start date')
+      return
     }
     if(lifeEvent === '' || startEvent ===''|| endEvent ==='' ){
       setError('Please fill all fields')

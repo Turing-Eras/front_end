@@ -59,7 +59,6 @@ const CalendarComponent = (props: CalenderComponentProps) => {
   let [newEras, addEra] = useState <era[]>([])
   let [weekClicked ,clickWeek] = useState(false)
   let [currentWeekClicked,upDateWeekClicked] = useState<any>({})
-  console.log(currentWeekClicked)
   let id = props.userId
   if(props.userId ===0 || props.userId ===null && sessionStorage.getItem('userId') !== undefined ){
     //@ts-ignore
