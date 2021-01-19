@@ -123,6 +123,7 @@ const CalendarComponent = (props: CalenderComponentProps) => {
       if (currentEvent) {
         return (
           <Week
+           startDate = {currentEvent.date}
             upDateWeekClicked = {upDateWeekClicked}
             clickWeek = {clickWeek}
             key={currentWeek}

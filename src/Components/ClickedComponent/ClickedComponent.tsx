@@ -19,10 +19,20 @@ let ClickedComponent = (props: ClickedComponentProps) =>{
       return newArr.join('/')
     }
     let startDate = updateDate(props.startDate)
-    let endDate = updateDate(props.endDate)
+    let endDate;
+    if(props.endDate){
+       endDate = updateDate(props.endDate)
+
+    }
+    let message; 
+    if(endDate){
+      message = `${startDate} to ${endDate}`
+    }else{
+      message = `On ${startDate}`
+    }
   return (
     <section className = 'clickedComponent'>
-      <p className = 'clickedComponentText'>{startDate} to {endDate} {props.name}</p>
+      <p className = 'clickedComponentText'>{message} {props.name}</p>
       </section>
   )
 }
