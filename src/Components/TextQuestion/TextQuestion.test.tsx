@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import { render, screen, waitFor } from '@testing-library/react';
+import { getByTestId, render, screen, waitFor } from '@testing-library/react';
 import TextQuestion from './TextQuestion';
 
 describe('TextQuestion', () => {
@@ -26,22 +26,17 @@ describe('TextQuestion', () => {
     const nextBtn = getByText('Next');
     expect(nextBtn).toBeInTheDocument();
   });
+
+  it('should update the input when a user types', () => {
+    const { getByText, getByTestId } = render(<TextQuestion />);
+
+    const nextBtn = getByText('Next');
+    const input = getByTestId('text');
+    expect(input).toBeInTheDocument();
+    expect(nextBtn).toBeInTheDocument();
+
+    userEvent.type(input, 'Hello');
+
+    expect(input).toHaveValue('Hello');
+  });
 });
-
-// it('should fire a function on click', () => {
-//   const mockChangeQuestion = jest.fn();
-//   const mockAddAnswer = jest.fn();
-//   const { getByText } = render(
-//     <MockedProvider>
-//       <RequiredForm />
-//       <TextQuestion
-//         changeQuestion={mockChangeQuestion}
-//         addAnswer={mockAddAnswer}
-//       />
-//     </MockedProvider>
-//   );
-
-//   const nextBtn = getByText('Next');
-//   expect(nextBtn).toBeInTheDocument();
-// });
-//});
