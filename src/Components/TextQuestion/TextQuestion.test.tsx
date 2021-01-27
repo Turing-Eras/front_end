@@ -39,4 +39,27 @@ describe('TextQuestion', () => {
 
     expect(input).toHaveValue('Hello');
   });
-});
+
+  it('should fire a function when the next button is clicked', () => {
+    const mockChangeQuestion = jest.fn();      
+    const mockAddAnswer = jest.fn();
+
+    const { getByText, getByTestId } = render(
+      <TextQuestion
+        changeQuestion={mockChangeQuestion}
+        answers={[]}       
+        addAnswer={mockAddAnswer}    
+      />
+    );
+
+    const nextBtn = getByText('Next');
+    const input = getByTestId('text');   
+    expect(input).toBeInTheDocument();
+    expect(nextBtn).toBeInTheDocument();    
+
+    userEvent.type(input, 'Hello');   
+    userEvent.click(nextBtn);         
+
+    expect(mockChangeQuestion).toHaveBeenCalled();   
+  });
+});    
