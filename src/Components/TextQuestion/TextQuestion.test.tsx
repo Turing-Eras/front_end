@@ -18,5 +18,30 @@ describe('TextQuestion', () => {
 
     const question = getByText('What is your name?');
     expect(question).toBeInTheDocument();
-  });     
+  });
+
+  it('should render a next button', () => {
+    const { getByText } = render(<TextQuestion />);
+
+    const nextBtn = getByText('Next');
+    expect(nextBtn).toBeInTheDocument();
+  });
 });
+
+// it('should fire a function on click', () => {
+//   const mockChangeQuestion = jest.fn();
+//   const mockAddAnswer = jest.fn();
+//   const { getByText } = render(
+//     <MockedProvider>
+//       <RequiredForm />
+//       <TextQuestion
+//         changeQuestion={mockChangeQuestion}
+//         addAnswer={mockAddAnswer}
+//       />
+//     </MockedProvider>
+//   );
+
+//   const nextBtn = getByText('Next');
+//   expect(nextBtn).toBeInTheDocument();
+// });
+//});
