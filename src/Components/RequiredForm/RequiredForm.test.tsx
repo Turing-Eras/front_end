@@ -40,5 +40,6 @@ describe('RequiredForm', () => {
     );
 
     const nextBtn = getByText('Next');
+    expect(nextBtn).toBeInTheDocument();
   });
 });
