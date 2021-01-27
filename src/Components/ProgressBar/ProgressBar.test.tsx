@@ -5,6 +5,9 @@ import ProgressBar from './ProgressBar';
 
 describe('ProgressBar', () => {
   it('should render a ProgressBar', () => {
-    expect(true).toBe(true);
+    const { container } = render(
+      <ProgressBar questionsLength={2} answersLength={1} />
+    );
+    expect(container.firstChild.classList.contains('progress-bar'));
   });
-});
+});  

@@ -6,14 +6,14 @@ import HeaderComponent from './HeaderComponent';
 import { BrowserRouter } from 'react-router-dom';
 
 describe('HeaderComponent', () => {
-  it.skip('should render an header with the correct text', () => {
-    const { getByText } = render(
+  it('should render an header with the correct logo', () => {
+    const { getByAltText } = render(
       <BrowserRouter>
         <HeaderComponent />
       </BrowserRouter>
     );
 
-    const title = getByText('ERAS');
+    const title = getByAltText('eras logo');   
     expect(title).toBeInTheDocument();
   });
 });
