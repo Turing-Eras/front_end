@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { getByText, render, screen, waitFor } from '@testing-library/react';
 import RequiredForm from './RequiredForm';
+import FormStartPage from '../FormStartPage/FormStartPage';
 import { MockedProvider } from '@apollo/client/testing';
 
 describe('RequiredForm', () => {
@@ -29,5 +30,15 @@ describe('RequiredForm', () => {
 
     const nameQuestion = getByText('What is your name?');
     expect(nameQuestion).toBeInTheDocument();
+  });
+
+  it('should render with a next button', () => {
+    const { getByText } = render(
+      <MockedProvider>
+        <RequiredForm />
+      </MockedProvider>
+    );
+
+    const nextBtn = getByText('Next');
   });
 });
